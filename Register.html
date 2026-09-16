@@ -1,0 +1,618 @@
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Register - Kaycy Mart</title><style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#222;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:15px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#f59e0b;
+    white-space:nowrap;
+}
+
+nav{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#f59e0b;
+}
+
+.register-section{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+}
+
+.register-box{
+    background:white;
+    width:100%;
+    max-width:430px;
+    padding:40px 35px;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+
+.register-box h1{
+    text-align:center;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+.register-intro{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+    line-height:1.5;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#374151;
+}
+
+.form-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+.form-group input:focus{
+    border-color:#f59e0b;
+    box-shadow:0 0 0 2px rgba(245,158,11,0.12);
+}
+
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:50px;
+}
+
+.toggle-password{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    font-size:20px;
+    padding:5px;
+}
+
+.password-info{
+    margin-top:6px;
+    font-size:12px;
+    color:#777;
+}
+
+.terms{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin:5px 0 20px;
+    color:#666;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.terms input{
+    width:auto;
+    margin-top:3px;
+}
+
+.terms a{
+    color:#d97706;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.register-btn{
+    width:100%;
+    border:none;
+    background:#f59e0b;
+    color:#111827;
+    padding:14px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.register-btn:hover{
+    background:#d97706;
+    color:white;
+}
+
+.register-btn:disabled{
+    opacity:0.7;
+    cursor:not-allowed;
+}
+
+.message{
+    display:none;
+    margin-top:20px;
+    padding:14px;
+    border-radius:8px;
+    text-align:center;
+    line-height:1.5;
+}
+
+.error-message{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.success-message{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.login-text{
+    text-align:center;
+    margin-top:25px;
+    color:#666;
+}
+
+.login-text a{
+    color:#d97706;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.login-text a:hover{
+    text-decoration:underline;
+}
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px 20px;
+}
+
+footer h3{
+    color:#f59e0b;
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#d1d5db;
+}
+
+@media(max-width:800px){
+
+    header{
+        flex-direction:column;
+        padding:15px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+
+    nav a{
+        font-size:14px;
+    }
+
+    .register-section{
+        padding:35px 15px;
+    }
+
+    .register-box{
+        padding:30px 22px;
+    }
+
+}
+
+</style></head><body><header><div class="logo">
+    🛒 Kaycy Mart
+</div>
+
+<nav>
+
+    <a href="Index.html">Home</a>
+    <a href="Products.html">Products</a>
+    <a href="Cart.html">Cart</a>
+    <a href="About.html">About</a>
+    <a href="Contact.html">Contact</a>
+    <a href="Login.html">Login</a>
+
+</nav>
+
+</header><section class="register-section"><div class="register-box">
+
+    <h1>Create Account</h1>
+
+    <p class="register-intro">
+        Create your Kaycy Mart account.
+    </p>
+
+
+    <form id="registerForm">
+
+        <div class="form-group">
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="toggle-password"
+                    onclick="togglePassword('password', this)"
+                >
+                    👁️
+                </button>
+
+            </div>
+
+            <p class="password-info">
+                Password must contain at least 8 characters.
+            </p>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Re-enter your password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="toggle-password"
+                    onclick="togglePassword('confirmPassword', this)"
+                >
+                    👁️
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="terms">
+
+            <input
+                type="checkbox"
+                id="terms"
+                required
+            >
+
+            <label for="terms">
+                I agree to the terms and conditions.
+            </label>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="register-btn"
+            id="registerButton"
+        >
+            Create Account
+        </button>
+
+
+        <div
+            class="message error-message"
+            id="errorMessage"
+        ></div>
+
+
+        <div
+            class="message success-message"
+            id="successMessage"
+        ></div>
+
+    </form>
+
+
+    <p class="login-text">
+
+        Already have an account?
+
+        <a href="Login.html">
+            Login
+        </a>
+
+    </p>
+
+</div>
+
+</section><footer><h3>🛒 Kaycy Mart</h3>
+
+<p>
+    Your online marketplace for everyday products.
+</p>
+
+</footer><script>
+
+const API_URL = "https://kaycy-backend.onrender.com";
+
+
+function togglePassword(inputId, button){
+
+    const input = document.getElementById(inputId);
+
+    if(input.type === "password"){
+
+        input.type = "text";
+
+        button.textContent = "🙈";
+
+    }else{
+
+        input.type = "password";
+
+        button.textContent = "👁️";
+
+    }
+
+}
+
+
+document
+.getElementById("registerForm")
+.addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+    const registerButton =
+        document.getElementById("registerButton");
+
+
+    errorMessage.style.display = "none";
+    successMessage.style.display = "none";
+
+
+    if(password.length < 8){
+
+        errorMessage.textContent =
+            "❌ Password must be at least 8 characters long.";
+
+        errorMessage.style.display = "block";
+
+        return;
+
+    }
+
+
+    if(password !== confirmPassword){
+
+        errorMessage.textContent =
+            "❌ Passwords do not match.";
+
+        errorMessage.style.display = "block";
+
+        return;
+
+    }
+
+
+    registerButton.disabled = true;
+    registerButton.textContent = "Creating Account...";
+
+
+    try{
+
+        const response = await fetch(
+            API_URL + "/api/register",
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+
+                    name:name,
+
+                    email:email,
+
+                    phone:phone,
+
+                    password:password
+
+                })
+
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            errorMessage.textContent =
+                "❌ " + data.message;
+
+            errorMessage.style.display = "block";
+
+            registerButton.disabled = false;
+
+            registerButton.textContent = "Create Account";
+
+            return;
+
+        }
+
+
+        successMessage.textContent =
+            "✅ Account created successfully! Redirecting to login...";
+
+        successMessage.style.display = "block";
+
+
+        localStorage.removeItem("kaycyMartUser");
+
+
+        setTimeout(function(){
+
+            window.location.href = "Login.html";
+
+        },1500);
+
+
+    }catch(error){
+
+        console.error(error);
+
+        errorMessage.textContent =
+            "❌ Unable to connect to Kaycy Mart server. Please try again.";
+
+        errorMessage.style.display = "block";
+
+        registerButton.disabled = false;
+
+        registerButton.textContent = "Create Account";
+
+    }
+
+});
+
+</script></body>
+</html>
