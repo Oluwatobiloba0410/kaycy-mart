@@ -1,0 +1,1038 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kaycy Mart | Your Online Shopping Store</title><style>
+
+/* ===============================
+   GENERAL
+================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#111827;
+}
+
+
+/* ===============================
+   HEADER
+================================ */
+
+header{
+    background:#111827;
+    color:white;
+    padding:15px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#f59e0b;
+}
+
+
+/* SEARCH */
+
+.search-box{
+    flex:1;
+    max-width:500px;
+    display:flex;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:12px;
+    border:none;
+    outline:none;
+    border-radius:5px 0 0 5px;
+    font-size:15px;
+}
+
+.search-box button{
+    padding:12px 18px;
+    border:none;
+    background:#f59e0b;
+    cursor:pointer;
+    border-radius:0 5px 5px 0;
+    font-weight:bold;
+}
+
+.search-box button:hover{
+    background:#d97706;
+    color:white;
+}
+
+
+/* SEARCH RESULTS */
+
+.search-results{
+    position:absolute;
+    top:48px;
+    left:0;
+    right:0;
+    background:white;
+    color:#111827;
+    border-radius:8px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    overflow:hidden;
+    z-index:1000;
+    display:none;
+}
+
+.search-result{
+    display:block;
+    padding:12px 15px;
+    color:#111827;
+    text-decoration:none;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.search-result:hover{
+    background:#fff7ed;
+}
+
+.search-result strong{
+    display:block;
+}
+
+.search-result span{
+    color:#d97706;
+    font-size:14px;
+}
+
+
+/* ===============================
+   NAVIGATION
+================================ */
+
+nav{
+    background:#1f2937;
+    padding:12px 5%;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#f59e0b;
+}
+
+.cart-count{
+    background:#f59e0b;
+    color:#111827;
+    padding:2px 7px;
+    border-radius:20px;
+    font-size:12px;
+    margin-left:3px;
+}
+
+
+/* ===============================
+   HERO
+================================ */
+
+.hero{
+    min-height:450px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+    ),
+    url("images/hero.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    color:white;
+
+    padding:30px;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:#f59e0b;
+    color:#111;
+    padding:14px 28px;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.shop-btn:hover{
+    background:#d97706;
+    color:white;
+}
+
+
+/* ===============================
+   SECTIONS
+================================ */
+
+.section{
+    padding:50px 5%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:30px;
+}
+
+
+/* ===============================
+   CATEGORIES
+================================ */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.category{
+    background:white;
+    padding:30px 20px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    transition:0.2s;
+}
+
+.category:hover{
+    transform:translateY(-4px);
+}
+
+.category-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.category h3{
+    margin-bottom:10px;
+}
+
+.category p{
+    color:#6b7280;
+}
+
+
+/* ===============================
+   PRODUCTS
+================================ */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    transition:0.2s;
+}
+
+.product:hover{
+    transform:translateY(-4px);
+}
+
+.product-image{
+    height:200px;
+    background:#e5e7eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product-info h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:#d97706;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.cart-btn{
+    width:100%;
+    padding:11px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.cart-btn:hover{
+    background:#f59e0b;
+    color:#111;
+}
+
+
+/* ===============================
+   FOOTER
+================================ */
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    margin-top:30px;
+}
+
+footer h2{
+    color:#f59e0b;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#d1d5db;
+    margin:5px 0;
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:800px){
+
+    header{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .logo{
+        text-align:center;
+    }
+
+    nav ul{
+        gap:15px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .categories,
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:400px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .section{
+        padding:40px 15px;
+    }
+
+    .search-box input{
+        font-size:14px;
+    }
+
+}
+
+</style></head><body><!-- ===============================
+     HEADER
+================================ --><header><div class="logo">
+    🛒 Kaycy Mart
+</div>
+
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for products..."
+        autocomplete="off"
+    >
+
+    <button onclick="searchProducts()">
+        Search
+    </button>
+
+
+    <div
+        class="search-results"
+        id="searchResults"
+    ></div>
+
+</div>
+
+</header><!-- ===============================
+     NAVIGATION
+================================ --><nav><ul>
+
+    <li>
+        <a href="Index.html">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a href="Products.html">
+            Products
+        </a>
+    </li>
+
+    <li>
+        <a href="Cart.html">
+            Cart 🛒
+            <span
+                class="cart-count"
+                id="cartCount"
+            >
+                0
+            </span>
+        </a>
+    </li>
+
+    <li>
+        <a href="Orders.html">
+            My Orders
+        </a>
+    </li>
+
+    <li>
+        <a href="About.html">
+            About
+        </a>
+    </li>
+
+    <li>
+        <a href="Contact.html">
+            Contact
+        </a>
+    </li>
+
+    <li>
+        <a href="Account.html">
+            My Account
+        </a>
+    </li>
+
+</ul>
+
+</nav><!-- ===============================
+     HERO
+================================ --><section class="hero"><div class="hero-content">
+
+    <h1>
+        Welcome to Kaycy Mart
+    </h1>
+
+    <p>
+        Shop quality products at great prices.
+        Everything you need, all in one place.
+    </p>
+
+    <a
+        href="Products.html"
+        class="shop-btn"
+    >
+        Shop Now
+    </a>
+
+</div>
+
+</section><!-- ===============================
+     CATEGORIES
+================================ --><section class="section"><h2 class="section-title">
+    Shop By Category
+</h2>
+
+
+<div class="categories">
+
+
+    <div class="category">
+
+        <div class="category-icon">
+            📱
+        </div>
+
+        <h3>
+            Electronics
+        </h3>
+
+        <p>
+            Phones, gadgets and more.
+        </p>
+
+    </div>
+
+
+    <div class="category">
+
+        <div class="category-icon">
+            👕
+        </div>
+
+        <h3>
+            Fashion
+        </h3>
+
+        <p>
+            Clothes and accessories.
+        </p>
+
+    </div>
+
+
+    <div class="category">
+
+        <div class="category-icon">
+            🏠
+        </div>
+
+        <h3>
+            Home
+        </h3>
+
+        <p>
+            Useful products for your home.
+        </p>
+
+    </div>
+
+
+    <div class="category">
+
+        <div class="category-icon">
+            🎮
+        </div>
+
+        <h3>
+            Gaming
+        </h3>
+
+        <p>
+            Gaming products and accessories.
+        </p>
+
+    </div>
+
+
+</div>
+
+</section><!-- ===============================
+     FEATURED PRODUCTS
+================================ --><section class="section"><h2 class="section-title">
+    Featured Products
+</h2>
+
+
+<div class="products">
+
+
+    <!-- SMARTPHONE -->
+
+    <div class="product">
+
+        <div class="product-image">
+            📱
+        </div>
+
+        <div class="product-info">
+
+            <h3>
+                Smartphone
+            </h3>
+
+            <div class="price">
+                ₦150,000
+            </div>
+
+            <button
+                class="cart-btn"
+                onclick="addToCart('Smartphone',150000)"
+            >
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADPHONES -->
+
+    <div class="product">
+
+        <div class="product-image">
+            🎧
+        </div>
+
+        <div class="product-info">
+
+            <h3>
+                Wireless Headphones
+            </h3>
+
+            <div class="price">
+                ₦25,000
+            </div>
+
+            <button
+                class="cart-btn"
+                onclick="addToCart('Wireless Headphones',25000)"
+            >
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SMART WATCH -->
+
+    <div class="product">
+
+        <div class="product-image">
+            ⌚
+        </div>
+
+        <div class="product-info">
+
+            <h3>
+                Smart Watch
+            </h3>
+
+            <div class="price">
+                ₦35,000
+            </div>
+
+            <button
+                class="cart-btn"
+                onclick="addToCart('Smart Watch',35000)"
+            >
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAMING CONTROLLER -->
+
+    <div class="product">
+
+        <div class="product-image">
+            🎮
+        </div>
+
+        <div class="product-info">
+
+            <h3>
+                Gaming Controller
+            </h3>
+
+            <div class="price">
+                ₦30,000
+            </div>
+
+            <button
+                class="cart-btn"
+                onclick="addToCart('Gaming Controller',30000)"
+            >
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</section><!-- ===============================
+     FOOTER
+================================ --><footer><h2>
+    Kaycy Mart
+</h2>
+
+<p>
+    Your trusted online shopping store.
+</p>
+
+<br>
+
+<p>
+    © 2026 Kaycy Mart. All Rights Reserved.
+</p>
+
+</footer><script>
+
+/* ===============================
+   CART SYSTEM
+================================ */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("kaycyMartCart")
+    ) || [];
+
+
+function addToCart(productName,productPrice){
+
+    const existingProduct =
+        cart.find(
+            item => item.name === productName
+        );
+
+
+    if(existingProduct){
+
+        existingProduct.quantity++;
+
+    }
+
+    else{
+
+        cart.push({
+
+            name:productName,
+
+            price:productPrice,
+
+            quantity:1
+
+        });
+
+    }
+
+
+    localStorage.setItem(
+        "kaycyMartCart",
+        JSON.stringify(cart)
+    );
+
+
+    updateCartCount();
+
+
+    alert(
+        productName +
+        " has been added to your cart! 🛒"
+    );
+
+}
+
+
+/* ===============================
+   CART COUNT
+================================ */
+
+function updateCartCount(){
+
+    const count =
+        cart.reduce(
+            function(total,item){
+
+                return total +
+                    (Number(item.quantity) || 0);
+
+            },
+            0
+        );
+
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = count;
+
+}
+
+
+/* ===============================
+   SEARCH DATA
+================================ */
+
+const products = [
+
+    {
+        name:"Smartphone",
+        price:150000
+    },
+
+    {
+        name:"Wireless Headphones",
+        price:25000
+    },
+
+    {
+        name:"Smart Watch",
+        price:35000
+    },
+
+    {
+        name:"Gaming Controller",
+        price:30000
+    },
+
+    {
+        name:"Classic T-Shirt",
+        price:12000
+    },
+
+    {
+        name:"Sneakers",
+        price:28000
+    },
+
+    {
+        name:"Table Lamp",
+        price:18000
+    },
+
+    {
+        name:"Gaming Headset",
+        price:22000
+    }
+
+];
+
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const searchResults =
+    document.getElementById(
+        "searchResults"
+    );
+
+
+/* ===============================
+   LIVE SEARCH
+================================ */
+
+searchInput.addEventListener(
+    "input",
+    function(){
+
+        const search =
+            this.value
+            .trim()
+            .toLowerCase();
+
+
+        if(search === ""){
+
+            searchResults.style.display =
+                "none";
+
+            searchResults.innerHTML =
+                "";
+
+            return;
+
+        }
+
+
+        const matches =
+            products.filter(
+                function(product){
+
+                    return product.name
+                        .toLowerCase()
+                        .includes(search);
+
+                }
+            );
+
+
+        if(matches.length === 0){
+
+            searchResults.innerHTML = `
+
+                <div class="search-result">
+
+                    <strong>
+                        No products found
+                    </strong>
+
+                    <span>
+                        Try another search
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+
+        else{
+
+            searchResults.innerHTML =
+                matches.map(
+                    function(product){
+
+                        return `
+
+                            <a
+                                href="Products.html"
+                                class="search-result"
+                            >
+
+                                <strong>
+                                    ${product.name}
+                                </strong>
+
+                                <span>
+                                    ₦${product.price.toLocaleString()}
+                                </span>
+
+                            </a>
+
+                        `;
+
+                    }
+                ).join("");
+
+        }
+
+
+        searchResults.style.display =
+            "block";
+
+    }
+);
+
+
+/* ===============================
+   SEARCH BUTTON
+================================ */
+
+function searchProducts(){
+
+    const search =
+        searchInput.value.trim();
+
+
+    if(search === ""){
+
+        searchInput.focus();
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "Products.html?search=" +
+        encodeURIComponent(search);
+
+}
+
+
+/* ===============================
+   CLOSE SEARCH RESULTS
+================================ */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            !event.target.closest(".search-box")
+        ){
+
+            searchResults.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* ===============================
+   INITIAL CART COUNT
+================================ */
+
+updateCartCount();
+
+</script></body>
+</html>

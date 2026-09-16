@@ -1,0 +1,1341 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Products | Kaycy Mart</title><style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#111827;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:15px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#f59e0b;
+}
+
+.search-box{
+    flex:1;
+    max-width:500px;
+    display:flex;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:12px;
+    border:none;
+    outline:none;
+    border-radius:5px 0 0 5px;
+    font-size:15px;
+}
+
+.search-box button{
+    padding:12px 18px;
+    border:none;
+    background:#f59e0b;
+    cursor:pointer;
+    border-radius:0 5px 5px 0;
+    font-weight:bold;
+}
+
+.search-box button:hover{
+    background:#d97706;
+    color:white;
+}
+
+.suggestions{
+    position:absolute;
+    top:48px;
+    left:0;
+    width:100%;
+    background:white;
+    color:#222;
+    border-radius:8px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    display:none;
+    z-index:1000;
+    overflow:hidden;
+}
+
+.suggestion{
+    padding:12px 15px;
+    cursor:pointer;
+    border-bottom:1px solid #eee;
+}
+
+.suggestion:hover{
+    background:#fff7ed;
+}
+
+.suggestion strong{
+    display:block;
+}
+
+.suggestion span{
+    color:#d97706;
+    font-size:13px;
+}
+
+nav{
+    background:#1f2937;
+    padding:12px 5%;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#f59e0b;
+}
+
+.cart-link{
+    position:relative;
+}
+
+.cart-count{
+    background:#f59e0b;
+    color:#111827;
+    font-size:11px;
+    min-width:18px;
+    height:18px;
+    padding:2px 5px;
+    border-radius:20px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    vertical-align:top;
+    margin-left:3px;
+}
+
+.page-title{
+    text-align:center;
+    padding:45px 20px 25px;
+}
+
+.page-title h1{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.page-title p{
+    color:#6b7280;
+}
+
+.search-status{
+    display:none;
+    max-width:1050px;
+    margin:0 auto 25px;
+    padding:12px 20px;
+    background:#fff7ed;
+    border-left:4px solid #f59e0b;
+    border-radius:6px;
+    color:#92400e;
+}
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:0 5% 30px;
+}
+
+.filter-btn{
+    padding:10px 18px;
+    border:none;
+    background:white;
+    border-radius:20px;
+    cursor:pointer;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    font-weight:bold;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.products{
+    padding:0 5% 50px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    transition:transform 0.2s;
+}
+
+.product:hover{
+    transform:translateY(-4px);
+}
+
+.product-image{
+    height:210px;
+    background:#e5e7eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:65px;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product-info h3{
+    margin-bottom:8px;
+}
+
+.category{
+    font-size:13px;
+    color:#777;
+    margin-bottom:10px;
+}
+
+.description{
+    font-size:14px;
+    color:#6b7280;
+    line-height:1.5;
+    margin-bottom:12px;
+}
+
+.price{
+    color:#d97706;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.cart-btn{
+    width:100%;
+    padding:11px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.cart-btn:hover{
+    background:#f59e0b;
+    color:#111;
+}
+
+.loading{
+    grid-column:1 / -1;
+    text-align:center;
+    padding:50px 20px;
+    color:#6b7280;
+    font-size:18px;
+}
+
+.product-error{
+    grid-column:1 / -1;
+    text-align:center;
+    padding:50px 20px;
+    background:white;
+    border-radius:12px;
+    color:#b91c1c;
+    font-size:17px;
+}
+
+.no-results{
+    display:none;
+    text-align:center;
+    padding:50px 20px 70px;
+    font-size:18px;
+    color:#777;
+}
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+footer h2{
+    color:#f59e0b;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#d1d5db;
+    margin:5px 0;
+}
+
+@media(max-width:800px){
+
+    header{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .logo{
+        text-align:center;
+    }
+
+    nav ul{
+        gap:15px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:500px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .page-title h1{
+        font-size:28px;
+    }
+
+    .page-title{
+        padding-top:35px;
+    }
+
+}
+
+</style></head><body><header><div class="logo">
+    🛒 Kaycy Mart
+</div><div class="search-box"><input
+type="text"
+id="searchInput"
+placeholder="Search for products..."
+autocomplete="off"
+
+«»
+
+<button onclick="searchProducts()">
+    Search
+</button><div
+    class="suggestions"
+    id="suggestions">
+</div></div></header><nav><ul><li>
+<a href="Index.html">Home</a>
+</li><li>
+<a href="Products.html">Products</a>
+</li><li>
+<a href="Cart.html" class="cart-link">
+Cart 🛒
+<span id="cartCount" class="cart-count">0</span>
+</a>
+</li><li>
+<a href="Orders.html">My Orders</a>
+</li><li>
+<a href="About.html">About</a>
+</li><li>
+<a href="Contact.html">Contact</a>
+</li><li>
+<a href="Account.html">My Account</a>
+</li></ul></nav><section class="page-title"><h1>Our Products</h1><p>
+Find what you're looking for at Kaycy Mart.
+</p></section><div
+class="search-status"
+id="searchStatus">
+</div><div class="filters"><button
+class="filter-btn active"
+onclick="filterProducts('all', this)">
+All
+</button>
+
+<button
+class="filter-btn"
+onclick="filterProducts('electronics', this)">
+Electronics
+</button>
+
+<button
+class="filter-btn"
+onclick="filterProducts('fashion', this)">
+Fashion
+</button>
+
+<button
+class="filter-btn"
+onclick="filterProducts('home', this)">
+Home
+</button>
+
+<button
+class="filter-btn"
+onclick="filterProducts('gaming', this)">
+Gaming
+</button>
+
+</div><section
+class="products"
+id="productContainer"><div class="loading">
+Loading products... 🛒
+</div></section><div
+class="no-results"
+id="noResults">No products found.
+
+</div><footer><h2>Kaycy Mart</h2><p>
+Your trusted online shopping store.
+</p><br><p>
+© 2026 Kaycy Mart. All Rights Reserved.
+</p></footer><script>
+
+const API_URL = "https://kaycy-backend.onrender.com";
+
+let products = [];
+
+let currentCategory = "all";
+
+
+/* ===============================
+   LOAD CART
+================================ */
+
+function loadCart(){
+
+    try{
+
+        const savedCart =
+            localStorage.getItem("kaycyMartCart");
+
+        if(!savedCart){
+
+            return [];
+
+        }
+
+        const parsedCart =
+            JSON.parse(savedCart);
+
+        if(!Array.isArray(parsedCart)){
+
+            return [];
+
+        }
+
+        return parsedCart;
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Cart loading error:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+let cart = loadCart();
+
+
+/* ===============================
+   SAVE CART
+================================ */
+
+function saveCart(){
+
+    try{
+
+        localStorage.setItem(
+            "kaycyMartCart",
+            JSON.stringify(cart)
+        );
+
+        localStorage.setItem(
+            "kaycyMartCartBackup",
+            JSON.stringify(cart)
+        );
+
+        return true;
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Cart saving error:",
+            error
+        );
+
+        return false;
+
+    }
+
+}
+
+
+/* ===============================
+   CART COUNT
+================================ */
+
+function updateCartCount(){
+
+    let totalItems = 0;
+
+    cart.forEach(function(item){
+
+        totalItems +=
+            Number(item.quantity) || 0;
+
+    });
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = totalItems;
+
+}
+
+
+/* ===============================
+   ADD TO CART
+================================ */
+
+function addToCart(
+    productId,
+    productName,
+    productPrice
+){
+
+    const existingProduct =
+        cart.find(function(item){
+
+            return Number(item.productId) ===
+                Number(productId);
+
+        });
+
+
+    if(existingProduct){
+
+        existingProduct.quantity =
+            Number(existingProduct.quantity) + 1;
+
+    }
+
+    else{
+
+        cart.push({
+
+            productId:Number(productId),
+
+            name:String(productName),
+
+            price:Number(productPrice),
+
+            quantity:1
+
+        });
+
+    }
+
+
+    const saved =
+        saveCart();
+
+
+    if(!saved){
+
+        alert(
+            "Sorry, your cart could not be saved."
+        );
+
+        return;
+
+    }
+
+
+    updateCartCount();
+
+
+    alert(
+        productName +
+        " has been added to your cart! 🛒"
+    );
+
+}
+
+
+/* ===============================
+   FORMAT PRICE
+================================ */
+
+function formatPrice(price){
+
+    return "₦" +
+        Number(price).toLocaleString();
+
+}
+
+
+/* ===============================
+   LOAD PRODUCTS
+================================ */
+
+async function loadProducts(){
+
+    const container =
+        document.getElementById(
+            "productContainer"
+        );
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/products"
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Could not load products."
+            );
+
+        }
+
+
+        products =
+            await response.json();
+
+
+        renderProducts();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+
+        container.innerHTML = `
+
+            <div class="product-error">
+
+                Unable to load products.
+
+                <br><br>
+
+                Please make sure the
+                Kaycy Mart backend is running.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* ===============================
+   RENDER PRODUCTS
+================================ */
+
+function renderProducts(){
+
+    const container =
+        document.getElementById(
+            "productContainer"
+        );
+
+
+    container.innerHTML = "";
+
+
+    let filteredProducts =
+        products.filter(
+            function(product){
+
+                if(
+                    currentCategory ===
+                    "all"
+                ){
+
+                    return true;
+
+                }
+
+
+                return String(
+                    product.category || ""
+                ).toLowerCase().trim() ===
+                    currentCategory;
+
+            }
+        );
+
+
+    if(filteredProducts.length === 0){
+
+        noResults.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    noResults.style.display =
+        "none";
+
+
+    filteredProducts.forEach(
+        function(product){
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "product";
+
+
+            card.dataset.category =
+                String(
+                    product.category || ""
+                );
+
+
+            card.dataset.name =
+                String(
+                    product.name || ""
+                );
+
+
+            const emoji =
+                product.emoji || "🛒";
+
+
+            let imageHTML = "";
+
+
+            if(product.image){
+
+                imageHTML = `
+
+                    <img
+                        src="${escapeHTML(product.image)}"
+                        alt="${escapeHTML(product.name)}"
+                        onerror="this.style.display='none';"
+                    >
+
+                `;
+
+            }
+
+            else{
+
+                imageHTML =
+                    escapeHTML(emoji);
+
+            }
+
+
+            card.innerHTML = `
+
+                <div class="product-image">
+
+                    ${imageHTML}
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>
+                        ${escapeHTML(product.name)}
+                    </h3>
+
+                    <div class="category">
+
+                        ${escapeHTML(
+                            capitalize(
+                                product.category
+                            )
+                        )}
+
+                    </div>
+
+                    ${
+                        product.description
+                        ?
+                        `
+                        <div class="description">
+                            ${escapeHTML(
+                                product.description
+                            )}
+                        </div>
+                        `
+                        :
+                        ""
+                    }
+
+                    <div class="price">
+
+                        ${formatPrice(
+                            product.price
+                        )}
+
+                    </div>
+
+                    <button
+                        class="cart-btn"
+                        onclick="addToCart(
+                            ${Number(product.id)},
+                            '${escapeQuotes(product.name)}',
+                            ${Number(product.price)}
+                        )"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(card);
+
+        }
+    );
+
+
+    applyCurrentSearch();
+
+}
+
+
+/* ===============================
+   CAPITALIZE
+================================ */
+
+function capitalize(text){
+
+    if(!text){
+
+        return "";
+
+    }
+
+    text =
+        String(text).trim();
+
+
+    return text.charAt(0).toUpperCase() +
+        text.slice(1);
+
+}
+
+
+/* ===============================
+   HTML ESCAPE
+================================ */
+
+function escapeHTML(text){
+
+    return String(text || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ===============================
+   ESCAPE QUOTES
+================================ */
+
+function escapeQuotes(text){
+
+    return String(text || "")
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'")
+        .replace(/\n/g,"\\n")
+        .replace(/\r/g,"\\r");
+
+}
+
+
+/* ===============================
+   SEARCH ELEMENTS
+================================ */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+const suggestions =
+    document.getElementById(
+        "suggestions"
+    );
+
+const searchStatus =
+    document.getElementById(
+        "searchStatus"
+    );
+
+const noResults =
+    document.getElementById(
+        "noResults"
+    );
+
+
+/* ===============================
+   LIVE SEARCH
+================================ */
+
+searchInput.addEventListener(
+    "input",
+    function(){
+
+        const searchText =
+            this.value
+            .toLowerCase()
+            .trim();
+
+
+        suggestions.innerHTML = "";
+
+
+        if(searchText === ""){
+
+            suggestions.style.display =
+                "none";
+
+            searchStatus.style.display =
+                "none";
+
+            renderProducts();
+
+            return;
+
+        }
+
+
+        applyCurrentSearch();
+
+
+        const matches =
+            products.filter(
+                function(product){
+
+                    const name =
+                        String(
+                            product.name || ""
+                        ).toLowerCase();
+
+
+                    return name.includes(
+                        searchText
+                    );
+
+                }
+            );
+
+
+        if(matches.length > 0){
+
+            matches.forEach(
+                function(product){
+
+                    const suggestion =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    suggestion.className =
+                        "suggestion";
+
+
+                    suggestion.innerHTML = `
+
+                        <strong>
+                            ${escapeHTML(
+                                product.name
+                            )}
+                        </strong>
+
+                        <span>
+                            ${formatPrice(
+                                product.price
+                            )}
+                        </span>
+
+                    `;
+
+
+                    suggestion.onclick =
+                        function(){
+
+                            searchInput.value =
+                                product.name;
+
+
+                            suggestions.style.display =
+                                "none";
+
+
+                            applySearch(
+                                product.name
+                            );
+
+                        };
+
+
+                    suggestions.appendChild(
+                        suggestion
+                    );
+
+                }
+            );
+
+
+            suggestions.style.display =
+                "block";
+
+        }
+
+        else{
+
+            suggestions.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* ===============================
+   SEARCH BUTTON
+================================ */
+
+function searchProducts(){
+
+    const text =
+        searchInput.value.trim();
+
+
+    if(text === ""){
+
+        searchInput.focus();
+
+        return;
+
+    }
+
+
+    applySearch(text);
+
+}
+
+
+/* ===============================
+   APPLY SEARCH
+================================ */
+
+function applySearch(text){
+
+    searchInput.value =
+        text;
+
+
+    suggestions.style.display =
+        "none";
+
+
+    const searchText =
+        text.toLowerCase().trim();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".product"
+        );
+
+
+    let visibleMatches = 0;
+
+
+    cards.forEach(
+        function(card){
+
+            const name =
+                String(
+                    card.dataset.name || ""
+                ).toLowerCase();
+
+
+            const category =
+                String(
+                    card.dataset.category || ""
+                ).toLowerCase().trim();
+
+
+            const matchesSearch =
+                name.includes(
+                    searchText
+                );
+
+
+            const matchesCategory =
+                currentCategory === "all" ||
+                category === currentCategory;
+
+
+            if(
+                matchesSearch &&
+                matchesCategory
+            ){
+
+                card.style.display =
+                    "block";
+
+                visibleMatches++;
+
+            }
+
+            else{
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    if(visibleMatches === 0){
+
+        noResults.style.display =
+            "block";
+
+
+        searchStatus.style.display =
+            "block";
+
+
+        searchStatus.textContent =
+            "No products found for \"" +
+            text +
+            "\".";
+
+    }
+
+    else{
+
+        noResults.style.display =
+            "none";
+
+
+        searchStatus.style.display =
+            "block";
+
+
+        searchStatus.textContent =
+            visibleMatches +
+            " product" +
+            (
+                visibleMatches === 1
+                ? ""
+                : "s"
+            ) +
+            " found for \"" +
+            text +
+            "\".";
+
+    }
+
+}
+
+
+/* ===============================
+   APPLY CURRENT SEARCH
+================================ */
+
+function applyCurrentSearch(){
+
+    const text =
+        searchInput.value.trim();
+
+
+    if(text !== ""){
+
+        applySearch(text);
+
+    }
+
+}
+
+
+/* ===============================
+   CATEGORY FILTER
+================================ */
+
+function filterProducts(
+    category,
+    button
+){
+
+    currentCategory =
+        category;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            function(btn){
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    searchInput.value =
+        "";
+
+
+    suggestions.style.display =
+        "none";
+
+
+    searchStatus.style.display =
+        "none";
+
+
+    noResults.style.display =
+        "none";
+
+
+    renderProducts();
+
+}
+
+
+/* ===============================
+   HOMEPAGE SEARCH
+================================ */
+
+const urlParams =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const searchFromHome =
+    urlParams.get("search");
+
+
+/* ===============================
+   CLOSE SUGGESTIONS
+================================ */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            !event.target.closest(
+                ".search-box"
+            )
+        ){
+
+            suggestions.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* ===============================
+   INITIALIZE
+================================ */
+
+updateCartCount();
+
+loadProducts();
+
+
+if(searchFromHome){
+
+    searchInput.value =
+        searchFromHome;
+
+}
+
+</script></body>
+</html>
