@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Account | Kaycy Mart</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#111827;
+}
+
+/* HEADER */
+
+header{
+    background:#111827;
+    color:white;
+    padding:18px 20px;
+}
+
+.header-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    color:#f59e0b;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.back-link{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.back-link:hover{
+    color:#f59e0b;
+}
+
+
+/* MAIN */
+
+.container{
+    max-width:900px;
+    margin:30px auto;
+    padding:0 18px;
+}
+
+.page-heading{
+    margin-bottom:25px;
+}
+
+.page-heading h1{
+    font-size:28px;
+    margin-bottom:7px;
+}
+
+.page-heading p{
+    color:#6b7280;
+}
+
+
+/* PROFILE CARD */
+
+.profile-card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:20px;
+}
+
+.profile-icon{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    background:#f59e0b;
+    color:#111827;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.profile-card h2{
+    margin-bottom:5px;
+}
+
+.profile-role{
+    color:#6b7280;
+    margin-bottom:20px;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.info-box{
+    background:#f9fafb;
+    border-radius:8px;
+    padding:14px;
+}
+
+.info-label{
+    font-size:12px;
+    color:#6b7280;
+    margin-bottom:6px;
+}
+
+.info-value{
+    font-weight:bold;
+    word-break:break-word;
+}
+
+
+/* ACTIONS */
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.action-card{
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    text-decoration:none;
+    color:#111827;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    transition:transform 0.2s;
+}
+
+.action-card:hover{
+    transform:translateY(-2px);
+}
+
+.action-icon{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.action-card h3{
+    margin-bottom:6px;
+}
+
+.action-card p{
+    color:#6b7280;
+    font-size:14px;
+    line-height:1.5;
+}
+
+
+/* LOGOUT */
+
+.logout-btn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#1f2937;
+}
+
+
+/* LOGIN */
+
+.login-box{
+    background:white;
+    border-radius:10px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.login-box h2{
+    margin-bottom:10px;
+}
+
+.login-box p{
+    color:#6b7280;
+    margin-bottom:18px;
+}
+
+.login-btn{
+    display:inline-block;
+    padding:12px 22px;
+    background:#f59e0b;
+    color:#111827;
+    text-decoration:none;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    header{
+        padding:15px;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .container{
+        margin:20px auto;
+        padding:0 14px;
+    }
+
+    .page-heading h1{
+        font-size:25px;
+    }
+
+    .profile-card{
+        padding:20px;
+    }
+
+    .info{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="logo">
+            🛒 Kaycy Mart
+        </div>
+
+        <a
+            href="Products.html"
+            class="back-link"
+        >
+            ← Continue Shopping
+        </a>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div class="page-heading">
+
+        <h1>My Account</h1>
+
+        <p>
+            Manage your Kaycy Mart account.
+        </p>
+
+    </div>
+
+
+    <div id="accountContent"></div>
+
+</div>
+
+
+<script>
+
+/* ==============================
+   GET CURRENT USER
+============================== */
+
+let currentUser = null;
+
+try{
+
+    currentUser =
+        JSON.parse(
+            localStorage.getItem(
+                "kaycyMartCurrentUser"
+            )
+        );
+
+}catch(error){
+
+    currentUser = null;
+
+}
+
+
+/* ==============================
+   ACCOUNT CONTENT
+============================== */
+
+const accountContent =
+    document.getElementById(
+        "accountContent"
+    );
+
+
+/* ==============================
+   NOT LOGGED IN
+============================== */
+
+if(!currentUser){
+
+    accountContent.innerHTML = `
+
+        <div class="login-box">
+
+            <h2>
+                You're not logged in
+            </h2>
+
+            <p>
+                Login to access your Kaycy Mart account.
+            </p>
+
+            <a
+                href="Login.html"
+                class="login-btn"
+            >
+                Login
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==============================
+   LOGGED IN
+============================== */
+
+else{
+
+    const name =
+        currentUser.name ||
+        "Customer";
+
+    const email =
+        currentUser.email ||
+        "Not provided";
+
+    const phone =
+        currentUser.phone ||
+        "Not provided";
+
+    accountContent.innerHTML = `
+
+        <div class="profile-card">
+
+            <div class="profile-icon">
+                👤
+            </div>
+
+            <h2>
+                ${escapeHTML(name)}
+            </h2>
+
+            <div class="profile-role">
+                Kaycy Mart Customer
+            </div>
+
+
+            <div class="info">
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        Full Name
+                    </div>
+
+                    <div class="info-value">
+                        ${escapeHTML(name)}
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        Email
+                    </div>
+
+                    <div class="info-value">
+                        ${escapeHTML(email)}
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        Phone Number
+                    </div>
+
+                    <div class="info-value">
+                        ${escapeHTML(phone)}
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="info-label">
+                        Account Type
+                    </div>
+
+                    <div class="info-value">
+                        Customer
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+
+            <a
+                href="Orders.html"
+                class="action-card"
+            >
+
+                <div class="action-icon">
+                    📦
+                </div>
+
+                <h3>
+                    My Orders
+                </h3>
+
+                <p>
+                    View your orders and track their status.
+                </p>
+
+            </a>
+
+
+            <a
+                href="Products.html"
+                class="action-card"
+            >
+
+                <div class="action-icon">
+                    🛒
+                </div>
+
+                <h3>
+                    Shop Products
+                </h3>
+
+                <p>
+                    Browse products available at Kaycy Mart.
+                </p>
+
+            </a>
+
+
+            <a
+                href="Cart.html"
+                class="action-card"
+            >
+
+                <div class="action-icon">
+                    🛍️
+                </div>
+
+                <h3>
+                    My Cart
+                </h3>
+
+                <p>
+                    View products you've added to your cart.
+                </p>
+
+            </a>
+
+
+            <a
+                href="Checkout.html"
+                class="action-card"
+            >
+
+                <div class="action-icon">
+                    💳
+                </div>
+
+                <h3>
+                    Checkout
+                </h3>
+
+                <p>
+                    Proceed to checkout when you're ready.
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="logout-btn"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    `;
+
+}
+
+
+/* ==============================
+   ESCAPE HTML
+============================== */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ==============================
+   LOGOUT
+============================== */
+
+function logout(){
+
+    localStorage.removeItem(
+        "kaycyMartCurrentUser"
+    );
+
+    window.location.href =
+        "Login.html";
+
+}
+
+</script>
+
+</body>
+</html>

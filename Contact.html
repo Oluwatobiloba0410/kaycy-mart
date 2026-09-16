@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us - Kaycy Mart</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#222;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    background:#111827;
+    color:white;
+    padding:15px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#f59e0b;
+    white-space:nowrap;
+}
+
+nav{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:#f59e0b;
+}
+
+/* ================= HERO ================= */
+
+.page-hero{
+    background:linear-gradient(135deg,#111827,#1f2937);
+    color:white;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.page-hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.page-hero p{
+    font-size:18px;
+    color:#d1d5db;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* ================= CONTACT SECTION ================= */
+
+.contact-section{
+    padding:60px 0;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:35px;
+}
+
+/* ================= CONTACT INFO ================= */
+
+.contact-info{
+    background:#111827;
+    color:white;
+    padding:35px;
+    border-radius:18px;
+}
+
+.contact-info h2{
+    color:#f59e0b;
+    margin-bottom:15px;
+}
+
+.contact-info > p{
+    color:#d1d5db;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.contact-box{
+    display:flex;
+    gap:15px;
+    margin-bottom:25px;
+    align-items:flex-start;
+}
+
+.contact-icon{
+    font-size:28px;
+}
+
+.contact-box h3{
+    margin-bottom:5px;
+}
+
+.contact-box p{
+    color:#d1d5db;
+    line-height:1.5;
+}
+
+/* ================= PROBLEM CONTACT ================= */
+
+.problem-box{
+    background:#fff7ed;
+    border:2px solid #f59e0b;
+    color:#111827;
+    padding:25px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+.problem-box h3{
+    color:#c2410c;
+    margin-bottom:10px;
+}
+
+.problem-box p{
+    line-height:1.6;
+    margin-bottom:18px;
+    color:#4b5563;
+}
+
+.problem-button{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:13px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.problem-button:hover{
+    background:#1da851;
+}
+
+/* ================= FORM ================= */
+
+.contact-form{
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.07);
+}
+
+.contact-form h2{
+    margin-bottom:10px;
+    color:#111827;
+}
+
+.form-intro{
+    color:#666;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:bold;
+    color:#374151;
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:15px;
+    font-family:Arial,sans-serif;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color:#f59e0b;
+}
+
+.form-group textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+.send-btn{
+    width:100%;
+    border:none;
+    background:#f59e0b;
+    color:#111827;
+    padding:14px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.send-btn:hover{
+    background:#d97706;
+    color:white;
+}
+
+/* ================= SUCCESS ================= */
+
+.success-message{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    background:#dcfce7;
+    color:#166534;
+    border-radius:8px;
+    text-align:center;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+}
+
+footer h3{
+    color:#f59e0b;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#d1d5db;
+    margin-bottom:8px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    header{
+        flex-direction:column;
+        padding:15px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+
+    nav a{
+        font-size:14px;
+    }
+
+    .page-hero{
+        padding:55px 15px;
+    }
+
+    .page-hero h1{
+        font-size:34px;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-info,
+    .contact-form{
+        padding:25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        🛒 Kaycy Mart
+    </div>
+
+    <nav>
+
+        <a href="Index.html">Home</a>
+
+        <a href="Products.html">Products</a>
+
+        <a href="Cart.html">Cart</a>
+
+        <a href="About.html">About</a>
+
+        <a href="Contact.html">Contact</a>
+
+        <a href="Login.html">Login</a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="page-hero">
+
+    <h1>Contact Us</h1>
+
+    <p>
+        We're here to help when you need us.
+    </p>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact-section">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+
+            <!-- LEFT SIDE -->
+
+            <div class="contact-info">
+
+                <h2>Need Help?</h2>
+
+                <p>
+                    If you have a question about Kaycy Mart, your order,
+                    delivery, payment or a product, you can send us a message.
+                </p>
+
+
+                <div class="contact-box">
+
+                    <div class="contact-icon">
+                        🛒
+                    </div>
+
+                    <div>
+
+                        <h3>Order Problems</h3>
+
+                        <p>
+                            Having an issue with an order?
+                            Contact us using the support option below.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-box">
+
+                    <div class="contact-icon">
+                        📦
+                    </div>
+
+                    <div>
+
+                        <h3>Delivery Questions</h3>
+
+                        <p>
+                            Need help with your delivery or want to
+                            report a delivery problem?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-box">
+
+                    <div class="contact-icon">
+                        💳
+                    </div>
+
+                    <div>
+
+                        <h3>Payment Problems</h3>
+
+                        <p>
+                            If you experience a payment-related problem,
+                            please let us know.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NUMBER ONLY FOR PROBLEMS -->
+
+                <div class="problem-box">
+
+                    <h3>
+                        ⚠️ Having a problem?
+                    </h3>
+
+                    <p>
+                        If you have a serious problem with your order,
+                        delivery or payment and need direct assistance,
+                        contact Kaycy Mart using WhatsApp.
+                    </p>
+
+                    <a
+                        class="problem-button"
+                        href="https://wa.me/2349151342832"
+                        target="_blank"
+                    >
+                        💬 Contact Support
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE FORM -->
+
+            <div class="contact-form">
+
+                <h2>Send Us a Message</h2>
+
+                <p class="form-intro">
+                    For general questions or enquiries, fill out the form
+                    below and tell us how we can help.
+                </p>
+
+
+                <form id="contactForm">
+
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            placeholder="What is your enquiry about?"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            placeholder="Write your message here..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="send-btn"
+                    >
+                        Send Message
+                    </button>
+
+
+                    <div
+                        class="success-message"
+                        id="successMessage"
+                    >
+                        ✅ Your message has been received!
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>🛒 Kaycy Mart</h3>
+
+    <p>
+        Your online marketplace for everyday products.
+    </p>
+
+    <p>
+        © 2026 Kaycy Mart. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+document
+.getElementById("contactForm")
+.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    document
+    .getElementById("successMessage")
+    .style.display = "block";
+
+    this.reset();
+
+});
+
+</script>
+
+
+</body>
+</html>
