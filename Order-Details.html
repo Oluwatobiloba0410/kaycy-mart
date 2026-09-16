@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Details - Kaycy Mart</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fa;
+        color: #111827;
+    }
+
+    header {
+        background: #111827;
+        color: white;
+        padding: 16px 20px;
+    }
+
+    .header-inner {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logo {
+        color: #f59e0b;
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .back-btn {
+        background: #1f2937;
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+    .back-btn:hover {
+        background: #f59e0b;
+        color: #111827;
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    h1 {
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        color: #6b7280;
+        margin-bottom: 25px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .order-number {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .status {
+        background: #fef3c7;
+        color: #92400e;
+        padding: 8px 13px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .detail-box {
+        background: #f9fafb;
+        padding: 14px;
+        border-radius: 9px;
+    }
+
+    .detail-box strong {
+        display: block;
+        color: #6b7280;
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .items-title {
+        margin-bottom: 15px;
+    }
+
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .item:last-child {
+        border-bottom: none;
+    }
+
+    .item-name {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .item-info {
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .item-price {
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    .total-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 18px;
+        border-top: 2px solid #e5e7eb;
+    }
+
+    .total-label {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .total-price {
+        font-size: 23px;
+        font-weight: bold;
+        color: #d97706;
+    }
+
+    .message {
+        background: white;
+        padding: 30px 20px;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .message h2 {
+        margin-bottom: 10px;
+    }
+
+    .message p {
+        color: #6b7280;
+        margin-bottom: 18px;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #f59e0b;
+        color: #111827;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+
+    footer {
+        margin-top: 50px;
+        background: #111827;
+        color: white;
+        text-align: center;
+        padding: 25px 15px;
+    }
+
+    footer strong {
+        color: #f59e0b;
+    }
+
+    @media (max-width: 600px) {
+
+        .header-inner {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .item {
+            align-items: flex-start;
+        }
+
+        .total-box {
+            gap: 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-inner">
+
+        <a href="Index.html" class="logo">
+            🛒 Kaycy Mart
+        </a>
+
+        <a href="Orders.html" class="back-btn">
+            My Orders
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <h1>Order Details</h1>
+
+    <p class="subtitle">
+        View the complete information for your order.
+    </p>
+
+    <div id="content">
+
+        <div class="message">
+            <h2>Loading order...</h2>
+            <p>Please wait.</p>
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p><strong>Kaycy Mart</strong></p>
+
+    <p>Your online marketplace for everyday products.</p>
+
+</footer>
+
+
+<script>
+
+const content = document.getElementById("content");
+
+
+// Get logged-in user
+const currentUser =
+    JSON.parse(localStorage.getItem("kaycyMartCurrentUser")) || null;
+
+const userId = currentUser ? currentUser.id : null;
+
+
+// Get order ID from URL
+const urlParams = new URLSearchParams(window.location.search);
+
+let orderId = urlParams.get("id");
+
+
+// Fallback to previously selected order
+if (!orderId) {
+    orderId = localStorage.getItem("kaycyMartSelectedOrder");
+}
+
+
+// Check login
+if (!userId) {
+
+    content.innerHTML = `
+        <div class="message">
+
+            <h2>Please log in</h2>
+
+            <p>
+                You need to log in to view your order details.
+            </p>
+
+            <a href="Login.html" class="btn">
+                Log In
+            </a>
+
+        </div>
+    `;
+
+}
+// Check order ID
+else if (!orderId) {
+
+    content.innerHTML = `
+        <div class="message">
+
+            <h2>Order not found</h2>
+
+            <p>
+                No order was selected.
+            </p>
+
+            <a href="Orders.html" class="btn">
+                Back to Orders
+            </a>
+
+        </div>
+    `;
+
+}
+else {
+
+    loadOrder();
+
+}
+
+
+async function loadOrder() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:3000/api/orders/" +
+            encodeURIComponent(orderId) +
+            "?userId=" +
+            encodeURIComponent(userId)
+        );
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error || "Unable to load order."
+            );
+
+        }
+
+
+        // Backend returns:
+        // {
+        //   order: {...},
+        //   items: [...]
+        // }
+
+        const order = data.order || data;
+
+        const items = Array.isArray(data.items)
+            ? data.items
+            : (
+                Array.isArray(order.items)
+                    ? order.items
+                    : []
+            );
+
+
+        const createdDate = order.created_at
+            ? new Date(order.created_at).toLocaleString()
+            : "Not available";
+
+
+        const total = Number(order.total || 0)
+            .toLocaleString();
+
+
+        content.innerHTML = `
+
+            <!-- ORDER INFORMATION -->
+
+            <div class="card">
+
+                <div class="order-header">
+
+                    <div class="order-number">
+                        ${escapeHTML(
+                            order.order_number || "Order"
+                        )}
+                    </div>
+
+                    <div class="status">
+                        ${escapeHTML(
+                            order.status || "Pending"
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="details-grid">
+
+                    <div class="detail-box">
+
+                        <strong>Order Date</strong>
+
+                        ${escapeHTML(createdDate)}
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>Payment Method</strong>
+
+                        ${escapeHTML(
+                            order.payment_method ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>Customer Name</strong>
+
+                        ${escapeHTML(
+                            order.customer_name ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>Phone</strong>
+
+                        ${escapeHTML(
+                            order.customer_phone ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>Email</strong>
+
+                        ${escapeHTML(
+                            order.customer_email ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <strong>City</strong>
+
+                        ${escapeHTML(
+                            order.city ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+
+                    <div class="detail-box" style="grid-column: 1 / -1;">
+
+                        <strong>Delivery Address</strong>
+
+                        ${escapeHTML(
+                            order.delivery_address ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ITEMS -->
+
+            <div class="card">
+
+                <h2 class="items-title">
+                    Ordered Items
+                </h2>
+
+
+                ${
+                    items.length > 0
+
+                    ? items.map(item => {
+
+                        const quantity =
+                            Number(item.quantity || 1);
+
+                        const price =
+                            Number(
+                                item.price ||
+                                item.product_price ||
+                                0
+                            );
+
+                        const subtotal =
+                            price * quantity;
+
+
+                        return `
+
+                            <div class="item">
+
+                                <div>
+
+                                    <div class="item-name">
+                                        ${escapeHTML(
+                                            item.product_name ||
+                                            item.name ||
+                                            "Product"
+                                        )}
+                                    </div>
+
+                                    <div class="item-info">
+                                        Quantity:
+                                        ${quantity}
+                                    </div>
+
+                                </div>
+
+
+                                <div class="item-price">
+
+                                    ₦${subtotal.toLocaleString()}
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+                    }).join("")
+
+                    : `
+
+                        <p style="color:#6b7280;">
+                            No item information available.
+                        </p>
+
+                    `
+                }
+
+
+                <div class="total-box">
+
+                    <div class="total-label">
+                        Total
+                    </div>
+
+                    <div class="total-price">
+                        ₦${total}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a href="Orders.html" class="btn">
+                ← Back to My Orders
+            </a>
+
+        `;
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        content.innerHTML = `
+
+            <div class="message">
+
+                <h2>Unable to load order</h2>
+
+                <p>
+                    ${escapeHTML(error.message)}
+                </p>
+
+                <a href="Orders.html" class="btn">
+                    Back to Orders
+                </a>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+// Prevent API/database data from being treated as HTML
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+</script>
+
+</body>
+</html>

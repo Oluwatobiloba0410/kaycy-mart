@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Admin Login | Kaycy Mart</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #f5f7fa;
+
+    color: #111827;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+
+    background: #111827;
+
+    color: white;
+
+    padding: 16px 20px;
+
+}
+
+.header-container {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+.logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+nav {
+
+    display: flex;
+
+    gap: 18px;
+
+}
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+}
+
+nav a:hover {
+
+    color: #f59e0b;
+
+}
+
+
+/* ================= MAIN ================= */
+
+main {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+
+}
+
+.admin-card {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    background: white;
+
+    padding: 35px 30px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.08);
+
+}
+
+.admin-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #fff7ed;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 32px;
+
+}
+
+.admin-card h1 {
+
+    text-align: center;
+
+    margin-bottom: 8px;
+
+    color: #111827;
+
+    font-size: 28px;
+
+}
+
+.subtitle {
+
+    text-align: center;
+
+    color: #6b7280;
+
+    margin-bottom: 28px;
+
+    font-size: 14px;
+
+}
+
+.admin-badge {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+}
+
+.admin-badge span {
+
+    display: inline-block;
+
+    background: #111827;
+
+    color: #f59e0b;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+/* ================= FORM ================= */
+
+.form-group {
+
+    margin-bottom: 18px;
+
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    color: #374151;
+
+}
+
+.form-group input {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    background: white;
+
+}
+
+.form-group input:focus {
+
+    border-color: #f59e0b;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(245, 158, 11, 0.12);
+
+}
+
+
+/* ================= PASSWORD ================= */
+
+.password-box {
+
+    position: relative;
+
+}
+
+.password-box input {
+
+    padding-right: 50px;
+
+}
+
+.eye-btn {
+
+    position: absolute;
+
+    right: 8px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 19px;
+
+    color: #6b7280;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.eye-btn:hover {
+
+    color: #111827;
+
+}
+
+
+/* ================= LOGIN BUTTON ================= */
+
+.login-btn {
+
+    display: block;
+
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #f59e0b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+.login-btn:hover {
+
+    background: #d97706;
+
+}
+
+.login-btn:disabled {
+
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ================= MESSAGE ================= */
+
+#message {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+.error {
+
+    display: block !important;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+}
+
+.success {
+
+    display: block !important;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+}
+
+
+/* ================= BACK LINK ================= */
+
+.back-area {
+
+    margin-top: 24px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e7eb;
+
+    text-align: center;
+
+}
+
+.back-area a {
+
+    color: #d97706;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+}
+
+.back-area a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    background: #111827;
+
+    color: #d1d5db;
+
+    text-align: center;
+
+    padding: 18px;
+
+    font-size: 13px;
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    header {
+
+        padding: 15px;
+
+    }
+
+    .header-container {
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+    nav {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+
+    }
+
+    main {
+
+        padding: 25px 15px;
+
+        align-items: flex-start;
+
+    }
+
+    .admin-card {
+
+        margin-top: 20px;
+
+        padding: 28px 20px;
+
+    }
+
+    .admin-card h1 {
+
+        font-size: 25px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="header-container">
+
+        <a
+            href="Index.html"
+            class="logo"
+        >
+            🛒 Kaycy Mart
+        </a>
+
+        <nav>
+
+            <a href="Index.html">
+                Home
+            </a>
+
+            <a href="Products.html">
+                Products
+            </a>
+
+            <a href="Cart.html">
+                Cart
+            </a>
+
+            <a href="Contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="admin-card">
+
+        <div class="admin-icon">
+            🔐
+        </div>
+
+        <h1>
+            Admin Login
+        </h1>
+
+        <p class="subtitle">
+            Sign in to manage Kaycy Mart
+        </p>
+
+        <div class="admin-badge">
+
+            <span>
+                ADMINISTRATOR ACCESS
+            </span>
+
+        </div>
+
+
+        <!-- ================= LOGIN FORM ================= -->
+
+        <form id="adminLoginForm">
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Admin Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter admin email"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter admin password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="eye-btn"
+                        id="eyeBtn"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="login-btn"
+                id="loginBtn"
+            >
+                Login as Admin
+            </button>
+
+
+            <!-- MESSAGE -->
+
+            <div id="message"></div>
+
+        </form>
+
+
+        <!-- ================= BACK ================= -->
+
+        <div class="back-area">
+
+            <a href="Login.html">
+                ← Back to Customer Login
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 Kaycy Mart.
+    All Rights Reserved.
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* =====================================================
+   LIVE RENDER BACKEND
+===================================================== */
+
+const API_URL =
+    "https://kaycy-backend.onrender.com";
+
+
+/* =====================================================
+   PASSWORD SHOW / HIDE
+===================================================== */
+
+const passwordInput =
+    document.getElementById("password");
+
+const eyeBtn =
+    document.getElementById("eyeBtn");
+
+eyeBtn.addEventListener(
+    "click",
+    function () {
+
+        if (
+            passwordInput.type ===
+            "password"
+        ) {
+
+            passwordInput.type =
+                "text";
+
+            eyeBtn.textContent =
+                "🙈";
+
+            eyeBtn.setAttribute(
+                "aria-label",
+                "Hide password"
+            );
+
+        } else {
+
+            passwordInput.type =
+                "password";
+
+            eyeBtn.textContent =
+                "👁";
+
+            eyeBtn.setAttribute(
+                "aria-label",
+                "Show password"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+const adminLoginForm =
+    document.getElementById(
+        "adminLoginForm"
+    );
+
+const loginBtn =
+    document.getElementById(
+        "loginBtn"
+    );
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+/* =====================================================
+   SHOW MESSAGE
+===================================================== */
+
+function showMessage(
+    text,
+    type
+) {
+
+    message.className =
+        type;
+
+    message.textContent =
+        text;
+
+}
+
+
+/* =====================================================
+   FORM SUBMISSION
+===================================================== */
+
+adminLoginForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        if (!email || !password) {
+
+            showMessage(
+                "Please enter your email and password.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        loginBtn.disabled =
+            true;
+
+        loginBtn.textContent =
+            "Checking admin access...";
+
+
+        message.className = "";
+
+        message.textContent = "";
+
+
+        try {
+
+            /* =========================
+               SEND LOGIN REQUEST
+            ========================= */
+
+            const response =
+                await fetch(
+                    API_URL +
+                    "/api/login",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json",
+
+                            "Accept":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                email:
+                                    email,
+
+                                password:
+                                    password
+
+                            })
+
+                    }
+                );
+
+
+            /* =========================
+               READ RESPONSE
+            ========================= */
+
+            const data =
+                await response.json()
+                .catch(
+                    () => ({})
+                );
+
+
+            console.log(
+                "Admin login response:",
+                data
+            );
+
+
+            /* =========================
+               LOGIN FAILED
+            ========================= */
+
+            if (!response.ok) {
+
+                showMessage(
+                    data.error ||
+                    data.message ||
+                    "Login failed. Please check your email and password.",
+                    "error"
+                );
+
+                loginBtn.disabled =
+                    false;
+
+                loginBtn.textContent =
+                    "Login as Admin";
+
+                return;
+
+            }
+
+
+            /* =========================
+               CHECK USER
+            ========================= */
+
+            if (!data.user) {
+
+                showMessage(
+                    "The server did not return a user account.",
+                    "error"
+                );
+
+                loginBtn.disabled =
+                    false;
+
+                loginBtn.textContent =
+                    "Login as Admin";
+
+                return;
+
+            }
+
+
+            /* =========================
+               CHECK ADMIN ROLE
+            ========================= */
+
+            if (
+                String(
+                    data.user.role || ""
+                ).toLowerCase()
+                !== "admin"
+            ) {
+
+                showMessage(
+                    "Access denied. This account is not an administrator.",
+                    "error"
+                );
+
+                loginBtn.disabled =
+                    false;
+
+                loginBtn.textContent =
+                    "Login as Admin";
+
+                return;
+
+            }
+
+
+            /* =========================
+               SAVE ADMIN SESSION
+            ========================= */
+
+            localStorage.setItem(
+                "kaycyMartAdminLoggedIn",
+                "true"
+            );
+
+            localStorage.setItem(
+                "kaycyMartAdmin",
+                JSON.stringify({
+
+                    id:
+                        data.user.id,
+
+                    name:
+                        data.user.name,
+
+                    email:
+                        data.user.email,
+
+                    role:
+                        data.user.role
+
+                })
+            );
+
+
+            /* =========================
+               SUCCESS
+            ========================= */
+
+            showMessage(
+                "Admin login successful! Redirecting...",
+                "success"
+            );
+
+
+            setTimeout(
+                function () {
+
+                    window.location.href =
+                        "Admin-Dashboard.html";
+
+                },
+                800
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Admin login error:",
+                error
+            );
+
+
+            showMessage(
+                "Cannot connect to the Kaycy Mart server. Please check your internet connection and try again.",
+                "error"
+            );
+
+
+            loginBtn.disabled =
+                false;
+
+            loginBtn.textContent =
+                "Login as Admin";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

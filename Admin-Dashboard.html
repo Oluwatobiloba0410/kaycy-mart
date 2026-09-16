@@ -1,0 +1,1620 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Kaycy Mart</title><style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#111827;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:16px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.admin-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:14px;
+}
+
+.logout{
+    background:#f59e0b;
+    color:#111827;
+    border:none;
+    padding:9px 14px;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout:hover{
+    background:#d97706;
+}
+
+.admin-nav{
+    background:#1f2937;
+    padding:10px 20px;
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.admin-nav a{
+    color:white;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:6px;
+    font-size:14px;
+}
+
+.admin-nav a:hover,
+.admin-nav a.active{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.container{
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.page-title{
+    margin-bottom:20px;
+}
+
+.page-title h1{
+    font-size:28px;
+    margin-bottom:6px;
+}
+
+.page-title p{
+    color:#6b7280;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:white;
+    border-radius:10px;
+    padding:18px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.stat-icon{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.stat-title{
+    color:#6b7280;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.stat-value{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:20px;
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+}
+
+.card-header h2{
+    font-size:20px;
+}
+
+.refresh-btn{
+    background:#f59e0b;
+    color:#111827;
+    border:none;
+    padding:10px 15px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.refresh-btn:hover{
+    background:#d97706;
+}
+
+.order-tools{
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.search-box{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #d1d5db;
+    border-radius:7px;
+    font-size:14px;
+    outline:none;
+    margin-bottom:12px;
+}
+
+.search-box:focus{
+    border-color:#f59e0b;
+    box-shadow:0 0 0 2px rgba(245,158,11,0.15);
+}
+
+.filters{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+}
+
+.filter-select{
+    width:100%;
+    padding:10px;
+    border:1px solid #d1d5db;
+    border-radius:7px;
+    background:white;
+    font-size:14px;
+    outline:none;
+}
+
+.filter-select:focus{
+    border-color:#f59e0b;
+}
+
+.results-info{
+    color:#6b7280;
+    font-size:13px;
+    margin-top:12px;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    min-width:950px;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:12px 10px;
+    border-bottom:1px solid #e5e7eb;
+    text-align:left;
+    font-size:14px;
+}
+
+th{
+    background:#f9fafb;
+    color:#374151;
+    font-size:13px;
+}
+
+tr:hover td{
+    background:#fafafa;
+}
+
+.status-select{
+    padding:8px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    font-size:13px;
+    background:white;
+    outline:none;
+}
+
+.status-select:focus{
+    border-color:#f59e0b;
+}
+
+.payment-confirmed{
+    color:#166534;
+    font-weight:bold;
+}
+
+.payment-submitted{
+    color:#92400e;
+    font-weight:bold;
+}
+
+.payment-pending{
+    color:#6b7280;
+    font-weight:bold;
+}
+
+.payment-failed{
+    color:#991b1b;
+    font-weight:bold;
+}
+
+.details-btn{
+    display:inline-block;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    padding:8px 11px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.details-btn:hover{
+    background:#374151;
+}
+
+.empty{
+    text-align:center;
+    padding:35px 15px;
+    color:#6b7280;
+}
+
+.message{
+    padding:12px;
+    border-radius:7px;
+    margin-bottom:15px;
+    display:none;
+    font-size:14px;
+}
+
+@media(max-width:900px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .filters{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:14px;
+    }
+
+    .header-container{
+        align-items:flex-start;
+    }
+
+    .admin-info{
+        flex-direction:column;
+        align-items:flex-end;
+        gap:6px;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .admin-nav{
+        padding:8px 14px;
+    }
+
+    .nav-container{
+        gap:5px;
+    }
+
+    .admin-nav a{
+        font-size:13px;
+        padding:7px 9px;
+    }
+
+    .container{
+        margin:20px auto;
+    }
+
+    .page-title h1{
+        font-size:24px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+}
+
+</style></head><body><header><div class="header-container"><a
+href="Admin-Dashboard.html"
+class="logo"
+
+«»
+
+🛒 Kaycy Mart
+
+</a><div class="admin-info"><span id="adminName">
+    Administrator
+</span><button
+class="logout"
+onclick="logout()"
+
+«»
+
+Logout
+
+</button></div></div></header><nav class="admin-nav"><div class="nav-container"><a
+href="Admin-Dashboard.html"
+class="active"
+
+«»
+
+📊 Dashboard
+
+</a><a href="Admin-Products.html">
+    🛍️ Products
+</a><a href="Admin-Users.html">
+    👥 Users
+</a></div></nav><div class="container"><div class="page-title"><h1>
+    Admin Dashboard
+</h1><p>
+    Manage Kaycy Mart orders, customers and products.
+</p></div><div
+    id="message"
+    class="message"
+></div><div class="stats"><div class="stat-card"><div class="stat-icon">
+    📦
+</div><div class="stat-title">
+    Total Orders
+</div><div
+    class="stat-value"
+    id="totalOrders"
+>
+    0
+</div></div><div class="stat-card"><div class="stat-icon">
+    👥
+</div><div class="stat-title">
+    Customers
+</div><div
+    class="stat-value"
+    id="totalCustomers"
+>
+    0
+</div></div><div class="stat-card"><div class="stat-icon">
+    🛍️
+</div><div class="stat-title">
+    Products
+</div><div
+    class="stat-value"
+    id="totalProducts"
+>
+    0
+</div></div><div class="stat-card"><div class="stat-icon">
+    💰
+</div><div class="stat-title">
+    Confirmed Sales
+</div><div
+    class="stat-value"
+    id="totalSales"
+>
+    ₦0
+</div></div><div class="stat-card"><div class="stat-icon">
+    ⏳
+</div><div class="stat-title">
+    Pending Orders
+</div><div
+    class="stat-value"
+    id="pendingOrders"
+>
+    0
+</div></div></div><div class="card"><div class="card-header"><h2>
+    📦 Orders
+</h2><button
+class="refresh-btn"
+onclick="loadDashboard()"
+
+«»
+
+🔄 Refresh
+
+</button></div><div class="order-tools"><input
+type="search"
+id="orderSearch"
+class="search-box"
+placeholder="🔎 Search order number, customer, email, phone or payment reference..."
+oninput="filterOrders()"
+
+«»
+
+<div class="filters"><select
+id="statusFilter"
+class="filter-select"
+onchange="filterOrders()"
+
+«»
+
+<option value="">
+    📦 All Order Statuses
+</option><option value="Order Received">
+    Order Received
+</option><option value="Processing">
+    Processing
+</option><option value="Shipped">
+    Shipped
+</option><option value="Out for Delivery">
+    Out for Delivery
+</option><option value="Delivered">
+    Delivered
+</option><option value="Cancelled">
+    Cancelled
+</option></select><select
+id="paymentFilter"
+class="filter-select"
+onchange="filterOrders()"
+
+«»
+
+<option value="">
+    💳 All Payment Statuses
+</option><option value="Payment Pending">
+    Payment Pending
+</option><option value="Payment Submitted">
+    Payment Submitted
+</option><option value="Payment Confirmed">
+    Payment Confirmed
+</option><option value="Payment Failed">
+    Payment Failed
+</option></select><select
+id="sortFilter"
+class="filter-select"
+onchange="filterOrders()"
+
+«»
+
+<option value="newest">
+    🕒 Newest First
+</option><option value="oldest">
+    🕒 Oldest First
+</option><option value="highest">
+    💰 Highest Amount
+</option><option value="lowest">
+    💰 Lowest Amount
+</option></select></div><div
+    id="resultsInfo"
+    class="results-info"
+>
+    Showing 0 of 0 orders
+</div></div><div
+    id="ordersLoading"
+    class="empty"
+>
+    Loading orders...
+</div><div
+    id="ordersEmpty"
+    class="empty"
+    style="display:none;"
+>
+    No orders found.
+</div><div
+    id="ordersTable"
+    class="table-wrapper"
+    style="display:none;"
+><table><thead><tr><th>Order</th>
+<th>Customer</th>
+<th>Total</th>
+<th>Payment</th>
+<th>Status</th>
+<th>Date</th>
+<th>Details</th></tr></thead><tbody
+    id="ordersBody"
+></tbody></table></div></div></div><script>
+
+/* =====================================================
+   LIVE RENDER BACKEND
+===================================================== */
+
+const API_URL =
+    "https://kaycy-backend.onrender.com";
+
+
+/* =====================================================
+   ADMIN SESSION
+===================================================== */
+
+const adminLoggedIn =
+    localStorage.getItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+const adminData =
+    localStorage.getItem(
+        "kaycyMartAdmin"
+    );
+
+
+if(
+    adminLoggedIn !== "true" ||
+    !adminData
+){
+
+    window.location.href =
+        "Admin-Login.html";
+
+}
+
+
+let admin;
+
+
+try{
+
+    admin =
+        JSON.parse(
+            adminData
+        );
+
+
+    if(
+        !admin ||
+        admin.role !== "admin"
+    ){
+
+        throw new Error(
+            "Invalid administrator session."
+        );
+
+    }
+
+
+    document.getElementById(
+        "adminName"
+    ).textContent =
+        admin.name ||
+        "Administrator";
+
+
+}catch(error){
+
+    localStorage.removeItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "kaycyMartAdmin"
+    );
+
+    window.location.href =
+        "Admin-Login.html";
+
+}
+
+
+/* =====================================================
+   ADMIN HEADERS
+===================================================== */
+
+function adminHeaders(){
+
+    return {
+
+        "Content-Type":
+            "application/json",
+
+        "x-admin-user-id":
+            String(admin.id)
+
+    };
+
+}
+
+
+/* =====================================================
+   ALL ORDERS
+===================================================== */
+
+let allOrders = [];
+
+
+/* =====================================================
+   LOAD DASHBOARD
+===================================================== */
+
+async function loadDashboard(){
+
+    const loading =
+        document.getElementById(
+            "ordersLoading"
+        );
+
+    const empty =
+        document.getElementById(
+            "ordersEmpty"
+        );
+
+    const table =
+        document.getElementById(
+            "ordersTable"
+        );
+
+
+    loading.style.display =
+        "block";
+
+    empty.style.display =
+        "none";
+
+    table.style.display =
+        "none";
+
+
+    try{
+
+        /* ================= ORDERS ================= */
+
+        const ordersResponse =
+            await fetch(
+                API_URL +
+                "/api/admin/orders",
+                {
+                    headers:
+                        adminHeaders()
+                }
+            );
+
+
+        const ordersData =
+            await ordersResponse.json();
+
+
+        if(!ordersResponse.ok){
+
+            throw new Error(
+                ordersData.message ||
+                "Failed to load orders."
+            );
+
+        }
+
+
+        allOrders =
+            Array.isArray(ordersData)
+                ? ordersData
+                : (
+                    Array.isArray(
+                        ordersData.orders
+                    )
+                        ? ordersData.orders
+                        : []
+                );
+
+
+        /* ================= USERS ================= */
+
+        const usersResponse =
+            await fetch(
+                API_URL +
+                "/api/admin/users",
+                {
+                    headers:
+                        adminHeaders()
+                }
+            );
+
+
+        const usersData =
+            await usersResponse.json();
+
+
+        if(!usersResponse.ok){
+
+            throw new Error(
+                usersData.message ||
+                "Failed to load users."
+            );
+
+        }
+
+
+        const users =
+            Array.isArray(usersData)
+                ? usersData
+                : (
+                    Array.isArray(
+                        usersData.users
+                    )
+                        ? usersData.users
+                        : []
+                );
+
+
+        /* ================= PRODUCTS ================= */
+
+        const productsResponse =
+            await fetch(
+                API_URL +
+                "/api/products"
+            );
+
+
+        const productsData =
+            await productsResponse.json();
+
+
+        if(!productsResponse.ok){
+
+            throw new Error(
+                productsData.message ||
+                "Failed to load products."
+            );
+
+        }
+
+
+        const products =
+            Array.isArray(productsData)
+                ? productsData
+                : (
+                    Array.isArray(
+                        productsData.products
+                    )
+                        ? productsData.products
+                        : []
+                );
+
+
+        /* ================= STATS ================= */
+
+        document.getElementById(
+            "totalOrders"
+        ).textContent =
+            allOrders.length;
+
+
+        const customerCount =
+            users.filter(
+                user =>
+                    user.role !== "admin"
+            ).length;
+
+
+        document.getElementById(
+            "totalCustomers"
+        ).textContent =
+            customerCount;
+
+
+        document.getElementById(
+            "totalProducts"
+        ).textContent =
+            products.length;
+
+
+        const confirmedSalesOrders =
+            allOrders.filter(
+                order =>
+                    order.payment_status ===
+                    "Payment Confirmed"
+            );
+
+
+        const totalSales =
+            confirmedSalesOrders.reduce(
+                (sum,order) =>
+                    sum +
+                    Number(
+                        order.total || 0
+                    ),
+                0
+            );
+
+
+        document.getElementById(
+            "totalSales"
+        ).textContent =
+            "₦" +
+            totalSales.toLocaleString(
+                "en-NG"
+            );
+
+
+        const pending =
+            allOrders.filter(
+                order =>
+                    order.status !==
+                    "Delivered" &&
+                    order.status !==
+                    "Cancelled"
+            ).length;
+
+
+        document.getElementById(
+            "pendingOrders"
+        ).textContent =
+            pending;
+
+
+        loading.style.display =
+            "none";
+
+
+        filterOrders();
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        loading.style.display =
+            "none";
+
+
+        table.style.display =
+            "none";
+
+
+        empty.style.display =
+            "block";
+
+
+        empty.textContent =
+            "❌ " +
+            (
+                error.message ||
+                "Failed to load dashboard."
+            );
+
+    }
+
+}
+
+
+/* =====================================================
+   FILTER ORDERS
+===================================================== */
+
+function filterOrders(){
+
+    const search =
+        document.getElementById(
+            "orderSearch"
+        ).value
+        .trim()
+        .toLowerCase();
+
+
+    const statusFilter =
+        document.getElementById(
+            "statusFilter"
+        ).value;
+
+
+    const paymentFilter =
+        document.getElementById(
+            "paymentFilter"
+        ).value;
+
+
+    const sortFilter =
+        document.getElementById(
+            "sortFilter"
+        ).value;
+
+
+    let filtered =
+        allOrders.filter(
+            function(order){
+
+                const orderNumber =
+                    String(
+                        order.order_number || ""
+                    ).toLowerCase();
+
+
+                const customer =
+                    String(
+                        order.customer_name || ""
+                    ).toLowerCase();
+
+
+                const email =
+                    String(
+                        order.customer_email || ""
+                    ).toLowerCase();
+
+
+                const phone =
+                    String(
+                        order.customer_phone || ""
+                    ).toLowerCase();
+
+
+                const reference =
+                    String(
+                        order.payment_reference || ""
+                    ).toLowerCase();
+
+
+                const searchMatch =
+                    !search ||
+                    orderNumber.includes(search) ||
+                    customer.includes(search) ||
+                    email.includes(search) ||
+                    phone.includes(search) ||
+                    reference.includes(search);
+
+
+                const statusMatch =
+                    !statusFilter ||
+                    (
+                        order.status ||
+                        "Order Received"
+                    ) === statusFilter;
+
+
+                const paymentMatch =
+                    !paymentFilter ||
+                    (
+                        order.payment_status ||
+                        "Payment Pending"
+                    ) === paymentFilter;
+
+
+                return (
+                    searchMatch &&
+                    statusMatch &&
+                    paymentMatch
+                );
+
+            }
+        );
+
+
+    filtered.sort(
+        function(a,b){
+
+            if(sortFilter === "oldest"){
+
+                return (
+                    new Date(
+                        a.created_at || 0
+                    ) -
+                    new Date(
+                        b.created_at || 0
+                    )
+                );
+
+            }
+
+
+            if(sortFilter === "highest"){
+
+                return (
+                    Number(
+                        b.total || 0
+                    ) -
+                    Number(
+                        a.total || 0
+                    )
+                );
+
+            }
+
+
+            if(sortFilter === "lowest"){
+
+                return (
+                    Number(
+                        a.total || 0
+                    ) -
+                    Number(
+                        b.total || 0
+                    )
+                );
+
+            }
+
+
+            return (
+                new Date(
+                    b.created_at || 0
+                ) -
+                new Date(
+                    a.created_at || 0
+                )
+            );
+
+        }
+    );
+
+
+    renderOrders(
+        filtered
+    );
+
+}
+
+
+/* =====================================================
+   RENDER ORDERS
+===================================================== */
+
+function renderOrders(
+    orders
+){
+
+    const loading =
+        document.getElementById(
+            "ordersLoading"
+        );
+
+    const empty =
+        document.getElementById(
+            "ordersEmpty"
+        );
+
+    const table =
+        document.getElementById(
+            "ordersTable"
+        );
+
+    const tbody =
+        document.getElementById(
+            "ordersBody"
+        );
+
+    const resultsInfo =
+        document.getElementById(
+            "resultsInfo"
+        );
+
+
+    loading.style.display =
+        "none";
+
+
+    resultsInfo.textContent =
+        "Showing " +
+        orders.length +
+        " of " +
+        allOrders.length +
+        " orders";
+
+
+    if(!orders.length){
+
+        table.style.display =
+            "none";
+
+        empty.style.display =
+            "block";
+
+        empty.textContent =
+            allOrders.length
+                ? "🔎 No orders match your search or filters."
+                : "No orders found.";
+
+        tbody.innerHTML =
+            "";
+
+        return;
+
+    }
+
+
+    empty.style.display =
+        "none";
+
+    table.style.display =
+        "block";
+
+
+    tbody.innerHTML =
+        orders.map(
+            function(order){
+
+                const orderId =
+                    order.id;
+
+
+                const orderNumber =
+                    order.order_number ||
+                    ("#" + orderId);
+
+
+                const customer =
+                    order.customer_name ||
+                    "—";
+
+
+                const total =
+                    Number(
+                        order.total || 0
+                    );
+
+
+                const payment =
+                    order.payment_method ||
+                    "—";
+
+
+                const paymentStatus =
+                    order.payment_status ||
+                    "Payment Pending";
+
+
+                const status =
+                    order.status ||
+                    "Order Received";
+
+
+                const date =
+                    order.created_at
+                        ? new Date(
+                            order.created_at
+                        ).toLocaleString()
+                        : "—";
+
+
+                let paymentClass =
+                    "payment-pending";
+
+
+                if(
+                    paymentStatus ===
+                    "Payment Confirmed"
+                ){
+
+                    paymentClass =
+                        "payment-confirmed";
+
+                }else if(
+                    paymentStatus ===
+                    "Payment Submitted"
+                ){
+
+                    paymentClass =
+                        "payment-submitted";
+
+                }else if(
+                    paymentStatus ===
+                    "Payment Failed"
+                ){
+
+                    paymentClass =
+                        "payment-failed";
+
+                }
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                ${escapeHTML(
+                                    orderNumber
+                                )}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                customer
+                            )}
+                        </td>
+
+
+                        <td>
+                            ₦${total.toLocaleString(
+                                "en-NG"
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            ${escapeHTML(
+                                payment
+                            )}
+
+                            <br>
+
+                            <small
+                                class="${paymentClass}"
+                            >
+                                ${escapeHTML(
+                                    paymentStatus
+                                )}
+                            </small>
+
+                        </td>
+
+
+                        <td>
+
+                            <select
+                                class="status-select"
+                                data-order-id="${escapeHTML(
+                                    orderId
+                                )}"
+                                onchange="changeStatus(this)"
+                            >
+
+                                <option
+                                    value="Order Received"
+                                    ${
+                                        status ===
+                                        "Order Received"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Order Received
+                                </option>
+
+                                <option
+                                    value="Processing"
+                                    ${
+                                        status ===
+                                        "Processing"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Processing
+                                </option>
+
+                                <option
+                                    value="Shipped"
+                                    ${
+                                        status ===
+                                        "Shipped"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Shipped
+                                </option>
+
+                                <option
+                                    value="Out for Delivery"
+                                    ${
+                                        status ===
+                                        "Out for Delivery"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Out for Delivery
+                                </option>
+
+                                <option
+                                    value="Delivered"
+                                    ${
+                                        status ===
+                                        "Delivered"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Delivered
+                                </option>
+
+                                <option
+                                    value="Cancelled"
+                                    ${
+                                        status ===
+                                        "Cancelled"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                date
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            <a
+                                href="Admin-Order-Details.html?id=${encodeURIComponent(
+                                    String(orderId)
+                                )}"
+                                class="details-btn"
+                            >
+                                👁️ View
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =====================================================
+   CHANGE ORDER STATUS
+===================================================== */
+
+async function changeStatus(
+    select
+){
+
+    const orderId =
+        select.dataset.orderId;
+
+
+    const newStatus =
+        select.value;
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/admin/orders/" +
+                encodeURIComponent(
+                    orderId
+                ) +
+                "/status",
+                {
+
+                    method:"PATCH",
+
+                    headers:
+                        adminHeaders(),
+
+                    body:
+                        JSON.stringify({
+
+                            status:
+                                newStatus
+
+                        })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Failed to update order status."
+            );
+
+        }
+
+
+        const order =
+            allOrders.find(
+                item =>
+                    String(item.id) ===
+                    String(orderId)
+            );
+
+
+        if(order){
+
+            order.status =
+                newStatus;
+
+        }
+
+
+        showMessage(
+            "✅ Order status updated successfully.",
+            true
+        );
+
+
+        filterOrders();
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        showMessage(
+            "❌ " +
+            (
+                error.message ||
+                "Failed to update status."
+            ),
+            false
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function showMessage(
+    text,
+    success
+){
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    message.textContent =
+        text;
+
+
+    message.style.display =
+        "block";
+
+
+    message.style.background =
+        success
+            ? "#dcfce7"
+            : "#fee2e2";
+
+
+    message.style.color =
+        success
+            ? "#166534"
+            : "#991b1b";
+
+
+    setTimeout(
+        function(){
+
+            message.style.display =
+                "none";
+
+        },
+        3000
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    localStorage.removeItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "kaycyMartAdmin"
+    );
+
+
+    window.location.href =
+        "Admin-Login.html";
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadDashboard();
+
+</script></body>
+</html>
