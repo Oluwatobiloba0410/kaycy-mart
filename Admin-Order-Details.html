@@ -1,0 +1,1487 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Order Details | Kaycy Mart</title><style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#111827;
+}
+
+/* HEADER */
+
+header{
+    background:#111827;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#f59e0b;
+}
+
+.admin-info{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-size:14px;
+}
+
+.logout-btn{
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:9px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background:#b91c1c;
+}
+
+/* NAV */
+
+nav{
+    background:#1f2937;
+    padding:10px 20px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:9px 12px;
+    border-radius:5px;
+    font-size:14px;
+}
+
+nav a:hover{
+    background:#374151;
+}
+
+/* MAIN */
+
+.container{
+    width:95%;
+    max-width:1100px;
+    margin:25px auto;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:15px;
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.back-link:hover{
+    text-decoration:underline;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h2{
+    margin-bottom:15px;
+    font-size:20px;
+}
+
+/* INFO GRID */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.info-box{
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    padding:14px;
+    border-radius:7px;
+}
+
+.info-box strong{
+    display:block;
+    color:#6b7280;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.info-box span{
+    font-size:15px;
+    word-break:break-word;
+}
+
+/* ITEMS */
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:14px 0;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.item:last-child{
+    border-bottom:none;
+}
+
+.item-name{
+    font-weight:bold;
+}
+
+.item-details{
+    color:#6b7280;
+    font-size:14px;
+    margin-top:4px;
+}
+
+.item-total{
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+/* TOTAL */
+
+.total-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:15px;
+    padding-top:15px;
+    border-top:2px solid #111827;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* CONTROLS */
+
+.control-group{
+    margin-bottom:18px;
+}
+
+.control-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+select{
+    width:100%;
+    padding:11px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    font-size:15px;
+    background:white;
+}
+
+button{
+    border:none;
+    border-radius:6px;
+    padding:11px 16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.primary-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.primary-btn:hover{
+    background:#1d4ed8;
+}
+
+.success-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.success-btn:hover{
+    background:#15803d;
+}
+
+.danger-btn{
+    background:#dc2626;
+    color:white;
+}
+
+.danger-btn:hover{
+    background:#b91c1c;
+}
+
+.print-btn{
+    background:#6b7280;
+    color:white;
+}
+
+.print-btn:hover{
+    background:#4b5563;
+}
+
+.button-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/* STATUS */
+
+.status-badge{
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:20px;
+    background:#fef3c7;
+    color:#92400e;
+    font-weight:bold;
+    font-size:13px;
+}
+
+/* PAYMENT */
+
+.payment-status{
+    font-weight:bold;
+}
+
+.payment-pending{
+    color:#d97706;
+}
+
+.payment-confirmed{
+    color:#16a34a;
+}
+
+.payment-failed{
+    color:#dc2626;
+}
+
+.payment-submitted{
+    color:#2563eb;
+}
+
+/* MESSAGE */
+
+.message{
+    padding:12px;
+    border-radius:6px;
+    margin-bottom:15px;
+    display:none;
+}
+
+.message.success{
+    background:#dcfce7;
+    color:#166534;
+    display:block;
+}
+
+.message.error{
+    background:#fee2e2;
+    color:#991b1b;
+    display:block;
+}
+
+/* LOADING */
+
+.loading{
+    text-align:center;
+    padding:40px;
+    font-size:18px;
+    color:#6b7280;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:#d1d5db;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    header{
+        align-items:flex-start;
+    }
+
+    .admin-info{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .item{
+        flex-direction:column;
+    }
+
+    .item-total{
+        text-align:left;
+    }
+
+    .total-box{
+        font-size:18px;
+    }
+
+    nav{
+        padding:10px;
+    }
+
+    nav a{
+        font-size:13px;
+    }
+
+}
+
+@media print{
+
+    header,
+    nav,
+    .back-link,
+    .controls-card,
+    footer,
+    .print-btn{
+        display:none !important;
+    }
+
+    body{
+        background:white;
+    }
+
+    .container{
+        width:100%;
+        max-width:none;
+        margin:0;
+    }
+
+    .card{
+        box-shadow:none;
+        border:1px solid #ddd;
+    }
+
+}
+
+</style></head><body><header><div class="logo">
+    🛒 Kaycy Mart Admin
+</div>
+
+<div class="admin-info">
+    <span>
+        Admin: <strong id="adminName">Administrator</strong>
+    </span>
+
+    <button
+        class="logout-btn"
+        onclick="logoutAdmin()"
+    >
+        Logout
+    </button>
+</div>
+
+</header><nav><a href="Admin-Dashboard.html">
+    Dashboard
+</a>
+
+<a href="Admin-Products.html">
+    Products
+</a>
+
+<a href="Admin-Users.html">
+    Users
+</a>
+
+</nav><div class="container"><a
+    href="Admin-Dashboard.html"
+    class="back-link"
+>
+    ← Back to Dashboard
+</a>
+
+<h1>
+    Order Details
+</h1>
+
+<div id="message" class="message"></div>
+
+<div id="loading" class="loading">
+    Loading order...
+</div>
+
+<div id="orderContent" style="display:none;">
+
+    <!-- ORDER INFORMATION -->
+
+    <div class="card">
+
+        <h2>
+            Order Information
+        </h2>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+
+                <strong>
+                    Order Number
+                </strong>
+
+                <span id="orderNumber">
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    Date
+                </strong>
+
+                <span id="orderDate">
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    Order Status
+                </strong>
+
+                <span id="orderStatus">
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    Payment Method
+                </strong>
+
+                <span id="paymentMethod">
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    Payment Status
+                </strong>
+
+                <span
+                    id="paymentStatus"
+                    class="payment-status"
+                >
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    Payment Reference
+                </strong>
+
+                <span id="paymentReference">
+                    -
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CUSTOMER -->
+
+    <div class="card">
+
+        <h2>
+            Customer Information
+        </h2>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+
+                <strong>
+                    Name
+                </strong>
+
+                <span id="customerName">
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    Email
+                </strong>
+
+                <span id="customerEmail">
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    Phone
+                </strong>
+
+                <span id="customerPhone">
+                    -
+                </span>
+
+            </div>
+
+            <div class="info-box">
+
+                <strong>
+                    City
+                </strong>
+
+                <span id="customerCity">
+                    -
+                </span>
+
+            </div>
+
+            <div
+                class="info-box"
+                style="grid-column:1/-1;"
+            >
+
+                <strong>
+                    Delivery Address
+                </strong>
+
+                <span id="deliveryAddress">
+                    -
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ORDER ITEMS -->
+
+    <div class="card">
+
+        <h2>
+            Ordered Products
+        </h2>
+
+        <div id="itemsContainer"></div>
+
+        <div class="total-box">
+
+            <span>
+                Total
+            </span>
+
+            <span id="orderTotal">
+                ₦0
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- ADMIN CONTROLS -->
+
+    <div class="card controls-card">
+
+        <h2>
+            Manage Order
+        </h2>
+
+        <div class="control-group">
+
+            <label for="statusSelect">
+                Order Status
+            </label>
+
+            <select id="statusSelect">
+
+                <option value="Order Received">
+                    Order Received
+                </option>
+
+                <option value="Processing">
+                    Processing
+                </option>
+
+                <option value="Shipped">
+                    Shipped
+                </option>
+
+                <option value="Out for Delivery">
+                    Out for Delivery
+                </option>
+
+                <option value="Delivered">
+                    Delivered
+                </option>
+
+                <option value="Cancelled">
+                    Cancelled
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="button-row">
+
+            <button
+                class="primary-btn"
+                onclick="updateOrderStatus()"
+            >
+                Update Order Status
+            </button>
+
+            <button
+                class="success-btn"
+                onclick="confirmPayment()"
+            >
+                Confirm Payment
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="failPayment()"
+            >
+                Mark Payment Failed
+            </button>
+
+            <button
+                class="print-btn"
+                onclick="window.print()"
+            >
+                Print Order
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div><footer>© 2026 Kaycy Mart. All Rights Reserved.
+
+</footer><script>
+
+const API_URL =
+    "https://kaycy-backend.onrender.com";
+
+let admin = null;
+let orderId = null;
+
+
+/* =========================
+   ADMIN SECURITY CHECK
+========================= */
+
+function checkAdmin(){
+
+    const loggedIn =
+        localStorage.getItem(
+            "kaycyMartAdminLoggedIn"
+        );
+
+    const savedAdmin =
+        localStorage.getItem(
+            "kaycyMartAdmin"
+        );
+
+    if(
+        loggedIn !== "true" ||
+        !savedAdmin
+    ){
+
+        window.location.href =
+            "Admin-Login.html";
+
+        return false;
+    }
+
+    try{
+
+        admin = JSON.parse(savedAdmin);
+
+        /*
+         * IMPORTANT:
+         * The frontend must also verify
+         * that the saved account is actually
+         * an administrator.
+         */
+
+        if(
+            !admin ||
+            !admin.id ||
+            admin.role !== "admin"
+        ){
+
+            localStorage.removeItem(
+                "kaycyMartAdminLoggedIn"
+            );
+
+            localStorage.removeItem(
+                "kaycyMartAdmin"
+            );
+
+            window.location.href =
+                "Admin-Login.html";
+
+            return false;
+        }
+
+        document.getElementById(
+            "adminName"
+        ).textContent =
+            admin.name || "Admin";
+
+        return true;
+
+    }catch(error){
+
+        console.error(error);
+
+        localStorage.removeItem(
+            "kaycyMartAdminLoggedIn"
+        );
+
+        localStorage.removeItem(
+            "kaycyMartAdmin"
+        );
+
+        window.location.href =
+            "Admin-Login.html";
+
+        return false;
+    }
+}
+
+
+/* =========================
+   ADMIN HEADERS
+========================= */
+
+function adminHeaders(){
+
+    return {
+
+        "Content-Type":
+            "application/json",
+
+        "x-admin-user-id":
+            String(admin.id)
+
+    };
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(
+    text,
+    type = "success"
+){
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+    message.textContent = text;
+
+    message.className =
+        "message " + type;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   FORMAT MONEY
+========================= */
+
+function formatMoney(amount){
+
+    return "₦" +
+        Number(amount || 0)
+        .toLocaleString(
+            "en-NG"
+        );
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(value){
+
+    return String(
+        value ?? ""
+    )
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   PAYMENT STATUS CLASS
+========================= */
+
+function paymentStatusClass(status){
+
+    const value =
+        String(status || "")
+        .toLowerCase();
+
+    if(
+        value.includes("confirmed")
+    ){
+
+        return "payment-confirmed";
+
+    }
+
+    if(
+        value.includes("failed")
+    ){
+
+        return "payment-failed";
+
+    }
+
+    if(
+        value.includes("submitted")
+    ){
+
+        return "payment-submitted";
+
+    }
+
+    return "payment-pending";
+
+}
+
+
+/* =========================
+   LOAD ORDER
+========================= */
+
+async function loadOrder(){
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/admin/orders",
+                {
+                    headers:
+                        adminHeaders()
+                }
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+                "Unable to load orders."
+            );
+
+        }
+
+        const orders =
+            await response.json();
+
+        const order =
+            orders.find(
+                item =>
+                    String(item.id) ===
+                    String(orderId)
+            );
+
+        if(!order){
+
+            throw new Error(
+                "Order not found."
+            );
+
+        }
+
+        displayOrder(order);
+
+    }catch(error){
+
+        console.error(error);
+
+        document.getElementById(
+            "loading"
+        ).textContent =
+            error.message ||
+            "Unable to load order.";
+
+    }
+
+}
+
+
+/* =========================
+   DISPLAY ORDER
+========================= */
+
+function displayOrder(order){
+
+    document.getElementById(
+        "loading"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "orderContent"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "orderNumber"
+    ).textContent =
+        order.order_number ||
+        "-";
+
+
+    document.getElementById(
+        "orderDate"
+    ).textContent =
+        order.created_at
+        ? new Date(
+            order.created_at
+        ).toLocaleString(
+            "en-NG"
+        )
+        : "-";
+
+
+    document.getElementById(
+        "orderStatus"
+    ).innerHTML =
+        `<span class="status-badge">
+            ${escapeHTML(
+                order.status ||
+                "Order Received"
+            )}
+        </span>`;
+
+
+    document.getElementById(
+        "paymentMethod"
+    ).textContent =
+        order.payment_method ||
+        "-";
+
+
+    const paymentStatus =
+        document.getElementById(
+            "paymentStatus"
+        );
+
+    paymentStatus.textContent =
+        order.payment_status ||
+        "Payment Pending";
+
+    paymentStatus.className =
+        "payment-status " +
+        paymentStatusClass(
+            order.payment_status
+        );
+
+
+    document.getElementById(
+        "paymentReference"
+    ).textContent =
+        order.payment_reference ||
+        "Not provided";
+
+
+    document.getElementById(
+        "customerName"
+    ).textContent =
+        order.customer_name ||
+        "-";
+
+
+    document.getElementById(
+        "customerEmail"
+    ).textContent =
+        order.customer_email ||
+        "-";
+
+
+    document.getElementById(
+        "customerPhone"
+    ).textContent =
+        order.customer_phone ||
+        "-";
+
+
+    document.getElementById(
+        "customerCity"
+    ).textContent =
+        order.city ||
+        "-";
+
+
+    document.getElementById(
+        "deliveryAddress"
+    ).textContent =
+        order.delivery_address ||
+        "-";
+
+
+    document.getElementById(
+        "orderTotal"
+    ).textContent =
+        formatMoney(
+            order.total
+        );
+
+
+    const statusSelect =
+        document.getElementById(
+            "statusSelect"
+        );
+
+    statusSelect.value =
+        order.status ||
+        "Order Received";
+
+
+    displayItems(order);
+
+}
+
+
+/* =========================
+   DISPLAY ITEMS
+========================= */
+
+function displayItems(order){
+
+    const container =
+        document.getElementById(
+            "itemsContainer"
+        );
+
+    /*
+     * The backend may return items
+     * in an "items" property.
+     */
+
+    const items =
+        Array.isArray(order.items)
+        ? order.items
+        : [];
+
+    if(items.length === 0){
+
+        container.innerHTML =
+            `
+            <p style="color:#6b7280;">
+                No item details available.
+            </p>
+            `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        items.map(item => {
+
+            const price =
+                Number(
+                    item.price || 0
+                );
+
+            const quantity =
+                Number(
+                    item.quantity || 0
+                );
+
+            const total =
+                price * quantity;
+
+            return `
+                <div class="item">
+
+                    <div>
+
+                        <div class="item-name">
+                            ${escapeHTML(
+                                item.product_name ||
+                                item.name ||
+                                "Product"
+                            )}
+                        </div>
+
+                        <div class="item-details">
+                            ${formatMoney(price)}
+                            ×
+                            ${quantity}
+                        </div>
+
+                    </div>
+
+                    <div class="item-total">
+                        ${formatMoney(total)}
+                    </div>
+
+                </div>
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================
+   UPDATE ORDER STATUS
+========================= */
+
+async function updateOrderStatus(){
+
+    const status =
+        document.getElementById(
+            "statusSelect"
+        ).value;
+
+    if(!status){
+
+        showMessage(
+            "Please select an order status.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/admin/orders/" +
+                orderId +
+                "/status",
+                {
+                    method:"PATCH",
+
+                    headers:
+                        adminHeaders(),
+
+                    body:JSON.stringify({
+                        status:status
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to update order status."
+            );
+
+        }
+
+
+        showMessage(
+            "Status updated successfully."
+        );
+
+
+        await loadOrder();
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            error.message ||
+            "Unable to update order status.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   CONFIRM PAYMENT
+========================= */
+
+async function confirmPayment(){
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to confirm this payment?"
+        );
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/admin/orders/" +
+                orderId +
+                "/payment",
+                {
+                    method:"PATCH",
+
+                    headers:
+                        adminHeaders()
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to confirm payment."
+            );
+
+        }
+
+
+        showMessage(
+            "Payment confirmed successfully."
+        );
+
+
+        await loadOrder();
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            error.message ||
+            "Unable to confirm payment.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   PAYMENT FAILED
+========================= */
+
+async function failPayment(){
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to mark this payment as failed?"
+        );
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/admin/orders/" +
+                orderId +
+                "/payment-failed",
+                {
+                    method:"PATCH",
+
+                    headers:
+                        adminHeaders()
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to update payment."
+            );
+
+        }
+
+
+        showMessage(
+            "Payment marked as failed."
+        );
+
+
+        await loadOrder();
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            error.message ||
+            "Unable to update payment.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logoutAdmin(){
+
+    localStorage.removeItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "kaycyMartAdmin"
+    );
+
+    window.location.href =
+        "Admin-Login.html";
+
+}
+
+
+/* =========================
+   PAGE START
+========================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        if(!checkAdmin()){
+            return;
+        }
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        orderId =
+            params.get("id");
+
+
+        if(!orderId){
+
+            document.getElementById(
+                "loading"
+            ).textContent =
+                "No order ID was provided.";
+
+            return;
+        }
+
+
+        loadOrder();
+
+    }
+);
+
+</script></body>
+</html>

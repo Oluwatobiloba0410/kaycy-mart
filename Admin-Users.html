@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Users | Kaycy Mart Admin</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#111827;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.admin-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:14px;
+}
+
+.logout{
+    background:#f59e0b;
+    color:#111827;
+    border:none;
+    padding:9px 14px;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.logout:hover{
+    background:#d97706;
+}
+
+nav{
+    background:#1f2937;
+    padding:10px 20px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:9px 14px;
+    border-radius:6px;
+    font-size:14px;
+}
+
+nav a:hover,
+nav a.active{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.container{
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.page-title{
+    margin-bottom:20px;
+}
+
+.page-title h1{
+    font-size:28px;
+    margin-bottom:6px;
+}
+
+.page-title p{
+    color:#6b7280;
+}
+
+.search-box{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:20px;
+}
+
+.search-box input{
+    width:100%;
+    padding:13px;
+    border:1px solid #d1d5db;
+    border-radius:7px;
+    font-size:15px;
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#f59e0b;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    background:white;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.stat-card h3{
+    font-size:14px;
+    color:#6b7280;
+    margin-bottom:8px;
+}
+
+.stat-card strong{
+    font-size:25px;
+}
+
+.table-card{
+    background:white;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    overflow:hidden;
+}
+
+.table-header{
+    padding:18px;
+    border-bottom:1px solid #e5e7eb;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.table-header h2{
+    font-size:19px;
+}
+
+.refresh-btn{
+    background:#111827;
+    color:white;
+    border:none;
+    padding:9px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.refresh-btn:hover{
+    background:#374151;
+}
+
+.table-wrap{
+    width:100%;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:750px;
+}
+
+th,
+td{
+    padding:13px 15px;
+    text-align:left;
+    border-bottom:1px solid #e5e7eb;
+    font-size:14px;
+}
+
+th{
+    background:#f9fafb;
+    font-size:13px;
+    color:#374151;
+}
+
+tr:hover td{
+    background:#fafafa;
+}
+
+.role{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.role.admin{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.role.customer{
+    background:#e5e7eb;
+    color:#374151;
+}
+
+.empty{
+    text-align:center;
+    padding:35px;
+    color:#6b7280;
+}
+
+.loading{
+    text-align:center;
+    padding:35px;
+    color:#6b7280;
+}
+
+.error{
+    background:#fee2e2;
+    color:#991b1b;
+    padding:14px;
+    border-radius:8px;
+    margin-bottom:20px;
+    display:none;
+}
+
+@media(max-width:700px){
+
+    header{
+        align-items:flex-start;
+    }
+
+    .admin-info{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    nav{
+        padding:10px;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:8px 10px;
+    }
+
+    .container{
+        margin:20px auto;
+    }
+
+    .page-title h1{
+        font-size:24px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .table-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .refresh-btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🛒 Kaycy Mart
+    </div>
+
+    <div class="admin-info">
+        <span id="adminName">Admin</span>
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+    </div>
+
+</header>
+
+<nav>
+
+    <a href="Admin-Dashboard.html">
+        Dashboard
+    </a>
+
+    <a href="Admin-Products.html">
+        Products
+    </a>
+
+    <a
+        href="Admin-Users.html"
+        class="active"
+    >
+        Users
+    </a>
+
+</nav>
+
+<div class="container">
+
+    <div class="page-title">
+
+        <h1>👥 Users</h1>
+
+        <p>
+            View registered customers and administrators.
+        </p>
+
+    </div>
+
+    <div
+        class="error"
+        id="errorMessage"
+    ></div>
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <h3>
+                Total Users
+            </h3>
+
+            <strong id="totalUsers">
+                0
+            </strong>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+                Customers
+            </h3>
+
+            <strong id="totalCustomers">
+                0
+            </strong>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h3>
+                Administrators
+            </h3>
+
+            <strong id="totalAdmins">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by name, email or phone..."
+            oninput="filterUsers()"
+        >
+
+    </div>
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h2>
+                Registered Users
+            </h2>
+
+            <button
+                class="refresh-btn"
+                onclick="loadUsers()"
+            >
+                🔄 Refresh Users
+            </button>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Registered</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="usersTable">
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="loading"
+                        >
+                            Loading users...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================
+   LIVE RENDER BACKEND
+========================= */
+
+const API_URL =
+    "https://kaycy-backend.onrender.com";
+
+let allUsers = [];
+
+
+/* =========================
+   ADMIN SESSION CHECK
+========================= */
+
+const adminLoggedIn =
+    localStorage.getItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+const adminData =
+    localStorage.getItem(
+        "kaycyMartAdmin"
+    );
+
+if(
+    adminLoggedIn !== "true" ||
+    !adminData
+){
+
+    window.location.href =
+        "Admin-Login.html";
+
+}else{
+
+    try{
+
+        const admin =
+            JSON.parse(adminData);
+
+        if(
+            admin.role !== "admin"
+        ){
+
+            throw new Error(
+                "Not an admin"
+            );
+        }
+
+        document.getElementById(
+            "adminName"
+        ).textContent =
+            admin.name || "Admin";
+
+    }catch(error){
+
+        localStorage.removeItem(
+            "kaycyMartAdminLoggedIn"
+        );
+
+        localStorage.removeItem(
+            "kaycyMartAdmin"
+        );
+
+        window.location.href =
+            "Admin-Login.html";
+    }
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+/* =========================
+   LOAD USERS
+========================= */
+
+async function loadUsers(){
+
+    const table =
+        document.getElementById(
+            "usersTable"
+        );
+
+    const errorBox =
+        document.getElementById(
+            "errorMessage"
+        );
+
+    errorBox.style.display =
+        "none";
+
+    table.innerHTML = `
+        <tr>
+            <td
+                colspan="6"
+                class="loading"
+            >
+                Loading users...
+            </td>
+        </tr>
+    `;
+
+    try{
+
+        const admin =
+            JSON.parse(
+                localStorage.getItem(
+                    "kaycyMartAdmin"
+                )
+            );
+
+        if(
+            !admin ||
+            admin.role !== "admin"
+        ){
+
+            throw new Error(
+                "Admin session is invalid."
+            );
+        }
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/admin/users",
+                {
+                    method:"GET",
+
+                    headers:{
+                        "x-admin-user-id":
+                            String(admin.id)
+                    }
+                }
+            );
+
+        const data =
+            await response.json()
+            .catch(() => ({}));
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                data.message ||
+                "Failed to load users."
+            );
+        }
+
+        /*
+          Backend may return:
+          [users]
+
+          OR:
+
+          { users:[users] }
+        */
+
+        allUsers =
+            Array.isArray(data)
+                ? data
+                : (
+                    Array.isArray(
+                        data.users
+                    )
+                    ? data.users
+                    : []
+                );
+
+        updateStats();
+
+        displayUsers(
+            allUsers
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        table.innerHTML = `
+            <tr>
+                <td
+                    colspan="6"
+                    class="empty"
+                >
+                    ❌ Unable to load users.
+                </td>
+            </tr>
+        `;
+
+        errorBox.textContent =
+            "❌ " +
+            (
+                error.message ||
+                "Failed to load users."
+            );
+
+        errorBox.style.display =
+            "block";
+    }
+}
+
+
+/* =========================
+   UPDATE STATS
+========================= */
+
+function updateStats(){
+
+    const total =
+        allUsers.length;
+
+    const customers =
+        allUsers.filter(
+            user =>
+                (
+                    user.role ||
+                    "customer"
+                )
+                .toLowerCase()
+                === "customer"
+        ).length;
+
+    const admins =
+        allUsers.filter(
+            user =>
+                (
+                    user.role ||
+                    ""
+                )
+                .toLowerCase()
+                === "admin"
+        ).length;
+
+    document.getElementById(
+        "totalUsers"
+    ).textContent =
+        total;
+
+    document.getElementById(
+        "totalCustomers"
+    ).textContent =
+        customers;
+
+    document.getElementById(
+        "totalAdmins"
+    ).textContent =
+        admins;
+}
+
+
+/* =========================
+   DISPLAY USERS
+========================= */
+
+function displayUsers(users){
+
+    const table =
+        document.getElementById(
+            "usersTable"
+        );
+
+    if(!users.length){
+
+        table.innerHTML = `
+            <tr>
+                <td
+                    colspan="6"
+                    class="empty"
+                >
+                    No users found.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    table.innerHTML =
+        users.map(
+            user => {
+
+                const role =
+                    String(
+                        user.role ||
+                        "customer"
+                    ).toLowerCase();
+
+                const roleClass =
+                    role === "admin"
+                        ? "admin"
+                        : "customer";
+
+                const registered =
+                    user.created_at
+                        ? new Date(
+                            user.created_at
+                        ).toLocaleDateString()
+                        : "—";
+
+                return `
+                    <tr>
+
+                        <td>
+                            ${escapeHTML(
+                                user.id
+                            )}
+                        </td>
+
+                        <td>
+                            <strong>
+                                ${escapeHTML(
+                                    user.name
+                                )}
+                            </strong>
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                user.email
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                user.phone ||
+                                "—"
+                            )}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="role ${roleClass}"
+                            >
+                                ${escapeHTML(
+                                    role
+                                        .charAt(0)
+                                        .toUpperCase()
+                                    +
+                                    role.slice(1)
+                                )}
+                            </span>
+
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                registered
+                            )}
+                        </td>
+
+                    </tr>
+                `;
+
+            }
+        ).join("");
+}
+
+
+/* =========================
+   SEARCH USERS
+========================= */
+
+function filterUsers(){
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+    if(!search){
+
+        displayUsers(
+            allUsers
+        );
+
+        return;
+    }
+
+    const filtered =
+        allUsers.filter(
+            user => {
+
+                const name =
+                    String(
+                        user.name || ""
+                    ).toLowerCase();
+
+                const email =
+                    String(
+                        user.email || ""
+                    ).toLowerCase();
+
+                const phone =
+                    String(
+                        user.phone || ""
+                    ).toLowerCase();
+
+                return (
+                    name.includes(search) ||
+                    email.includes(search) ||
+                    phone.includes(search)
+                );
+            }
+        );
+
+    displayUsers(
+        filtered
+    );
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "kaycyMartAdmin"
+    );
+
+    window.location.href =
+        "Admin-Login.html";
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadUsers();
+
+</script>
+
+</body>
+</html>
