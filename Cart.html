@@ -1,4 +1,15 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Cart | Kaycy Mart</title><style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cart | Kaycy Mart</title>
+
+<style>
 
 *{
     margin:0;
@@ -55,6 +66,10 @@ nav a:hover{
     color:#f59e0b;
 }
 
+nav a.cart-active{
+    color:#f59e0b;
+}
+
 /* ================= PAGE TITLE ================= */
 
 .page-title{
@@ -80,16 +95,87 @@ nav a:hover{
     padding:20px;
 }
 
-.cart-item{
+/* ================= STOCK WARNING ================= */
+
+.cart-stock-status{
+    margin-top:10px;
+    padding:8px 10px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:bold;
+    display:inline-block;
+}
+
+.stock-ok{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.stock-low{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.stock-out{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.stock-warning{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.cart-validation-warning{
+    background:#fff7ed;
+    border:1px solid #fdba74;
+    color:#9a3412;
+    padding:14px 16px;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* ================= PRODUCT GROUP ================= */
+
+.product-group{
     background:white;
-    margin-bottom:15px;
-    padding:20px;
+    margin-bottom:20px;
     border-radius:12px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    overflow:hidden;
+}
+
+.product-group-header{
+    padding:18px 20px;
+    background:#f9fafb;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.product-group-header h2{
+    color:#111827;
+    font-size:20px;
+}
+
+.product-group-header p{
+    color:#777;
+    font-size:13px;
+    margin-top:5px;
+}
+
+/* ================= VARIANT ITEM ================= */
+
+.variant-item{
+    padding:20px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
     gap:20px;
-    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    border-bottom:1px solid #eeeeee;
+}
+
+.variant-item:last-child{
+    border-bottom:none;
 }
 
 .item-image{
@@ -113,22 +199,51 @@ nav a:hover{
 
 .item-info{
     flex:1;
+    min-width:0;
 }
 
 .item-info h3{
     margin-bottom:8px;
     color:#111827;
+    font-size:17px;
 }
+
+/* ================= SELECTED OPTIONS ================= */
+
+.selected-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin:8px 0 10px;
+}
+
+.option-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    background:#f3f4f6;
+    border:1px solid #e5e7eb;
+    color:#374151;
+    padding:6px 9px;
+    border-radius:6px;
+    font-size:13px;
+}
+
+.option-tag strong{
+    color:#111827;
+}
+
+/* ================= PRICE ================= */
 
 .item-price{
     color:#d97706;
     font-weight:bold;
-    font-size:18px;
+    font-size:17px;
 }
 
 .item-total{
     color:#111827;
-    font-size:14px;
+    font-size:13px;
     margin-top:6px;
 }
 
@@ -137,7 +252,7 @@ nav a:hover{
 .quantity{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:10px;
 }
 
 .quantity button{
@@ -157,6 +272,12 @@ nav a:hover{
     color:#111;
 }
 
+.quantity button:disabled{
+    background:#9ca3af;
+    cursor:not-allowed;
+    color:white;
+}
+
 .quantity strong{
     min-width:25px;
     text-align:center;
@@ -169,7 +290,7 @@ nav a:hover{
     background:#dc2626;
     color:white;
     border:none;
-    padding:10px 14px;
+    padding:9px 13px;
     border-radius:6px;
     cursor:pointer;
     font-weight:bold;
@@ -227,6 +348,13 @@ nav a:hover{
 
 .checkout-btn:hover{
     background:#d97706;
+}
+
+.checkout-btn.disabled{
+    background:#9ca3af;
+    color:white;
+    cursor:not-allowed;
+    pointer-events:none;
 }
 
 /* ================= EMPTY CART ================= */
@@ -325,10 +453,19 @@ footer p{
         padding:15px;
     }
 
-    .cart-item{
+    .product-group-header{
+        padding:16px;
+    }
+
+    .product-group-header h2{
+        font-size:18px;
+    }
+
+    .variant-item{
+        padding:16px;
         flex-wrap:wrap;
         align-items:flex-start;
-        padding:18px;
+        gap:14px;
     }
 
     .item-image{
@@ -341,13 +478,26 @@ footer p{
         flex:none;
     }
 
+    .item-info h3{
+        font-size:16px;
+    }
+
+    .selected-options{
+        gap:5px;
+    }
+
+    .option-tag{
+        font-size:12px;
+        padding:5px 7px;
+    }
+
     .quantity{
-        width:100%;
-        justify-content:flex-start;
+        width:auto;
+        margin-left:0;
     }
 
     .remove-btn{
-        width:100%;
+        margin-left:auto;
     }
 
     .cart-summary{
@@ -364,11 +514,31 @@ footer p{
 
 }
 
-</style></head><body><!-- ================= HEADER ================= --><header><div class="logo">
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
     🛒 Kaycy Mart
 </div>
 
-</header><!-- ================= NAVIGATION ================= --><nav><ul><li>
+</header>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+<ul>
+
+<li>
     <a href="Index.html">
         Home
     </a>
@@ -381,7 +551,7 @@ footer p{
 </li>
 
 <li>
-    <a href="Cart.html">
+    <a href="Cart.html" class="cart-active">
         Cart 🛒 (<span id="cartCount">0</span>)
     </a>
 </li>
@@ -410,7 +580,16 @@ footer p{
     </a>
 </li>
 
-</ul></nav><!-- ================= PAGE TITLE ================= --><section class="page-title"><h1>
+</ul>
+
+</nav>
+
+
+<!-- ================= PAGE TITLE ================= -->
+
+<section class="page-title">
+
+<h1>
     Your Shopping Cart
 </h1>
 
@@ -418,7 +597,14 @@ footer p{
     Review your items before checking out.
 </p>
 
-</section><!-- ================= CART ================= --><div class="cart-container"><div id="cartItems"></div>
+</section>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart-container">
+
+<div id="cartItems"></div>
 
 
 <div
@@ -426,56 +612,63 @@ footer p{
     id="cartSummary"
 >
 
-    <div class="summary-row">
+<div class="summary-row">
 
-        <span>
-            Subtotal
-        </span>
+<span>
+    Subtotal
+</span>
 
-        <strong id="subtotal">
-            ₦0
-        </strong>
-
-    </div>
-
-
-    <div class="summary-row">
-
-        <span>
-            Delivery
-        </span>
-
-        <strong>
-            Calculated at checkout
-        </strong>
-
-    </div>
-
-
-    <div class="summary-row total">
-
-        <span>
-            Total
-        </span>
-
-        <span id="total">
-            ₦0
-        </span>
-
-    </div>
-
-
-    <a
-        href="Checkout.html"
-        class="checkout-btn"
-        id="checkoutBtn"
-    >
-        Proceed to Checkout
-    </a>
+<strong id="subtotal">
+    ₦0
+</strong>
 
 </div>
 
-</div><!-- ================= FOOTER ================= --><footer><h2>
+
+<div class="summary-row">
+
+<span>
+    Delivery
+</span>
+
+<strong>
+    Calculated at checkout
+</strong>
+
+</div>
+
+
+<div class="summary-row total">
+
+<span>
+    Total
+</span>
+
+<span id="total">
+    ₦0
+</span>
+
+</div>
+
+
+<a
+    href="Checkout.html"
+    class="checkout-btn"
+    id="checkoutBtn"
+>
+    Proceed to Checkout
+</a>
+
+</div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
     🛒 Kaycy Mart
 </h2>
 
@@ -489,7 +682,16 @@ footer p{
     © 2026 Kaycy Mart. All Rights Reserved.
 </p>
 
-</footer><script>
+</footer>
+
+
+<script>
+
+/* ================= BACKEND ================= */
+
+const API_URL =
+    "https://kaycy-backend.onrender.com";
+
 
 /* ================= CART DATA ================= */
 
@@ -499,6 +701,421 @@ let cart =
             "kaycyMartCart"
         )
     ) || [];
+
+
+/* ================= PRODUCT CACHE ================= */
+
+let products = [];
+
+
+/* ================= STOCK STATE ================= */
+
+let stockProblems = [];
+
+
+/* ================= GET VARIANT STOCK ================= */
+
+function getVariantStock(product){
+
+    let raw =
+        product?.variant_stock ??
+        product?.variantStock ??
+        {};
+
+    if(typeof raw === "string"){
+
+        try{
+
+            raw = JSON.parse(raw);
+
+        }
+
+        catch{
+
+            raw = {};
+
+        }
+
+    }
+
+    if(
+        !raw ||
+        typeof raw !== "object" ||
+        Array.isArray(raw)
+    ){
+
+        return {};
+
+    }
+
+    const result = {};
+
+    Object.entries(raw).forEach(
+        function([key,value]){
+
+            const stock =
+                Number(value);
+
+            result[key] =
+                Number.isFinite(stock) &&
+                stock >= 0
+                    ? Math.floor(stock)
+                    : 0;
+
+        }
+    );
+
+    return result;
+
+}
+
+
+/* ================= GET BASE STOCK ================= */
+
+function getBaseStock(product){
+
+    const stock =
+        Number(
+            product?.stock
+        );
+
+    if(
+        !Number.isFinite(stock) ||
+        stock < 0
+    ){
+
+        return 0;
+
+    }
+
+    return Math.floor(stock);
+
+}
+
+
+/* ================= PARSE OPTIONS ================= */
+
+function getProductOptions(product){
+
+    let options =
+        product?.options || [];
+
+    if(typeof options === "string"){
+
+        try{
+
+            options =
+                JSON.parse(options);
+
+        }
+
+        catch{
+
+            options = [];
+
+        }
+
+    }
+
+    return Array.isArray(options)
+        ? options
+        : [];
+
+}
+
+
+/* ================= CREATE VARIANT KEY ================= */
+
+function createVariantKey(
+    selectedOptions
+){
+
+    if(
+        !Array.isArray(
+            selectedOptions
+        )
+    ){
+
+        return "";
+
+    }
+
+    return selectedOptions
+        .filter(
+            option =>
+                option &&
+                option.name &&
+                option.value
+        )
+        .sort(
+            (a,b) =>
+                String(a.name)
+                    .localeCompare(
+                        String(b.name)
+                    )
+        )
+        .map(
+            option =>
+                `${option.name}:${option.value}`
+        )
+        .join("|");
+
+}
+
+
+/* ================= GET CURRENT STOCK ================= */
+
+function getCurrentStock(
+    product,
+    selectedOptions
+){
+
+    if(!product){
+
+        return 0;
+
+    }
+
+
+    const options =
+        getProductOptions(
+            product
+        );
+
+
+    /* ================= SIMPLE PRODUCT ================= */
+
+    if(options.length === 0){
+
+        return getBaseStock(
+            product
+        );
+
+    }
+
+
+    /* ================= VARIANT PRODUCT ================= */
+
+    if(
+        !Array.isArray(
+            selectedOptions
+        )
+    ){
+
+        return null;
+
+    }
+
+
+    const requiredOptions =
+        options
+            .filter(
+                option =>
+                    option &&
+                    option.name &&
+                    Array.isArray(
+                        option.values
+                    ) &&
+                    option.values.length > 0
+            );
+
+
+    const allSelected =
+        requiredOptions.every(
+            option =>
+
+                selectedOptions.some(
+                    selected =>
+
+                        selected &&
+                        selected.name ===
+                            option.name &&
+                        selected.value
+                )
+        );
+
+
+    if(!allSelected){
+
+        return null;
+
+    }
+
+
+    const variantKey =
+        createVariantKey(
+            selectedOptions
+        );
+
+
+    const variantStock =
+        getVariantStock(
+            product
+        );
+
+
+    if(
+        Object.prototype.hasOwnProperty.call(
+            variantStock,
+            variantKey
+        )
+    ){
+
+        return variantStock[
+            variantKey
+        ];
+
+    }
+
+
+    return getBaseStock(
+        product
+    );
+
+}
+
+
+/* ================= FIND PRODUCT ================= */
+
+function findProduct(
+    productId
+){
+
+    return products.find(
+        product =>
+            String(product.id) ===
+            String(productId)
+    );
+
+}
+
+
+/* ================= CHECK CART STOCK ================= */
+
+function checkCartStock(){
+
+    stockProblems = [];
+
+
+    cart.forEach(
+        function(item,index){
+
+            const product =
+                findProduct(
+                    item.productId
+                );
+
+
+            if(!product){
+
+                stockProblems.push({
+                    index:index,
+                    message:
+                        `${item.name} is no longer available.`
+                });
+
+                return;
+
+            }
+
+
+            const currentStock =
+                getCurrentStock(
+                    product,
+                    item.selectedOptions
+                );
+
+
+            if(currentStock === null){
+
+                return;
+
+            }
+
+
+            const quantity =
+                Number(
+                    item.quantity
+                ) || 0;
+
+
+            if(currentStock <= 0){
+
+                stockProblems.push({
+                    index:index,
+                    message:
+                        `${item.name} is currently out of stock.`
+                });
+
+                return;
+
+            }
+
+
+            if(quantity > currentStock){
+
+                stockProblems.push({
+                    index:index,
+                    message:
+                        `${item.name} only has ${currentStock} left in stock, but your cart has ${quantity}.`
+                });
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================= STOCK DISPLAY ================= */
+
+function getStockHTML(
+    currentStock
+){
+
+    if(currentStock === null){
+
+        return "";
+
+    }
+
+
+    if(currentStock <= 0){
+
+        return `
+
+            <div class="cart-stock-status stock-out">
+                ❌ Out of stock
+            </div>
+
+        `;
+
+    }
+
+
+    if(currentStock <= 5){
+
+        return `
+
+            <div class="cart-stock-status stock-low">
+                🔥 Only ${currentStock} left in stock
+            </div>
+
+        `;
+
+    }
+
+
+    return `
+
+        <div class="cart-stock-status stock-ok">
+            📦 ${currentStock} in stock
+        </div>
+
+    `;
+
+}
 
 
 /* ================= DISPLAY CART ================= */
@@ -581,6 +1198,76 @@ function displayCart(){
         "block";
 
 
+    checkCartStock();
+
+
+    /* ================= STOCK WARNING ================= */
+
+    if(stockProblems.length > 0){
+
+        const warning =
+            document.createElement(
+                "div"
+            );
+
+        warning.className =
+            "cart-validation-warning";
+
+        warning.innerHTML = `
+
+            <strong>
+                ⚠️ Stock update
+            </strong>
+            <br>
+            Some items in your cart are no longer available in the quantities selected.
+            Please reduce the quantity or remove the affected item before checkout.
+
+        `;
+
+        cartItems.appendChild(
+            warning
+        );
+
+    }
+
+
+    /* ================= GROUP PRODUCTS ================= */
+
+    const groups = {};
+
+
+    cart.forEach(
+        function(item,index){
+
+            const productId =
+                String(item.productId);
+
+
+            if(!groups[productId]){
+
+                groups[productId] = {
+
+                    name:item.name,
+
+                    items:[]
+
+                };
+
+            }
+
+
+            groups[productId].items.push({
+
+                item:item,
+
+                index:index
+
+            });
+
+        }
+    );
+
+
     /* ================= CALCULATE TOTAL ================= */
 
     let subtotal = 0;
@@ -588,129 +1275,336 @@ function displayCart(){
     let totalQuantity = 0;
 
 
-    cart.forEach(
-        function(item,index){
+    /* ================= DISPLAY GROUPS ================= */
 
-            const price =
-                Number(item.price) || 0;
+    Object.keys(groups).forEach(
+        function(productId){
 
-            const quantity =
-                Number(item.quantity) || 0;
-
-
-            const itemTotal =
-                price * quantity;
+            const group =
+                groups[productId];
 
 
-            subtotal +=
-                itemTotal;
+            const product =
+                findProduct(
+                    productId
+                );
 
 
-            totalQuantity +=
-                quantity;
-
-
-            const cartItem =
+            const productGroup =
                 document.createElement(
                     "div"
                 );
 
 
-            cartItem.className =
-                "cart-item";
+            productGroup.className =
+                "product-group";
 
 
-            let imageHTML =
-                escapeHTML(
-                    item.emoji || "🛒"
-                );
+            /* ================= GROUP HEADER ================= */
 
+            productGroup.innerHTML = `
 
-            if(item.image){
+                <div class="product-group-header">
 
-                imageHTML = `
+                    <h2>
+                        ${escapeHTML(group.name)}
+                    </h2>
 
-                    <img
-                        src="${escapeHTML(item.image)}"
-                        alt="${escapeHTML(item.name)}"
-                        onerror="this.style.display='none';"
-                    >
-
-                `;
-
-            }
-
-
-            cartItem.innerHTML = `
-
-                <div class="item-image">
-
-                    ${imageHTML}
+                    <p>
+                        ${group.items.length === 1
+                            ? "1 variant in cart"
+                            : group.items.length + " variants in cart"
+                        }
+                    </p>
 
                 </div>
-
-
-                <div class="item-info">
-
-                    <h3>
-                        ${escapeHTML(
-                            item.name
-                        )}
-                    </h3>
-
-                    <div class="item-price">
-
-                        ₦${price.toLocaleString()}
-
-                    </div>
-
-                    <div class="item-total">
-
-                        Item total:
-                        ₦${itemTotal.toLocaleString()}
-
-                    </div>
-
-                </div>
-
-
-                <div class="quantity">
-
-                    <button
-                        onclick="changeQuantity(${index}, -1)"
-                        aria-label="Decrease quantity"
-                    >
-                        −
-                    </button>
-
-
-                    <strong>
-                        ${quantity}
-                    </strong>
-
-
-                    <button
-                        onclick="changeQuantity(${index}, 1)"
-                        aria-label="Increase quantity"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-
-                <button
-                    class="remove-btn"
-                    onclick="removeItem(${index})"
-                >
-                    Remove
-                </button>
 
             `;
 
 
+            /* ================= VARIANTS ================= */
+
+            group.items.forEach(
+                function(entry){
+
+                    const item =
+                        entry.item;
+
+                    const index =
+                        entry.index;
+
+
+                    const price =
+                        Number(item.price) || 0;
+
+
+                    const quantity =
+                        Number(item.quantity) || 0;
+
+
+                    const currentStock =
+                        getCurrentStock(
+                            product,
+                            item.selectedOptions
+                        );
+
+
+                    const itemTotal =
+                        price * quantity;
+
+
+                    subtotal +=
+                        itemTotal;
+
+
+                    totalQuantity +=
+                        quantity;
+
+
+                    const quantityExceedsStock =
+                        currentStock !== null &&
+                        quantity >
+                        currentStock;
+
+
+                    const outOfStock =
+                        currentStock !== null &&
+                        currentStock <= 0;
+
+
+                    const cannotIncrease =
+                        currentStock !== null &&
+                        (
+                            currentStock <= 0 ||
+                            quantity >= currentStock
+                        );
+
+
+                    const variantItem =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    variantItem.className =
+                        "variant-item";
+
+
+                    /* ================= IMAGE ================= */
+
+                    let imageHTML =
+                        escapeHTML(
+                            item.emoji || "🛒"
+                        );
+
+
+                    if(item.image){
+
+                        imageHTML = `
+
+                            <img
+                                src="${escapeHTML(item.image)}"
+                                alt="${escapeHTML(item.name)}"
+                                onerror="this.style.display='none';"
+                            >
+
+                        `;
+
+                    }
+
+
+                    /* ================= OPTIONS ================= */
+
+                    let optionsHTML = "";
+
+
+                    if(
+                        Array.isArray(
+                            item.selectedOptions
+                        ) &&
+                        item.selectedOptions.length > 0
+                    ){
+
+                        optionsHTML = `
+
+                            <div class="selected-options">
+
+                        `;
+
+
+                        item.selectedOptions.forEach(
+                            function(option){
+
+                                if(
+                                    !option ||
+                                    !option.name ||
+                                    !option.value
+                                ){
+
+                                    return;
+
+                                }
+
+
+                                optionsHTML += `
+
+                                    <span class="option-tag">
+
+                                        <strong>
+                                            ${escapeHTML(option.name)}:
+                                        </strong>
+
+                                        ${escapeHTML(option.value)}
+
+                                    </span>
+
+                                `;
+
+                            }
+                        );
+
+
+                        optionsHTML += `
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    /* ================= STOCK HTML ================= */
+
+                    const stockHTML =
+                        getStockHTML(
+                            currentStock
+                        );
+
+
+                    /* ================= QUANTITY WARNING ================= */
+
+                    let quantityWarningHTML =
+                        "";
+
+
+                    if(quantityExceedsStock){
+
+                        quantityWarningHTML = `
+
+                            <div class="cart-stock-status stock-warning">
+
+                                ⚠️ Only ${currentStock} available.
+                                Please reduce your quantity.
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    if(
+                        currentStock === null
+                    ){
+
+                        quantityWarningHTML = `
+
+                            <div class="cart-stock-status stock-warning">
+
+                                ⚠️ Stock information unavailable.
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    /* ================= VARIANT HTML ================= */
+
+                    variantItem.innerHTML = `
+
+                        <div class="item-image">
+
+                            ${imageHTML}
+
+                        </div>
+
+
+                        <div class="item-info">
+
+                            <h3>
+                                ${escapeHTML(item.name)}
+                            </h3>
+
+                            ${optionsHTML}
+
+                            <div class="item-price">
+
+                                ₦${price.toLocaleString()}
+
+                            </div>
+
+                            <div class="item-total">
+
+                                Item total:
+                                ₦${itemTotal.toLocaleString()}
+
+                            </div>
+
+                            ${stockHTML}
+
+                            ${quantityWarningHTML}
+
+                        </div>
+
+
+                        <div class="quantity">
+
+                            <button
+                                onclick="changeQuantity(${index}, -1)"
+                                aria-label="Decrease quantity"
+                            >
+                                −
+                            </button>
+
+
+                            <strong>
+                                ${quantity}
+                            </strong>
+
+
+                            <button
+                                onclick="changeQuantity(${index}, 1)"
+                                aria-label="Increase quantity"
+                                ${cannotIncrease ? "disabled" : ""}
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeItem(${index})"
+                        >
+                            Remove
+                        </button>
+
+                    `;
+
+
+                    productGroup.appendChild(
+                        variantItem
+                    );
+
+                }
+            );
+
+
             cartItems.appendChild(
-                cartItem
+                productGroup
             );
 
         }
@@ -738,12 +1632,52 @@ function displayCart(){
     cartCount.textContent =
         totalQuantity;
 
+
+    /* ================= CHECKOUT BUTTON ================= */
+
+    const checkoutBtn =
+        document.getElementById(
+            "checkoutBtn"
+        );
+
+
+    if(stockProblems.length > 0){
+
+        checkoutBtn.classList.add(
+            "disabled"
+        );
+
+        checkoutBtn.setAttribute(
+            "aria-disabled",
+            "true"
+        );
+
+        checkoutBtn.textContent =
+            "Fix Stock Issues Before Checkout";
+
+    }
+
+    else{
+
+        checkoutBtn.classList.remove(
+            "disabled"
+        );
+
+        checkoutBtn.removeAttribute(
+            "aria-disabled"
+        );
+
+        checkoutBtn.textContent =
+            "Proceed to Checkout";
+
+    }
+
 }
 
 
 /* ================= CHANGE QUANTITY ================= */
 
-function changeQuantity(
+async function changeQuantity(
     index,
     change
 ){
@@ -759,24 +1693,103 @@ function changeQuantity(
         ) || 0;
 
 
-    quantity += change;
+    /* ================= DECREASE ================= */
+
+    if(change < 0){
+
+        quantity += change;
 
 
-    if(quantity <= 0){
+        if(quantity <= 0){
 
-        cart.splice(
-            index,
-            1
+            cart.splice(
+                index,
+                1
+            );
+
+        }
+
+        else{
+
+            cart[index].quantity =
+                quantity;
+
+        }
+
+
+        saveCart();
+
+        return;
+
+    }
+
+
+    /* ================= INCREASE ================= */
+
+    const product =
+        findProduct(
+            cart[index].productId
         );
 
+
+    if(!product){
+
+        alert(
+            "This product is no longer available."
+        );
+
+        return;
+
     }
 
-    else{
 
-        cart[index].quantity =
-            quantity;
+    const currentStock =
+        getCurrentStock(
+            product,
+            cart[index].selectedOptions
+        );
+
+
+    if(currentStock === null){
+
+        alert(
+            "Stock information is not available for this item right now."
+        );
+
+        return;
 
     }
+
+
+    if(currentStock <= 0){
+
+        alert(
+            "Sorry, this item is currently out of stock."
+        );
+
+        displayCart();
+
+        return;
+
+    }
+
+
+    if(quantity >= currentStock){
+
+        alert(
+            `Sorry, only ${currentStock} of this variant is currently available.`
+        );
+
+        return;
+
+    }
+
+
+    quantity += 1;
+
+
+    cart[index].quantity =
+        quantity;
 
 
     saveCart();
@@ -797,10 +1810,39 @@ function removeItem(index){
         cart[index].name;
 
 
+    const selectedOptions =
+        Array.isArray(
+            cart[index].selectedOptions
+        )
+        ? cart[index].selectedOptions
+        : [];
+
+
+    let variantText = "";
+
+
+    if(selectedOptions.length > 0){
+
+        variantText =
+            " (" +
+            selectedOptions
+                .map(
+                    option =>
+                        option.name +
+                        ": " +
+                        option.value
+                )
+                .join(", ") +
+            ")";
+
+    }
+
+
     const confirmRemove =
         confirm(
             "Remove " +
             productName +
+            variantText +
             " from your cart?"
         );
 
@@ -836,6 +1878,60 @@ function saveCart(){
 }
 
 
+/* ================= LOAD PRODUCTS ================= */
+
+async function loadProducts(){
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL +
+                "/api/products"
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Failed to load products"
+            );
+
+        }
+
+
+        products =
+            await response.json();
+
+
+        displayCart();
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Product stock check failed:",
+            error
+        );
+
+
+        /*
+         * We still display the cart
+         * if the backend temporarily
+         * cannot be reached.
+         */
+
+        products = [];
+
+
+        displayCart();
+
+    }
+
+}
+
+
 /* ================= ESCAPE HTML ================= */
 
 function escapeHTML(text){
@@ -854,4 +1950,10 @@ function escapeHTML(text){
 
 displayCart();
 
-</script></body></html>
+loadProducts();
+
+</script>
+
+</body>
+
+</html>
