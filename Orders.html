@@ -1,4 +1,13 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Orders | Kaycy Mart</title><style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Orders | Kaycy Mart</title>
+
+<style>
 
 *{
     margin:0;
@@ -205,10 +214,7 @@ header{
     text-align:center;
 }
 
-
-/* =========================
-   PAYMENT
-========================= */
+/* ================= PAYMENT ================= */
 
 .payment-box{
     margin:20px 0;
@@ -259,9 +265,6 @@ header{
     color:#374151;
     word-break:break-word;
 }
-
-
-/* BANK DETAILS */
 
 .bank-details{
     margin-top:14px;
@@ -367,8 +370,7 @@ header{
     line-height:1.5;
 }
 
-
-/* DETAILS */
+/* ================= DETAILS ================= */
 
 .details{
     display:grid;
@@ -400,11 +402,12 @@ header{
     margin-bottom:8px;
 }
 
+/* ================= ORDER ITEM ================= */
+
 .item{
     display:flex;
-    justify-content:space-between;
     gap:15px;
-    padding:12px 0;
+    padding:15px 0;
     border-bottom:1px solid #e5e7eb;
 }
 
@@ -412,14 +415,67 @@ header{
     border-bottom:none;
 }
 
+.item-image{
+    width:75px;
+    height:75px;
+    border-radius:8px;
+    object-fit:cover;
+    background:#f3f4f6;
+    flex-shrink:0;
+}
+
+.item-info{
+    flex:1;
+    min-width:0;
+}
+
 .item-name{
     font-weight:bold;
+    font-size:15px;
+    margin-bottom:6px;
 }
 
 .item-quantity{
     color:#6b7280;
     font-size:13px;
-    margin-top:4px;
+    margin-top:8px;
+}
+
+.item-options{
+    margin-top:8px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.option-badge{
+    background:#f3f4f6;
+    border:1px solid #e5e7eb;
+    color:#374151;
+    padding:6px 9px;
+    border-radius:6px;
+    font-size:12px;
+}
+
+.option-badge strong{
+    color:#111827;
+}
+
+.item-variant-key{
+    margin-top:7px;
+    color:#9ca3af;
+    font-size:11px;
+}
+
+.item-right{
+    text-align:right;
+    flex-shrink:0;
+}
+
+.item-price{
+    color:#6b7280;
+    font-size:12px;
+    margin-bottom:4px;
 }
 
 .item-total{
@@ -461,6 +517,7 @@ header{
     background:#1f2937;
 }
 
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
@@ -510,6 +567,15 @@ header{
         align-items:flex-start;
     }
 
+    .item-image{
+        width:60px;
+        height:60px;
+    }
+
+    .item-right{
+        font-size:13px;
+    }
+
     .item-total{
         font-size:14px;
     }
@@ -525,43 +591,78 @@ header{
 
 }
 
-</style></head><body><header><div class="header-inner"><div class="logo">
-    🛒 Kaycy Mart
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="logo">
+            🛒 Kaycy Mart
+        </div>
+
+        <a
+            href="Products.html"
+            class="back-link"
+        >
+            ← Continue Shopping
+        </a>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div class="page-heading">
+
+        <h1>
+            My Orders
+        </h1>
+
+        <p>
+            View your orders, track their status and manage your payments.
+        </p>
+
+    </div>
+
+
+    <div id="ordersContainer">
+
+        <div class="message">
+
+            <h2>
+                Loading Orders...
+            </h2>
+
+            <p>
+                Please wait while we get your orders.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="refresh-btn"
+        onclick="loadOrders()"
+    >
+        🔄 Refresh Orders
+    </button>
+
 </div>
 
-<a href="Products.html" class="back-link">
-    ← Continue Shopping
-</a>
 
-</div></header><div class="container"><div class="page-heading"><h1>My Orders</h1>
-
-<p>
-    View your orders, track their status and manage your payments.
-</p>
-
-</div><div id="ordersContainer"><div class="message">
-
-    <h2>Loading Orders...</h2>
-
-    <p>
-        Please wait while we get your orders.
-    </p>
-
-</div>
-
-</div><button
-type="button"
-class="refresh-btn"
-onclick="loadOrders()"
-
-«»
-
-🔄 Refresh Orders
-
-</button></div><script>
+<script>
 
 /* =========================
-   LIVE RENDER BACKEND
+BACKEND
 ========================= */
 
 const API_URL =
@@ -580,7 +681,8 @@ try{
             )
         );
 
-}catch(error){
+}
+catch(error){
 
     currentUser = null;
 
@@ -588,7 +690,7 @@ try{
 
 
 /* =========================
-   SECURITY
+SECURITY
 ========================= */
 
 function escapeHTML(value){
@@ -604,7 +706,7 @@ function escapeHTML(value){
 
 
 /* =========================
-   MONEY
+MONEY
 ========================= */
 
 function formatMoney(value){
@@ -617,17 +719,21 @@ function formatMoney(value){
 
 
 /* =========================
-   DATE
+DATE
 ========================= */
 
 function formatDate(value){
 
     if(!value){
+
         return "Date unavailable";
+
     }
+
 
     let date =
         new Date(value);
+
 
     if(isNaN(date.getTime())){
 
@@ -639,11 +745,13 @@ function formatDate(value){
 
     }
 
+
     if(isNaN(date.getTime())){
 
         return escapeHTML(value);
 
     }
+
 
     return date.toLocaleString(
         "en-NG",
@@ -657,7 +765,7 @@ function formatDate(value){
 
 
 /* =========================
-   MESSAGE
+MESSAGE
 ========================= */
 
 function showMessage(
@@ -672,20 +780,25 @@ function showMessage(
             "ordersContainer"
         );
 
+
     let button = "";
+
 
     if(buttonText && buttonLink){
 
         button = `
+
             <a
-                href="${buttonLink}"
+                href="${escapeHTML(buttonLink)}"
                 class="shop-btn"
             >
                 ${escapeHTML(buttonText)}
             </a>
+
         `;
 
     }
+
 
     container.innerHTML = `
 
@@ -709,32 +822,42 @@ function showMessage(
 
 
 /* =========================
-   TRACKING
+TRACKING
 ========================= */
 
 function createTracking(status){
 
     const stages = [
+
         "Order Received",
         "Processing",
         "Shipped",
         "Delivered"
+
     ];
+
 
     const currentIndex =
         stages.indexOf(status);
 
-    if(status === "Cancelled"){
+
+    if(
+        String(status).toLowerCase()
+        === "cancelled"
+    ){
 
         return `
 
             <div class="cancelled-box">
+
                 ❌ This order has been cancelled.
+
             </div>
 
         `;
 
     }
+
 
     let html = `
 
@@ -749,61 +872,56 @@ function createTracking(status){
     `;
 
 
-    stages.forEach(function(stage,index){
+    stages.forEach(
+        function(stage,index){
 
-        let className = "";
-
-        if(
-            currentIndex >= 0 &&
-            index < currentIndex
-        ){
-
-            className = "completed";
-
-        }
-        else if(
-            currentIndex === index
-        ){
-
-            className = "active";
-
-        }
+            let className = "";
 
 
-        let icon = "";
+            if(
+                currentIndex >= 0 &&
+                index < currentIndex
+            ){
 
-        if(
-            currentIndex >= 0 &&
-            index < currentIndex
-        ){
+                className = "completed";
 
-            icon = "✓";
+            }
+            else if(
+                currentIndex === index
+            ){
 
-        }
-        else{
+                className = "active";
 
-            icon = String(index + 1);
-
-        }
+            }
 
 
-        html += `
+            let icon =
+                currentIndex >= 0 &&
+                index < currentIndex
+                    ? "✓"
+                    : String(index + 1);
 
-            <div class="tracking-step ${className}">
 
-                <div class="tracking-icon">
-                    ${icon}
+            html += `
+
+                <div
+                    class="tracking-step ${className}"
+                >
+
+                    <div class="tracking-icon">
+                        ${icon}
+                    </div>
+
+                    <div class="tracking-label">
+                        ${escapeHTML(stage)}
+                    </div>
+
                 </div>
 
-                <div class="tracking-label">
-                    ${escapeHTML(stage)}
-                </div>
+            `;
 
-            </div>
-
-        `;
-
-    });
+        }
+    );
 
 
     html += `
@@ -821,7 +939,7 @@ function createTracking(status){
 
 
 /* =========================
-   PAYMENT SECTION
+PAYMENT
 ========================= */
 
 function createPaymentSection(order){
@@ -848,19 +966,28 @@ function createPaymentSection(order){
         "payment-pending";
 
 
-    if(paymentStatus === "Payment Submitted"){
+    if(
+        paymentStatus ===
+        "Payment Submitted"
+    ){
 
         statusClass =
             "payment-submitted";
 
     }
-    else if(paymentStatus === "Payment Confirmed"){
+    else if(
+        paymentStatus ===
+        "Payment Confirmed"
+    ){
 
         statusClass =
             "payment-confirmed";
 
     }
-    else if(paymentStatus === "Payment Failed"){
+    else if(
+        paymentStatus ===
+        "Payment Failed"
+    ){
 
         statusClass =
             "payment-failed";
@@ -869,20 +996,21 @@ function createPaymentSection(order){
 
 
     let bankDetailsHTML = "";
-
     let formHTML = "";
 
 
-    /*
-       Show OPay details for Bank Transfer orders
-       while payment still needs to be made.
-    */
+    const method =
+        String(
+            paymentMethod
+        ).toLowerCase();
+
 
     if(
-        paymentStatus === "Payment Pending" &&
+        paymentStatus ===
+        "Payment Pending" &&
         (
-            paymentMethod.toLowerCase().includes("bank") ||
-            paymentMethod.toLowerCase().includes("transfer") ||
+            method.includes("bank") ||
+            method.includes("transfer") ||
             paymentMethod === ""
         )
     ){
@@ -894,6 +1022,7 @@ function createPaymentSection(order){
                 <div class="bank-title">
                     🏦 Bank Transfer Details
                 </div>
+
 
                 <div class="bank-row">
 
@@ -907,6 +1036,7 @@ function createPaymentSection(order){
 
                 </div>
 
+
                 <div class="bank-row">
 
                     <span class="bank-label">
@@ -919,6 +1049,7 @@ function createPaymentSection(order){
 
                 </div>
 
+
                 <div class="bank-row">
 
                     <span class="bank-label">
@@ -930,6 +1061,7 @@ function createPaymentSection(order){
                     </span>
 
                 </div>
+
 
                 <div class="payment-instruction">
 
@@ -946,7 +1078,10 @@ function createPaymentSection(order){
     }
 
 
-    if(paymentStatus === "Payment Pending"){
+    if(
+        paymentStatus ===
+        "Payment Pending"
+    ){
 
         formHTML = `
 
@@ -958,6 +1093,7 @@ function createPaymentSection(order){
                     Payment Reference
                 </label>
 
+
                 <input
                     type="text"
                     class="payment-input"
@@ -965,6 +1101,7 @@ function createPaymentSection(order){
                     placeholder="Enter your OPay payment reference"
                     autocomplete="off"
                 >
+
 
                 <button
                     type="button"
@@ -974,6 +1111,7 @@ function createPaymentSection(order){
                 >
                     💳 I've Made Payment
                 </button>
+
 
                 <div class="payment-note">
 
@@ -987,9 +1125,10 @@ function createPaymentSection(order){
         `;
 
     }
-
-
-    else if(paymentStatus === "Payment Submitted"){
+    else if(
+        paymentStatus ===
+        "Payment Submitted"
+    ){
 
         formHTML = `
 
@@ -1004,9 +1143,10 @@ function createPaymentSection(order){
         `;
 
     }
-
-
-    else if(paymentStatus === "Payment Confirmed"){
+    else if(
+        paymentStatus ===
+        "Payment Confirmed"
+    ){
 
         formHTML = `
 
@@ -1019,9 +1159,10 @@ function createPaymentSection(order){
         `;
 
     }
-
-
-    else if(paymentStatus === "Payment Failed"){
+    else if(
+        paymentStatus ===
+        "Payment Failed"
+    ){
 
         formHTML = `
 
@@ -1046,7 +1187,10 @@ function createPaymentSection(order){
                 💳 Payment
             </div>
 
-            <span class="payment-status ${statusClass}">
+
+            <span
+                class="payment-status ${statusClass}"
+            >
                 ${escapeHTML(paymentStatus)}
             </span>
 
@@ -1061,7 +1205,9 @@ function createPaymentSection(order){
                             Payment Reference:
                         </strong>
 
-                        ${escapeHTML(paymentReference)}
+                        ${escapeHTML(
+                            paymentReference
+                        )}
 
                     </div>
 
@@ -1082,7 +1228,7 @@ function createPaymentSection(order){
 
 
 /* =========================
-   SUBMIT PAYMENT
+SUBMIT PAYMENT
 ========================= */
 
 async function submitPayment(orderId){
@@ -1227,7 +1373,172 @@ async function submitPayment(orderId){
 
 
 /* =========================
-   LOAD ORDERS
+PARSE SELECTED OPTIONS
+========================= */
+
+function getSelectedOptions(item){
+
+    let selectedOptions =
+        item.selected_options ??
+        item.selectedOptions ??
+        [];
+
+
+    if(
+        typeof selectedOptions ===
+        "string"
+    ){
+
+        try{
+
+            selectedOptions =
+                JSON.parse(
+                    selectedOptions
+                );
+
+        }
+        catch(error){
+
+            selectedOptions = [];
+
+        }
+
+    }
+
+
+    return Array.isArray(
+        selectedOptions
+    )
+        ? selectedOptions
+        : [];
+
+}
+
+
+/* =========================
+CREATE OPTION BADGES
+========================= */
+
+function createOptionsHTML(item){
+
+    const selectedOptions =
+        getSelectedOptions(
+            item
+        );
+
+
+    const validOptions =
+        selectedOptions.filter(
+            option =>
+                option &&
+                option.name &&
+                option.value
+        );
+
+
+    if(
+        validOptions.length === 0
+    ){
+
+        return "";
+
+    }
+
+
+    return `
+
+        <div class="item-options">
+
+            ${
+                validOptions
+                    .map(
+                        function(option){
+
+                            return `
+
+                                <span class="option-badge">
+
+                                    <strong>
+                                        ${escapeHTML(
+                                            option.name
+                                        )}:
+                                    </strong>
+
+                                    ${escapeHTML(
+                                        option.value
+                                    )}
+
+                                </span>
+
+                            `;
+
+                        }
+                    )
+                    .join("")
+            }
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+VARIANT KEY
+========================= */
+
+function createVariantKey(item){
+
+    if(item.variant_key){
+
+        return String(
+            item.variant_key
+        );
+
+    }
+
+
+    if(item.variantKey){
+
+        return String(
+            item.variantKey
+        );
+
+    }
+
+
+    const selectedOptions =
+        getSelectedOptions(
+            item
+        );
+
+
+    return selectedOptions
+        .filter(
+            option =>
+                option &&
+                option.name &&
+                option.value
+        )
+        .sort(
+            (a,b) =>
+                String(a.name)
+                    .localeCompare(
+                        String(b.name)
+                    )
+        )
+        .map(
+            option =>
+                `${option.name}:${option.value}`
+        )
+        .join("|");
+
+}
+
+
+/* =========================
+LOAD ORDERS
 ========================= */
 
 async function loadOrders(){
@@ -1324,10 +1635,8 @@ async function loadOrders(){
         if(!response.ok){
 
             throw new Error(
-
                 data.message ||
                 "Unable to load your orders."
-
             );
 
         }
@@ -1373,13 +1682,15 @@ async function loadOrders(){
 
         container.innerHTML =
             orders
-                .map(function(order){
+                .map(
+                    function(order){
 
-                    return createOrderCard(
-                        order
-                    );
+                        return createOrderCard(
+                            order
+                        );
 
-                })
+                    }
+                )
                 .join("");
 
     }
@@ -1406,7 +1717,7 @@ async function loadOrders(){
 
 
 /* =========================
-   ORDER CARD
+ORDER CARD
 ========================= */
 
 function createOrderCard(order){
@@ -1443,8 +1754,11 @@ function createOrderCard(order){
     const customerName =
         order.customer_name ||
         order.customerName ||
-        currentUser.name ||
-        "Customer";
+        (
+            currentUser
+            ? currentUser.name
+            : "Customer"
+        );
 
 
     const createdAt =
@@ -1454,7 +1768,9 @@ function createOrderCard(order){
 
 
     const total =
-        Number(order.total) || 0;
+        Number(
+            order.total
+        ) || 0;
 
 
     let items = [];
@@ -1467,7 +1783,9 @@ function createOrderCard(order){
 
     }
     else if(
-        Array.isArray(order.order_items)
+        Array.isArray(
+            order.order_items
+        )
     ){
 
         items =
@@ -1482,53 +1800,146 @@ function createOrderCard(order){
     if(items.length){
 
         itemsHTML =
-            items.map(function(item){
+            items
+                .map(
+                    function(item){
 
-                const name =
-                    item.product_name ||
-                    item.productName ||
-                    item.name ||
-                    "Product";
-
-
-                const quantity =
-                    Number(item.quantity) || 1;
+                        const name =
+                            item.product_name ||
+                            item.productName ||
+                            item.name ||
+                            "Product";
 
 
-                const price =
-                    Number(item.price) || 0;
+                        const quantity =
+                            Number(
+                                item.quantity
+                            ) || 1;
 
 
-                return `
+                        const price =
+                            Number(
+                                item.price
+                            ) || 0;
 
-                    <div class="item">
 
-                        <div>
+                        const image =
+                            item.product_image ||
+                            item.productImage ||
+                            "";
 
-                            <div class="item-name">
-                                ${escapeHTML(name)}
+
+                        const optionsHTML =
+                            createOptionsHTML(
+                                item
+                            );
+
+
+                        const variantKey =
+                            createVariantKey(
+                                item
+                            );
+
+
+                        const imageHTML =
+                            image
+                            ? `
+
+                                <img
+                                    src="${escapeHTML(image)}"
+                                    alt="${escapeHTML(name)}"
+                                    class="item-image"
+                                    onerror="this.style.display='none';"
+                                >
+
+                              `
+                            : `
+
+                                <div class="item-image"></div>
+
+                              `;
+
+
+                        const variantKeyHTML =
+                            variantKey
+                            ? `
+
+                                <div class="item-variant-key">
+
+                                    Variant:
+                                    ${escapeHTML(
+                                        variantKey
+                                    )}
+
+                                </div>
+
+                              `
+                            : "";
+
+
+                        return `
+
+                            <div class="item">
+
+                                ${imageHTML}
+
+
+                                <div class="item-info">
+
+                                    <div class="item-name">
+
+                                        ${escapeHTML(
+                                            name
+                                        )}
+
+                                    </div>
+
+
+                                    ${optionsHTML}
+
+
+                                    ${variantKeyHTML}
+
+
+                                    <div class="item-quantity">
+
+                                        Quantity:
+                                        ${quantity}
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="item-right">
+
+                                    <div class="item-price">
+
+                                        ${formatMoney(
+                                            price
+                                        )}
+                                        each
+
+                                    </div>
+
+
+                                    <div class="item-total">
+
+                                        ${formatMoney(
+                                            price * quantity
+                                        )}
+
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            <div class="item-quantity">
-                                Quantity: ${quantity}
-                            </div>
+                        `;
 
-                        </div>
-
-
-                        <div class="item-total">
-
-                            ${formatMoney(
-                                price * quantity
-                            )}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }).join("");
+                    }
+                )
+                .join("");
 
     }
     else{
@@ -1537,12 +1948,19 @@ function createOrderCard(order){
 
             <div class="item">
 
-                <div class="item-name">
-                    Order items
+                <div class="item-info">
+
+                    <div class="item-name">
+                        Order items
+                    </div>
+
                 </div>
 
+
                 <div class="item-total">
+
                     ${formatMoney(total)}
+
                 </div>
 
             </div>
@@ -1705,7 +2123,13 @@ function createOrderCard(order){
 }
 
 
+/* =========================
+START
+========================= */
+
 loadOrders();
 
-</script></body>
+</script>
+
+</body>
 </html>
