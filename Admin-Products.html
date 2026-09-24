@@ -816,7 +816,6 @@ button{
 
         <div class="header-actions">
 
-            <!-- FIXED DASHBOARD LINK -->
             <a
                 href="Admin-Dashboard.html"
                 class="header-btn"
@@ -888,10 +887,8 @@ button{
                 <div class="field">
                     <label>Category</label>
 
-                    <select
-                        id="category"
-                        required
-                    >
+                    <select id="category" required>
+
                         <option value="">
                             Select category
                         </option>
@@ -927,10 +924,12 @@ button{
                         <option value="other">
                             Other
                         </option>
+
                     </select>
                 </div>
 
                 <div class="field">
+
                     <label>Emoji</label>
 
                     <input
@@ -938,6 +937,7 @@ button{
                         id="emoji"
                         placeholder="📱"
                     >
+
                 </div>
 
                 <div class="field full">
@@ -1016,9 +1016,11 @@ button{
             <div class="stock-section">
 
                 <div class="section-head">
+
                     <h3>
                         Stock Management
                     </h3>
+
                 </div>
 
                 <div id="simpleStockBox">
@@ -1090,7 +1092,6 @@ button{
 
     </section>
 
-
     <section>
 
         <div class="list-heading">
@@ -1124,26 +1125,98 @@ button{
 
 </main>
 
-
 <script>
+
+/* =====================================================
+   API
+===================================================== */
 
 const API_URL =
     "https://kaycy-backend.onrender.com";
 
 
-const adminUserId =
+/* =====================================================
+   ADMIN AUTHENTICATION
+   FIXED TO MATCH ADMIN-LOGIN.HTML
+===================================================== */
+
+const adminLoggedIn =
+    localStorage.getItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+const adminRaw =
     localStorage.getItem(
         "kaycyMartAdmin"
     );
 
+let admin = null;
 
-if(!adminUserId){
+try {
 
-    window.location.href =
-        "Login.html";
+    admin =
+        JSON.parse(
+            adminRaw
+        );
+
+} catch(error) {
+
+    console.error(
+        "Could not read admin session:",
+        error
+    );
+
+    admin = null;
 
 }
 
+
+/*
+   Admin-Login.html stores kaycyMartAdmin
+   as a JSON object containing:
+   id, name, email and role.
+
+   We only send the numeric admin ID
+   to the backend.
+*/
+
+if(
+    adminLoggedIn !== "true" ||
+    !admin ||
+    !admin.id ||
+    String(
+        admin.role || ""
+    ).toLowerCase() !== "admin"
+){
+
+    localStorage.removeItem(
+        "kaycyMartAdminLoggedIn"
+    );
+
+    localStorage.removeItem(
+        "kaycyMartAdmin"
+    );
+
+    window.location.href =
+        "Admin-Login.html";
+
+}
+
+
+/* IMPORTANT:
+   This is now the actual ID sent
+   in x-admin-user-id.
+*/
+
+const adminUserId =
+    String(
+        admin.id
+    );
+
+
+/* =====================================================
+   STATE
+===================================================== */
 
 let products = [];
 
@@ -1158,9 +1231,9 @@ let variantStockMap = {};
 let optionIdCounter = 1;
 
 
-/* =========================
+/* =====================================================
    HELPERS
-========================= */
+===================================================== */
 
 function escapeHtml(value){
 
@@ -1187,6 +1260,30 @@ function formatMoney(value){
 
 }
 
+
+/* =====================================================
+   ADMIN HEADERS
+===================================================== */
+
+function adminHeaders(
+    extraHeaders = {}
+){
+
+    return {
+
+        ...extraHeaders,
+
+        "x-admin-user-id":
+            adminUserId
+
+    };
+
+}
+
+
+/* =====================================================
+   SHOW MESSAGE
+===================================================== */
 
 function showMessage(
     message,
@@ -1215,18 +1312,27 @@ function showMessage(
 }
 
 
-/* =========================
+/* =====================================================
    IMAGE UPLOAD
-========================= */
+===================================================== */
 
 async function uploadImage(
     file,
     statusElement
 ){
 
-    if(!file) return "";
+    if(!file){
 
-    if(!file.type.startsWith("image/")){
+        return "";
+
+    }
+
+
+    if(
+        !file.type.startsWith(
+            "image/"
+        )
+    ){
 
         throw new Error(
             "Please select an image file."
@@ -1235,7 +1341,10 @@ async function uploadImage(
     }
 
 
-    if(file.size > 5 * 1024 * 1024){
+    if(
+        file.size >
+        5 * 1024 * 1024
+    ){
 
         throw new Error(
             "Image must be 5MB or smaller."
@@ -1262,14 +1371,17 @@ async function uploadImage(
         await fetch(
             `${API_URL}/api/admin/upload-image`,
             {
+
                 method:"POST",
 
-                headers:{
-                    "x-admin-user-id":
-                        adminUserId
-                },
+                headers:
+                    adminHeaders()
 
-                body:formData
+                ,
+
+                body:
+                    formData
+
             }
         );
 
@@ -1297,9 +1409,9 @@ async function uploadImage(
 }
 
 
-/* =========================
+/* =====================================================
    MAIN IMAGE
-========================= */
+===================================================== */
 
 document
     .getElementById(
@@ -1312,7 +1424,11 @@ document
             const file =
                 this.files[0];
 
-            if(!file) return;
+            if(!file){
+
+                return;
+
+            }
 
 
             const preview =
@@ -1350,7 +1466,8 @@ document
                 status.textContent =
                     error.message;
 
-                selectedImageUrl = "";
+                selectedImageUrl =
+                    "";
 
                 preview.style.display =
                     "none";
@@ -1361,9 +1478,9 @@ document
     );
 
 
-/* =========================
+/* =====================================================
    ADD OPTION
-========================= */
+===================================================== */
 
 function addOption(
     optionData = null
@@ -1421,9 +1538,9 @@ function addOption(
 }
 
 
-/* =========================
+/* =====================================================
    REMOVE OPTION
-========================= */
+===================================================== */
 
 function removeOption(
     optionId
@@ -1444,9 +1561,9 @@ function removeOption(
 }
 
 
-/* =========================
+/* =====================================================
    ADD VALUE
-========================= */
+===================================================== */
 
 function addOptionValue(
     optionId
@@ -1460,7 +1577,11 @@ function addOptionValue(
         );
 
 
-    if(!option) return;
+    if(!option){
+
+        return;
+
+    }
 
 
     option.values.push({
@@ -1479,9 +1600,9 @@ function addOptionValue(
 }
 
 
-/* =========================
+/* =====================================================
    REMOVE VALUE
-========================= */
+===================================================== */
 
 function removeOptionValue(
     optionId,
@@ -1496,7 +1617,11 @@ function removeOptionValue(
         );
 
 
-    if(!option) return;
+    if(!option){
+
+        return;
+
+    }
 
 
     if(
@@ -1525,9 +1650,9 @@ function removeOptionValue(
 }
 
 
-/* =========================
+/* =====================================================
    RENDER OPTIONS
-========================= */
+===================================================== */
 
 function renderOptions(){
 
@@ -1702,9 +1827,9 @@ function renderOptions(){
 }
 
 
-/* =========================
+/* =====================================================
    OPTION UPDATES
-========================= */
+===================================================== */
 
 function updateOptionName(
     optionId,
@@ -1757,11 +1882,15 @@ function updateOptionValue(
     }
 
 
-    option.values[valueIndex][field] =
+    option.values[
+        valueIndex
+    ][field] =
         value;
 
 
-    if(field === "name"){
+    if(
+        field === "name"
+    ){
 
         updateStockUI();
 
@@ -1770,9 +1899,9 @@ function updateOptionValue(
 }
 
 
-/* =========================
+/* =====================================================
    OPTION IMAGE UPLOAD
-========================= */
+===================================================== */
 
 async function handleOptionImageUpload(
     optionId,
@@ -1784,7 +1913,11 @@ async function handleOptionImageUpload(
         input.files[0];
 
 
-    if(!file) return;
+    if(!file){
+
+        return;
+
+    }
 
 
     try{
@@ -1797,7 +1930,11 @@ async function handleOptionImageUpload(
             );
 
 
-        if(!option) return;
+        if(!option){
+
+            return;
+
+        }
 
 
         const temporaryStatus = {
@@ -1836,9 +1973,9 @@ async function handleOptionImageUpload(
 }
 
 
-/* =========================
+/* =====================================================
    VARIANT KEY
-========================= */
+===================================================== */
 
 function makeVariantKey(
     combination
@@ -1854,9 +1991,9 @@ function makeVariantKey(
 }
 
 
-/* =========================
+/* =====================================================
    GENERATE COMBINATIONS
-========================= */
+===================================================== */
 
 function generateCombinations(
     options
@@ -1889,11 +2026,13 @@ function generateCombinations(
                                 ...combination,
 
                                 {
+
                                     option:
                                         option.name.trim(),
 
                                     value:
                                         value.name.trim()
+
                                 }
 
                             ]);
@@ -1917,9 +2056,9 @@ function generateCombinations(
 }
 
 
-/* =========================
+/* =====================================================
    STOCK UI
-========================= */
+===================================================== */
 
 function updateStockUI(){
 
@@ -2059,9 +2198,9 @@ function updateStockUI(){
 }
 
 
-/* =========================
+/* =====================================================
    FORM SUBMIT
-========================= */
+===================================================== */
 
 document
     .getElementById(
@@ -2289,15 +2428,11 @@ document
 
                             method,
 
-                            headers:{
-
-                                "Content-Type":
-                                    "application/json",
-
-                                "x-admin-user-id":
-                                    adminUserId
-
-                            },
+                            headers:
+                                adminHeaders({
+                                    "Content-Type":
+                                        "application/json"
+                                }),
 
                             body:
                                 JSON.stringify(
@@ -2355,6 +2490,12 @@ document
                     false;
 
 
+                /*
+                   editingProductId becomes null
+                   after resetForm(), so determine
+                   the button from the current form state.
+                */
+
                 submitBtn.textContent =
                     editingProductId
                         ? "Update Product"
@@ -2366,9 +2507,9 @@ document
     );
 
 
-/* =========================
+/* =====================================================
    LOAD PRODUCTS
-========================= */
+===================================================== */
 
 async function loadProducts(){
 
@@ -2378,12 +2519,11 @@ async function loadProducts(){
         );
 
 
-    grid.innerHTML =
-        `
+    grid.innerHTML = `
         <div class="loading">
             Loading products...
         </div>
-        `;
+    `;
 
 
     try{
@@ -2443,9 +2583,9 @@ async function loadProducts(){
 }
 
 
-/* =========================
+/* =====================================================
    RENDER PRODUCTS
-========================= */
+===================================================== */
 
 function renderProducts(
     list
@@ -2505,7 +2645,8 @@ function renderProducts(
                         {};
 
 
-                    let totalStock = 0;
+                    let totalStock =
+                        0;
 
 
                     if(options.length){
@@ -2702,9 +2843,9 @@ function renderProducts(
 }
 
 
-/* =========================
+/* =====================================================
    SEARCH
-========================= */
+===================================================== */
 
 function filterProducts(){
 
@@ -2763,9 +2904,9 @@ function filterProducts(){
 }
 
 
-/* =========================
+/* =====================================================
    EDIT PRODUCT
-========================= */
+===================================================== */
 
 async function editProduct(
     id
@@ -3017,9 +3158,9 @@ async function editProduct(
 }
 
 
-/* =========================
+/* =====================================================
    CANCEL EDIT
-========================= */
+===================================================== */
 
 function cancelEdit(){
 
@@ -3028,9 +3169,9 @@ function cancelEdit(){
 }
 
 
-/* =========================
+/* =====================================================
    RESET FORM
-========================= */
+===================================================== */
 
 function resetForm(){
 
@@ -3143,9 +3284,9 @@ function resetForm(){
 }
 
 
-/* =========================
+/* =====================================================
    DELETE PRODUCT
-========================= */
+===================================================== */
 
 async function deleteProduct(
     id
@@ -3161,7 +3302,11 @@ async function deleteProduct(
         );
 
 
-    if(!product) return;
+    if(!product){
+
+        return;
+
+    }
 
 
     const confirmed =
@@ -3186,10 +3331,8 @@ async function deleteProduct(
 
                     method:"DELETE",
 
-                    headers:{
-                        "x-admin-user-id":
-                            adminUserId
-                    }
+                    headers:
+                        adminHeaders()
 
                 }
             );
@@ -3247,9 +3390,9 @@ async function deleteProduct(
 }
 
 
-/* =========================
+/* =====================================================
    START
-========================= */
+===================================================== */
 
 loadProducts();
 
