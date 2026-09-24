@@ -1,0 +1,23 @@
+{
+  "name": "Kaycy Mart",
+  "short_name": "Kaycy Mart",
+  "description": "Shop products and manage your Kaycy Mart orders.",
+  "start_url": "./Index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#111827",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "Kaycy.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "Kaycy.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

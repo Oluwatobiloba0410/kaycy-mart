@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="description"
+    content="View and track your Kaycy Mart orders."
+>
 
 <title>My Orders | Kaycy Mart</title>
 
 <style>
+
+/* ===============================
+   RESET
+================================ */
 
 *{
     margin:0;
@@ -21,70 +35,127 @@ body{
     color:#111827;
 }
 
+
+/* ===============================
+   HEADER
+================================ */
+
 header{
     background:#111827;
     color:white;
-    padding:18px 20px;
+    padding:13px 5%;
 }
 
 .header-inner{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:20px;
 }
 
 .logo{
     color:#f59e0b;
-    font-size:22px;
-    font-weight:bold;
+    font-size:24px;
+    font-weight:800;
 }
 
 .back-link{
     color:white;
     text-decoration:none;
-    font-size:14px;
+    font-size:13px;
+    font-weight:bold;
 }
 
 .back-link:hover{
     color:#f59e0b;
 }
 
-.container{
-    max-width:1000px;
-    margin:30px auto;
-    padding:0 18px;
+
+/* ===============================
+   MARKET STRIP
+================================ */
+
+.market-strip{
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    padding:10px 5%;
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    flex-wrap:wrap;
+    color:#4b5563;
+    font-size:12px;
 }
 
+.market-strip span{
+    white-space:nowrap;
+}
+
+.market-strip strong{
+    color:#111827;
+}
+
+
+/* ===============================
+   PAGE HEADING
+================================ */
+
 .page-heading{
-    margin-bottom:25px;
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    padding:25px 5% 20px;
+}
+
+.page-heading-inner{
+    max-width:1200px;
+    margin:auto;
 }
 
 .page-heading h1{
-    font-size:28px;
-    margin-bottom:7px;
+    font-size:29px;
+    margin-bottom:6px;
 }
 
 .page-heading p{
     color:#6b7280;
+    font-size:13px;
 }
+
+
+/* ===============================
+   CONTAINER
+================================ */
+
+.container{
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 4%;
+}
+
+
+/* ===============================
+   MESSAGE
+================================ */
 
 .message{
     background:white;
+    border:1px solid #e5e7eb;
     border-radius:10px;
-    padding:30px 20px;
+    padding:40px 20px;
     text-align:center;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
 
 .message h2{
     margin-bottom:10px;
+    font-size:21px;
 }
 
 .message p{
     color:#6b7280;
     line-height:1.6;
+    font-size:13px;
 }
 
 .shop-btn{
@@ -96,15 +167,30 @@ header{
     text-decoration:none;
     border-radius:7px;
     font-weight:bold;
+    font-size:13px;
 }
+
+.shop-btn:hover{
+    background:#fbbf24;
+}
+
+
+/* ===============================
+   ORDER CARD
+================================ */
 
 .order-card{
     background:white;
+    border:1px solid #e5e7eb;
     border-radius:10px;
     padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:18px;
 }
+
+
+/* ===============================
+   ORDER HEADER
+================================ */
 
 .order-top{
     display:flex;
@@ -116,33 +202,39 @@ header{
 }
 
 .order-number{
-    font-size:18px;
-    font-weight:bold;
+    font-size:17px;
+    font-weight:800;
 }
 
 .order-date{
     color:#6b7280;
-    font-size:13px;
+    font-size:12px;
     margin-top:6px;
 }
 
 .status{
-    padding:8px 13px;
+    padding:7px 12px;
     border-radius:20px;
     background:#fff7df;
     color:#92400e;
-    font-size:13px;
+    font-size:12px;
     font-weight:bold;
     white-space:nowrap;
 }
 
+
+/* ===============================
+   TRACKING
+================================ */
+
 .tracking{
-    margin:25px 0 28px;
+    margin:23px 0 25px;
 }
 
 .tracking-title{
-    font-size:17px;
-    margin-bottom:22px;
+    font-size:15px;
+    font-weight:800;
+    margin-bottom:20px;
 }
 
 .tracking-line{
@@ -154,10 +246,10 @@ header{
 .tracking-line::before{
     content:"";
     position:absolute;
-    top:18px;
+    top:17px;
     left:10%;
     right:10%;
-    height:4px;
+    height:3px;
     background:#e5e7eb;
     z-index:0;
 }
@@ -170,9 +262,9 @@ header{
 }
 
 .tracking-icon{
-    width:36px;
-    height:36px;
-    margin:0 auto 9px;
+    width:34px;
+    height:34px;
+    margin:0 auto 8px;
     border-radius:50%;
     background:#e5e7eb;
     color:#6b7280;
@@ -180,6 +272,7 @@ header{
     align-items:center;
     justify-content:center;
     font-weight:bold;
+    font-size:13px;
 }
 
 .tracking-step.active .tracking-icon{
@@ -193,7 +286,7 @@ header{
 }
 
 .tracking-label{
-    font-size:12px;
+    font-size:11px;
     color:#6b7280;
     line-height:1.3;
 }
@@ -207,36 +300,40 @@ header{
 .cancelled-box{
     background:#fee2e2;
     color:#991b1b;
-    padding:14px;
+    padding:13px;
     border-radius:7px;
     font-weight:bold;
     margin:20px 0;
     text-align:center;
+    font-size:13px;
 }
 
-/* ================= PAYMENT ================= */
+
+/* ===============================
+   PAYMENT
+================================ */
 
 .payment-box{
     margin:20px 0;
-    padding:18px;
+    padding:17px;
     border-radius:9px;
     border:1px solid #e5e7eb;
     background:#fafafa;
 }
 
 .payment-title{
-    font-size:17px;
-    font-weight:bold;
-    margin-bottom:10px;
+    font-size:16px;
+    font-weight:800;
+    margin-bottom:9px;
 }
 
 .payment-status{
     display:inline-block;
-    padding:7px 11px;
+    padding:6px 10px;
     border-radius:20px;
-    font-size:13px;
+    font-size:11px;
     font-weight:bold;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .payment-pending{
@@ -260,24 +357,29 @@ header{
 }
 
 .payment-reference{
-    margin-top:8px;
-    font-size:14px;
+    margin-top:7px;
+    font-size:12px;
     color:#374151;
     word-break:break-word;
 }
 
+
+/* ===============================
+   BANK DETAILS
+================================ */
+
 .bank-details{
-    margin-top:14px;
-    padding:16px;
+    margin-top:13px;
+    padding:15px;
     background:#fff7df;
     border:1px solid #f59e0b;
     border-radius:8px;
 }
 
 .bank-title{
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
-    margin-bottom:12px;
+    margin-bottom:10px;
     color:#92400e;
 }
 
@@ -285,7 +387,7 @@ header{
     display:flex;
     justify-content:space-between;
     gap:15px;
-    padding:8px 0;
+    padding:7px 0;
     border-bottom:1px solid rgba(245,158,11,0.25);
 }
 
@@ -295,46 +397,52 @@ header{
 
 .bank-label{
     color:#6b7280;
-    font-size:13px;
+    font-size:12px;
 }
 
 .bank-value{
     font-weight:bold;
+    font-size:12px;
     text-align:right;
     word-break:break-word;
 }
 
 .payment-instruction{
-    margin-top:12px;
-    padding:12px;
+    margin-top:11px;
+    padding:11px;
     background:white;
     border-radius:7px;
     color:#374151;
-    font-size:13px;
+    font-size:12px;
     line-height:1.6;
 }
 
+
+/* ===============================
+   PAYMENT FORM
+================================ */
+
 .payment-form{
-    margin-top:15px;
+    margin-top:13px;
     background:white;
-    padding:15px;
+    padding:14px;
     border-radius:8px;
     border:1px solid #e5e7eb;
 }
 
 .payment-form label{
     display:block;
-    font-size:13px;
+    font-size:12px;
     font-weight:bold;
     margin-bottom:7px;
 }
 
 .payment-input{
     width:100%;
-    padding:12px;
+    padding:11px;
     border:1px solid #d1d5db;
     border-radius:7px;
-    font-size:14px;
+    font-size:13px;
     outline:none;
 }
 
@@ -344,18 +452,19 @@ header{
 
 .payment-submit{
     width:100%;
-    margin-top:10px;
-    padding:12px;
+    margin-top:9px;
+    padding:11px;
     background:#f59e0b;
     color:#111827;
     border:none;
     border-radius:7px;
     font-weight:bold;
+    font-size:13px;
     cursor:pointer;
 }
 
 .payment-submit:hover{
-    background:#d97706;
+    background:#fbbf24;
 }
 
 .payment-submit:disabled{
@@ -365,49 +474,59 @@ header{
 
 .payment-note{
     color:#6b7280;
-    font-size:12px;
+    font-size:11px;
     margin-top:8px;
     line-height:1.5;
 }
 
-/* ================= DETAILS ================= */
+
+/* ===============================
+   ORDER DETAILS
+================================ */
 
 .details{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
     margin:18px 0;
 }
 
 .detail{
     background:#f9fafb;
+    border:1px solid #f0f0f0;
     border-radius:7px;
-    padding:13px;
+    padding:12px;
 }
 
 .detail-label{
     color:#6b7280;
-    font-size:12px;
+    font-size:10px;
+    text-transform:uppercase;
+    font-weight:bold;
     margin-bottom:5px;
 }
 
 .detail-value{
     font-weight:bold;
+    font-size:12px;
     line-height:1.5;
     word-break:break-word;
 }
 
-.items-title{
-    font-size:17px;
-    margin-bottom:8px;
-}
 
-/* ================= ORDER ITEM ================= */
+/* ===============================
+   ITEMS
+================================ */
+
+.items-title{
+    font-size:16px;
+    margin-bottom:6px;
+}
 
 .item{
     display:flex;
-    gap:15px;
-    padding:15px 0;
+    gap:13px;
+    padding:14px 0;
     border-bottom:1px solid #e5e7eb;
 }
 
@@ -416,11 +535,13 @@ header{
 }
 
 .item-image{
-    width:75px;
-    height:75px;
+    width:72px;
+    height:72px;
     border-radius:8px;
-    object-fit:cover;
-    background:#f3f4f6;
+    object-fit:contain;
+    background:#f8fafc;
+    border:1px solid #f0f0f0;
+    padding:4px;
     flex-shrink:0;
 }
 
@@ -431,30 +552,31 @@ header{
 
 .item-name{
     font-weight:bold;
-    font-size:15px;
-    margin-bottom:6px;
+    font-size:13px;
+    line-height:1.4;
+    margin-bottom:5px;
 }
 
 .item-quantity{
     color:#6b7280;
-    font-size:13px;
-    margin-top:8px;
+    font-size:11px;
+    margin-top:7px;
 }
 
 .item-options{
-    margin-top:8px;
+    margin-top:7px;
     display:flex;
     flex-wrap:wrap;
-    gap:6px;
+    gap:4px;
 }
 
 .option-badge{
     background:#f3f4f6;
     border:1px solid #e5e7eb;
     color:#374151;
-    padding:6px 9px;
-    border-radius:6px;
-    font-size:12px;
+    padding:4px 6px;
+    border-radius:5px;
+    font-size:10px;
 }
 
 .option-badge strong{
@@ -462,9 +584,9 @@ header{
 }
 
 .item-variant-key{
-    margin-top:7px;
+    margin-top:5px;
     color:#9ca3af;
-    font-size:11px;
+    font-size:9px;
 }
 
 .item-right{
@@ -474,41 +596,53 @@ header{
 
 .item-price{
     color:#6b7280;
-    font-size:12px;
+    font-size:10px;
     margin-bottom:4px;
 }
 
 .item-total{
-    font-weight:bold;
+    font-weight:800;
+    font-size:13px;
     white-space:nowrap;
 }
+
+
+/* ===============================
+   TOTAL
+================================ */
 
 .total{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-top:10px;
-    padding-top:15px;
+    margin-top:8px;
+    padding-top:14px;
     border-top:2px solid #111827;
-    font-size:19px;
-    font-weight:bold;
+    font-size:18px;
+    font-weight:800;
 }
 
 .total-amount{
     color:#f59e0b;
+    font-size:21px;
 }
+
+
+/* ===============================
+   REFRESH
+================================ */
 
 .refresh-btn{
     display:block;
     width:100%;
     max-width:220px;
     margin:25px auto 0;
-    padding:13px 18px;
+    padding:12px 18px;
     background:#111827;
     color:white;
     border:none;
     border-radius:7px;
-    font-size:15px;
+    font-size:13px;
     font-weight:bold;
     cursor:pointer;
 }
@@ -517,25 +651,69 @@ header{
     background:#1f2937;
 }
 
-/* ================= MOBILE ================= */
 
-@media(max-width:600px){
+/* ===============================
+   FOOTER
+================================ */
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    margin-top:40px;
+}
+
+footer h2{
+    color:#f59e0b;
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#d1d5db;
+    font-size:12px;
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:700px){
 
     header{
-        padding:15px;
+        padding:12px 4%;
     }
 
     .logo{
-        font-size:19px;
+        font-size:21px;
     }
 
-    .container{
-        margin:20px auto;
-        padding:0 14px;
+    .market-strip{
+        justify-content:flex-start;
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        gap:18px;
+        padding-left:4%;
+        padding-right:4%;
+        scrollbar-width:none;
+    }
+
+    .market-strip::-webkit-scrollbar{
+        display:none;
+    }
+
+    .page-heading{
+        padding:21px 4% 17px;
     }
 
     .page-heading h1{
         font-size:25px;
+    }
+
+    .container{
+        margin:16px auto;
+        padding:0 3%;
     }
 
     .order-card{
@@ -544,6 +722,10 @@ header{
 
     .order-top{
         flex-direction:column;
+    }
+
+    .status{
+        align-self:flex-start;
     }
 
     .details{
@@ -559,30 +741,26 @@ header{
         min-width:500px;
     }
 
-    .tracking-label{
-        font-size:11px;
-    }
-
     .item{
         align-items:flex-start;
     }
 
     .item-image{
-        width:60px;
-        height:60px;
+        width:62px;
+        height:62px;
     }
 
     .item-right{
-        font-size:13px;
+        font-size:12px;
     }
 
     .item-total{
-        font-size:14px;
+        font-size:13px;
     }
 
     .bank-row{
         flex-direction:column;
-        gap:3px;
+        gap:2px;
     }
 
     .bank-value{
@@ -592,82 +770,152 @@ header{
 }
 
 </style>
+
 </head>
 
 <body>
 
+
+<!-- ===============================
+     HEADER
+================================ -->
+
 <header>
 
-    <div class="header-inner">
+<div class="header-inner">
 
-        <div class="logo">
-            🛒 Kaycy Mart
-        </div>
+<div class="logo">
+    🛒 Kaycy Mart
+</div>
 
-        <a
-            href="Products.html"
-            class="back-link"
-        >
-            ← Continue Shopping
-        </a>
+<a
+    href="Products.html"
+    class="back-link"
+>
+    ← Continue Shopping
+</a>
 
-    </div>
+</div>
 
 </header>
 
 
-<div class="container">
+<!-- ===============================
+     MARKET STRIP
+================================ -->
 
-    <div class="page-heading">
+<div class="market-strip">
 
-        <h1>
-            My Orders
-        </h1>
+<span>
+    📦 <strong>Track Orders</strong>
+</span>
 
-        <p>
-            View your orders, track their status and manage your payments.
-        </p>
+<span>
+    💳 <strong>Payment Updates</strong>
+</span>
 
-    </div>
+<span>
+    🔄 <strong>Live Order Status</strong>
+</span>
 
-
-    <div id="ordersContainer">
-
-        <div class="message">
-
-            <h2>
-                Loading Orders...
-            </h2>
-
-            <p>
-                Please wait while we get your orders.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <button
-        type="button"
-        class="refresh-btn"
-        onclick="loadOrders()"
-    >
-        🔄 Refresh Orders
-    </button>
+<span>
+    🛍️ <strong>Kaycy Mart</strong>
+</span>
 
 </div>
 
 
+<!-- ===============================
+     PAGE HEADING
+================================ -->
+
+<section class="page-heading">
+
+<div class="page-heading-inner">
+
+<h1>
+    My Orders
+</h1>
+
+<p>
+    View your orders, track their progress and manage payments.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ===============================
+     MAIN
+================================ -->
+
+<div class="container">
+
+<div id="ordersContainer">
+
+<div class="message">
+
+<h2>
+    Loading Orders...
+</h2>
+
+<p>
+    Please wait while we get your orders.
+</p>
+
+</div>
+
+</div>
+
+
+<button
+    type="button"
+    class="refresh-btn"
+    onclick="loadOrders()"
+>
+    🔄 Refresh Orders
+</button>
+
+</div>
+
+
+<!-- ===============================
+     FOOTER
+================================ -->
+
+<footer>
+
+<h2>
+    🛒 Kaycy Mart
+</h2>
+
+<p>
+    Your online marketplace for everyday products.
+</p>
+
+<br>
+
+<p>
+    © 2026 Kaycy Mart. All Rights Reserved.
+</p>
+
+</footer>
+
+
 <script>
 
-/* =========================
-BACKEND
-========================= */
+/* ===============================
+   BACKEND
+================================ */
 
 const API_URL =
     "https://kaycy-backend.onrender.com";
 
+
+/* ===============================
+   CURRENT USER
+================================ */
 
 let currentUser = null;
 
@@ -689,38 +937,59 @@ catch(error){
 }
 
 
-/* =========================
-SECURITY
-========================= */
+/* ===============================
+   SECURITY
+================================ */
 
 function escapeHTML(value){
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
 
-/* =========================
-MONEY
-========================= */
+/* ===============================
+   MONEY
+================================ */
 
 function formatMoney(value){
 
     return "₦" +
-        (Number(value) || 0)
-        .toLocaleString("en-NG");
+        (
+            Number(value) || 0
+        )
+        .toLocaleString(
+            "en-NG"
+        );
 
 }
 
 
-/* =========================
-DATE
-========================= */
+/* ===============================
+   DATE
+================================ */
 
 function formatDate(value){
 
@@ -735,20 +1004,33 @@ function formatDate(value){
         new Date(value);
 
 
-    if(isNaN(date.getTime())){
+    if(
+        isNaN(
+            date.getTime()
+        )
+    ){
 
         date =
             new Date(
                 String(value)
-                .replace(" ","T") + "Z"
+                .replace(
+                    " ",
+                    "T"
+                ) + "Z"
             );
 
     }
 
 
-    if(isNaN(date.getTime())){
+    if(
+        isNaN(
+            date.getTime()
+        )
+    ){
 
-        return escapeHTML(value);
+        return escapeHTML(
+            value
+        );
 
     }
 
@@ -764,9 +1046,9 @@ function formatDate(value){
 }
 
 
-/* =========================
-MESSAGE
-========================= */
+/* ===============================
+   MESSAGE
+================================ */
 
 function showMessage(
     title,
@@ -784,15 +1066,22 @@ function showMessage(
     let button = "";
 
 
-    if(buttonText && buttonLink){
+    if(
+        buttonText &&
+        buttonLink
+    ){
 
         button = `
 
             <a
-                href="${escapeHTML(buttonLink)}"
+                href="${escapeHTML(
+                    buttonLink
+                )}"
                 class="shop-btn"
             >
-                ${escapeHTML(buttonText)}
+                ${escapeHTML(
+                    buttonText
+                )}
             </a>
 
         `;
@@ -805,11 +1094,15 @@ function showMessage(
         <div class="message">
 
             <h2>
-                ${escapeHTML(title)}
+                ${escapeHTML(
+                    title
+                )}
             </h2>
 
             <p>
-                ${escapeHTML(text)}
+                ${escapeHTML(
+                    text
+                )}
             </p>
 
             ${button}
@@ -821,11 +1114,13 @@ function showMessage(
 }
 
 
-/* =========================
-TRACKING
-========================= */
+/* ===============================
+   TRACKING
+================================ */
 
-function createTracking(status){
+function createTracking(
+    status
+){
 
     const stages = [
 
@@ -838,12 +1133,16 @@ function createTracking(status){
 
 
     const currentIndex =
-        stages.indexOf(status);
+        stages.indexOf(
+            status
+        );
 
 
     if(
-        String(status).toLowerCase()
-        === "cancelled"
+        String(status)
+        .toLowerCase()
+        ===
+        "cancelled"
     ){
 
         return `
@@ -873,7 +1172,10 @@ function createTracking(status){
 
 
     stages.forEach(
-        function(stage,index){
+        function(
+            stage,
+            index
+        ){
 
             let className = "";
 
@@ -883,23 +1185,28 @@ function createTracking(status){
                 index < currentIndex
             ){
 
-                className = "completed";
+                className =
+                    "completed";
 
             }
+
             else if(
                 currentIndex === index
             ){
 
-                className = "active";
+                className =
+                    "active";
 
             }
 
 
-            let icon =
+            const icon =
                 currentIndex >= 0 &&
                 index < currentIndex
                     ? "✓"
-                    : String(index + 1);
+                    : String(
+                        index + 1
+                    );
 
 
             html += `
@@ -913,7 +1220,9 @@ function createTracking(status){
                     </div>
 
                     <div class="tracking-label">
-                        ${escapeHTML(stage)}
+                        ${escapeHTML(
+                            stage
+                        )}
                     </div>
 
                 </div>
@@ -938,11 +1247,13 @@ function createTracking(status){
 }
 
 
-/* =========================
-PAYMENT
-========================= */
+/* ===============================
+   PAYMENT
+================================ */
 
-function createPaymentSection(order){
+function createPaymentSection(
+    order
+){
 
     const paymentStatus =
         order.payment_status ||
@@ -975,6 +1286,7 @@ function createPaymentSection(order){
             "payment-submitted";
 
     }
+
     else if(
         paymentStatus ===
         "Payment Confirmed"
@@ -984,6 +1296,7 @@ function createPaymentSection(order){
             "payment-confirmed";
 
     }
+
     else if(
         paymentStatus ===
         "Payment Failed"
@@ -995,8 +1308,12 @@ function createPaymentSection(order){
     }
 
 
-    let bankDetailsHTML = "";
-    let formHTML = "";
+    let bankDetailsHTML =
+        "";
+
+
+    let formHTML =
+        "";
 
 
     const method =
@@ -1004,6 +1321,10 @@ function createPaymentSection(order){
             paymentMethod
         ).toLowerCase();
 
+
+    /* ===============================
+       BANK DETAILS
+    ================================ */
 
     if(
         paymentStatus ===
@@ -1065,9 +1386,10 @@ function createPaymentSection(order){
 
                 <div class="payment-instruction">
 
-                    Transfer the exact order amount to the account above.
-                    After completing the transfer, enter the payment reference
-                    from your OPay transaction below.
+                    Transfer the exact order amount to
+                    the account above. After completing
+                    the transfer, enter your payment
+                    reference below.
 
                 </div>
 
@@ -1077,54 +1399,91 @@ function createPaymentSection(order){
 
     }
 
+
+    /* ===============================
+       PAYMENT FORM
+    ================================ */
 
     if(
         paymentStatus ===
         "Payment Pending"
     ){
 
-        formHTML = `
+        if(
+            method.includes("cash") ||
+            method.includes("delivery")
+        ){
 
-            <div class="payment-form">
-
-                <label
-                    for="paymentRef-${escapeHTML(order.id)}"
-                >
-                    Payment Reference
-                </label>
-
-
-                <input
-                    type="text"
-                    class="payment-input"
-                    id="paymentRef-${escapeHTML(order.id)}"
-                    placeholder="Enter your OPay payment reference"
-                    autocomplete="off"
-                >
-
-
-                <button
-                    type="button"
-                    class="payment-submit"
-                    id="paymentBtn-${escapeHTML(order.id)}"
-                    onclick="submitPayment('${escapeHTML(order.id)}')"
-                >
-                    💳 I've Made Payment
-                </button>
-
+            formHTML = `
 
                 <div class="payment-note">
 
-                    Only submit this after you have completed
-                    the transfer.
+                    💵 You selected Cash on Delivery.
+                    No payment reference is required now.
+                    Payment will be handled when your order
+                    is delivered.
 
                 </div>
 
-            </div>
+            `;
 
-        `;
+        }
+
+        else{
+
+            formHTML = `
+
+                <div class="payment-form">
+
+                    <label
+                        for="paymentRef-${escapeHTML(
+                            order.id
+                        )}"
+                    >
+                        Payment Reference
+                    </label>
+
+
+                    <input
+                        type="text"
+                        class="payment-input"
+                        id="paymentRef-${escapeHTML(
+                            order.id
+                        )}"
+                        placeholder="Enter your OPay payment reference"
+                        autocomplete="off"
+                    >
+
+
+                    <button
+                        type="button"
+                        class="payment-submit"
+                        id="paymentBtn-${escapeHTML(
+                            order.id
+                        )}"
+                        onclick="submitPayment('${escapeHTML(
+                            order.id
+                        )}')"
+                    >
+                        💳 I've Made Payment
+                    </button>
+
+
+                    <div class="payment-note">
+
+                        Only submit this after you have
+                        completed the bank transfer.
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
 
     }
+
     else if(
         paymentStatus ===
         "Payment Submitted"
@@ -1143,6 +1502,7 @@ function createPaymentSection(order){
         `;
 
     }
+
     else if(
         paymentStatus ===
         "Payment Confirmed"
@@ -1159,6 +1519,7 @@ function createPaymentSection(order){
         `;
 
     }
+
     else if(
         paymentStatus ===
         "Payment Failed"
@@ -1191,7 +1552,9 @@ function createPaymentSection(order){
             <span
                 class="payment-status ${statusClass}"
             >
-                ${escapeHTML(paymentStatus)}
+                ${escapeHTML(
+                    paymentStatus
+                )}
             </span>
 
 
@@ -1211,7 +1574,7 @@ function createPaymentSection(order){
 
                     </div>
 
-                  `
+                `
                 : ""
             }
 
@@ -1227,13 +1590,17 @@ function createPaymentSection(order){
 }
 
 
-/* =========================
-SUBMIT PAYMENT
-========================= */
+/* ===============================
+   SUBMIT PAYMENT
+================================ */
 
-async function submitPayment(orderId){
+async function submitPayment(
+    orderId
+){
 
-    if(!currentUser){
+    if(
+        !currentUser
+    ){
 
         alert(
             "Please login again."
@@ -1246,17 +1613,22 @@ async function submitPayment(orderId){
 
     const input =
         document.getElementById(
-            "paymentRef-" + orderId
+            "paymentRef-" +
+            orderId
         );
 
 
     const button =
         document.getElementById(
-            "paymentBtn-" + orderId
+            "paymentBtn-" +
+            orderId
         );
 
 
-    if(!input || !button){
+    if(
+        !input ||
+        !button
+    ){
 
         return;
 
@@ -1267,7 +1639,9 @@ async function submitPayment(orderId){
         input.value.trim();
 
 
-    if(!reference){
+    if(
+        !reference
+    ){
 
         alert(
             "Please enter your payment reference."
@@ -1280,7 +1654,9 @@ async function submitPayment(orderId){
     }
 
 
-    button.disabled = true;
+    button.disabled =
+        true;
+
 
     button.textContent =
         "Submitting...";
@@ -1293,7 +1669,9 @@ async function submitPayment(orderId){
 
                 API_URL +
                 "/api/orders/" +
-                encodeURIComponent(orderId) +
+                encodeURIComponent(
+                    orderId
+                ) +
                 "/payment",
 
                 {
@@ -1327,7 +1705,9 @@ async function submitPayment(orderId){
             await response.json();
 
 
-        if(!response.ok){
+        if(
+            !response.ok
+        ){
 
             throw new Error(
                 data.message ||
@@ -1345,6 +1725,7 @@ async function submitPayment(orderId){
         await loadOrders();
 
     }
+
     catch(error){
 
         console.error(
@@ -1362,7 +1743,9 @@ async function submitPayment(orderId){
         );
 
 
-        button.disabled = false;
+        button.disabled =
+            false;
+
 
         button.textContent =
             "💳 I've Made Payment";
@@ -1372,11 +1755,13 @@ async function submitPayment(orderId){
 }
 
 
-/* =========================
-PARSE SELECTED OPTIONS
-========================= */
+/* ===============================
+   SELECTED OPTIONS
+================================ */
 
-function getSelectedOptions(item){
+function getSelectedOptions(
+    item
+){
 
     let selectedOptions =
         item.selected_options ??
@@ -1397,9 +1782,11 @@ function getSelectedOptions(item){
                 );
 
         }
+
         catch(error){
 
-            selectedOptions = [];
+            selectedOptions =
+                [];
 
         }
 
@@ -1415,11 +1802,13 @@ function getSelectedOptions(item){
 }
 
 
-/* =========================
-CREATE OPTION BADGES
-========================= */
+/* ===============================
+   OPTION BADGES
+================================ */
 
-function createOptionsHTML(item){
+function createOptionsHTML(
+    item
+){
 
     const selectedOptions =
         getSelectedOptions(
@@ -1437,7 +1826,7 @@ function createOptionsHTML(item){
 
 
     if(
-        validOptions.length === 0
+        !validOptions.length
     ){
 
         return "";
@@ -1451,30 +1840,30 @@ function createOptionsHTML(item){
 
             ${
                 validOptions
-                    .map(
-                        function(option){
+                .map(
+                    function(option){
 
-                            return `
+                        return `
 
-                                <span class="option-badge">
+                            <span class="option-badge">
 
-                                    <strong>
-                                        ${escapeHTML(
-                                            option.name
-                                        )}:
-                                    </strong>
-
+                                <strong>
                                     ${escapeHTML(
-                                        option.value
-                                    )}
+                                        option.name
+                                    )}:
+                                </strong>
 
-                                </span>
+                                ${escapeHTML(
+                                    option.value
+                                )}
 
-                            `;
+                            </span>
 
-                        }
-                    )
-                    .join("")
+                        `;
+
+                    }
+                )
+                .join("")
             }
 
         </div>
@@ -1484,13 +1873,17 @@ function createOptionsHTML(item){
 }
 
 
-/* =========================
-VARIANT KEY
-========================= */
+/* ===============================
+   VARIANT KEY
+================================ */
 
-function createVariantKey(item){
+function createVariantKey(
+    item
+){
 
-    if(item.variant_key){
+    if(
+        item.variant_key
+    ){
 
         return String(
             item.variant_key
@@ -1499,7 +1892,9 @@ function createVariantKey(item){
     }
 
 
-    if(item.variantKey){
+    if(
+        item.variantKey
+    ){
 
         return String(
             item.variantKey
@@ -1523,10 +1918,14 @@ function createVariantKey(item){
         )
         .sort(
             (a,b) =>
-                String(a.name)
-                    .localeCompare(
-                        String(b.name)
+                String(
+                    a.name
+                )
+                .localeCompare(
+                    String(
+                        b.name
                     )
+                )
         )
         .map(
             option =>
@@ -1537,9 +1936,9 @@ function createVariantKey(item){
 }
 
 
-/* =========================
-LOAD ORDERS
-========================= */
+/* ===============================
+   LOAD ORDERS
+================================ */
 
 async function loadOrders(){
 
@@ -1549,7 +1948,9 @@ async function loadOrders(){
         );
 
 
-    if(!currentUser){
+    if(
+        !currentUser
+    ){
 
         showMessage(
 
@@ -1569,9 +1970,12 @@ async function loadOrders(){
 
 
     if(
-        currentUser.id === undefined ||
-        currentUser.id === null ||
-        currentUser.id === ""
+        currentUser.id ===
+        undefined ||
+        currentUser.id ===
+        null ||
+        currentUser.id ===
+        ""
     ){
 
         showMessage(
@@ -1616,7 +2020,9 @@ async function loadOrders(){
                 API_URL +
                 "/api/orders?userId=" +
                 encodeURIComponent(
-                    Number(currentUser.id)
+                    Number(
+                        currentUser.id
+                    )
                 )
 
             );
@@ -1632,7 +2038,9 @@ async function loadOrders(){
         );
 
 
-        if(!response.ok){
+        if(
+            !response.ok
+        ){
 
             throw new Error(
                 data.message ||
@@ -1645,14 +2053,22 @@ async function loadOrders(){
         let orders = [];
 
 
-        if(Array.isArray(data)){
+        if(
+            Array.isArray(
+                data
+            )
+        ){
 
-            orders = data;
+            orders =
+                data;
 
         }
+
         else if(
             data &&
-            Array.isArray(data.orders)
+            Array.isArray(
+                data.orders
+            )
         ){
 
             orders =
@@ -1661,7 +2077,9 @@ async function loadOrders(){
         }
 
 
-        if(!orders.length){
+        if(
+            !orders.length
+        ){
 
             showMessage(
 
@@ -1682,18 +2100,19 @@ async function loadOrders(){
 
         container.innerHTML =
             orders
-                .map(
-                    function(order){
+            .map(
+                function(order){
 
-                        return createOrderCard(
-                            order
-                        );
+                    return createOrderCard(
+                        order
+                    );
 
-                    }
-                )
-                .join("");
+                }
+            )
+            .join("");
 
     }
+
     catch(error){
 
         console.error(
@@ -1716,11 +2135,13 @@ async function loadOrders(){
 }
 
 
-/* =========================
-ORDER CARD
-========================= */
+/* ===============================
+   ORDER CARD
+================================ */
 
-function createOrderCard(order){
+function createOrderCard(
+    order
+){
 
     const orderNumber =
         order.order_number ||
@@ -1776,12 +2197,17 @@ function createOrderCard(order){
     let items = [];
 
 
-    if(Array.isArray(order.items)){
+    if(
+        Array.isArray(
+            order.items
+        )
+    ){
 
         items =
             order.items;
 
     }
+
     else if(
         Array.isArray(
             order.order_items
@@ -1794,154 +2220,163 @@ function createOrderCard(order){
     }
 
 
-    let itemsHTML = "";
+    let itemsHTML =
+        "";
 
 
-    if(items.length){
+    if(
+        items.length
+    ){
 
         itemsHTML =
             items
-                .map(
-                    function(item){
+            .map(
+                function(item){
 
-                        const name =
-                            item.product_name ||
-                            item.productName ||
-                            item.name ||
-                            "Product";
-
-
-                        const quantity =
-                            Number(
-                                item.quantity
-                            ) || 1;
+                    const name =
+                        item.product_name ||
+                        item.productName ||
+                        item.name ||
+                        "Product";
 
 
-                        const price =
-                            Number(
-                                item.price
-                            ) || 0;
+                    const quantity =
+                        Number(
+                            item.quantity
+                        ) || 1;
 
 
-                        const image =
-                            item.product_image ||
-                            item.productImage ||
-                            "";
+                    const price =
+                        Number(
+                            item.price
+                        ) || 0;
 
 
-                        const optionsHTML =
-                            createOptionsHTML(
-                                item
-                            );
+                    const image =
+                        item.product_image ||
+                        item.productImage ||
+                        "";
 
 
-                        const variantKey =
-                            createVariantKey(
-                                item
-                            );
+                    const optionsHTML =
+                        createOptionsHTML(
+                            item
+                        );
 
 
-                        const imageHTML =
-                            image
-                            ? `
-
-                                <img
-                                    src="${escapeHTML(image)}"
-                                    alt="${escapeHTML(name)}"
-                                    class="item-image"
-                                    onerror="this.style.display='none';"
-                                >
-
-                              `
-                            : `
-
-                                <div class="item-image"></div>
-
-                              `;
+                    const variantKey =
+                        createVariantKey(
+                            item
+                        );
 
 
-                        const variantKeyHTML =
-                            variantKey
-                            ? `
+                    const imageHTML =
+                        image
+                        ? `
 
-                                <div class="item-variant-key">
+                            <img
+                                src="${escapeHTML(
+                                    image
+                                )}"
+                                alt="${escapeHTML(
+                                    name
+                                )}"
+                                class="item-image"
+                                onerror="this.style.display='none';"
+                            >
 
-                                    Variant:
+                        `
+                        : `
+
+                            <div class="item-image"></div>
+
+                        `;
+
+
+                    const variantKeyHTML =
+                        variantKey
+                        ? `
+
+                            <div class="item-variant-key">
+
+                                Variant:
+                                ${escapeHTML(
+                                    variantKey
+                                )}
+
+                            </div>
+
+                        `
+                        : "";
+
+
+                    return `
+
+                        <div class="item">
+
+                            ${imageHTML}
+
+
+                            <div class="item-info">
+
+                                <div class="item-name">
+
                                     ${escapeHTML(
-                                        variantKey
+                                        name
                                     )}
 
                                 </div>
 
-                              `
-                            : "";
+
+                                ${optionsHTML}
 
 
-                        return `
-
-                            <div class="item">
-
-                                ${imageHTML}
+                                ${variantKeyHTML}
 
 
-                                <div class="item-info">
+                                <div class="item-quantity">
 
-                                    <div class="item-name">
-
-                                        ${escapeHTML(
-                                            name
-                                        )}
-
-                                    </div>
-
-
-                                    ${optionsHTML}
-
-
-                                    ${variantKeyHTML}
-
-
-                                    <div class="item-quantity">
-
-                                        Quantity:
-                                        ${quantity}
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="item-right">
-
-                                    <div class="item-price">
-
-                                        ${formatMoney(
-                                            price
-                                        )}
-                                        each
-
-                                    </div>
-
-
-                                    <div class="item-total">
-
-                                        ${formatMoney(
-                                            price * quantity
-                                        )}
-
-                                    </div>
+                                    Quantity:
+                                    ${quantity}
 
                                 </div>
 
                             </div>
 
-                        `;
 
-                    }
-                )
-                .join("");
+                            <div class="item-right">
+
+                                <div class="item-price">
+
+                                    ${formatMoney(
+                                        price
+                                    )}
+                                    each
+
+                                </div>
+
+
+                                <div class="item-total">
+
+                                    ${formatMoney(
+                                        price *
+                                        quantity
+                                    )}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
 
     }
+
     else{
 
         itemsHTML = `
@@ -1959,7 +2394,9 @@ function createOrderCard(order){
 
                 <div class="item-total">
 
-                    ${formatMoney(total)}
+                    ${formatMoney(
+                        total
+                    )}
 
                 </div>
 
@@ -2010,10 +2447,14 @@ function createOrderCard(order){
             </div>
 
 
-            ${createTracking(status)}
+            ${createTracking(
+                status
+            )}
 
 
-            ${createPaymentSection(order)}
+            ${createPaymentSection(
+                order
+            )}
 
 
             <div class="details">
@@ -2123,13 +2564,14 @@ function createOrderCard(order){
 }
 
 
-/* =========================
-START
-========================= */
+/* ===============================
+   START
+================================ */
 
 loadOrders();
 
 </script>
 
 </body>
+
 </html>

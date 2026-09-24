@@ -1,8 +1,12 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard | Kaycy Mart</title><style>
+
+<title>Admin Dashboard | Kaycy Mart</title>
+
+<style>
 
 *{
     margin:0;
@@ -16,18 +20,24 @@ body{
     color:#111827;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 header{
     background:#111827;
     color:white;
-    padding:16px 20px;
     position:sticky;
     top:0;
     z-index:1000;
+    box-shadow:0 2px 12px rgba(0,0,0,.12);
 }
 
 .header-container{
-    max-width:1200px;
+    max-width:1400px;
+    min-height:68px;
     margin:auto;
+    padding:10px 18px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -35,52 +45,93 @@ header{
 }
 
 .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
     color:white;
     text-decoration:none;
-    font-size:22px;
+    min-width:0;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    background:#f59e0b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+    flex-shrink:0;
+}
+
+.logo-text{
+    min-width:0;
+}
+
+.logo-title{
+    font-size:20px;
     font-weight:bold;
+    white-space:nowrap;
+}
+
+.logo-subtitle{
+    color:#cbd5e1;
+    font-size:11px;
+    margin-top:2px;
 }
 
 .admin-info{
     display:flex;
     align-items:center;
-    gap:12px;
-    font-size:14px;
+    gap:10px;
+}
+
+.admin-name{
+    color:#e5e7eb;
+    font-size:13px;
 }
 
 .logout{
     background:#f59e0b;
     color:#111827;
     border:none;
-    padding:9px 14px;
-    border-radius:6px;
+    padding:9px 13px;
+    border-radius:8px;
     font-weight:bold;
     cursor:pointer;
 }
 
 .logout:hover{
     background:#d97706;
+    color:white;
 }
+
+/* =========================
+   NAVIGATION
+========================= */
 
 .admin-nav{
     background:#1f2937;
-    padding:10px 20px;
+    border-bottom:1px solid #374151;
 }
 
 .nav-container{
-    max-width:1200px;
+    max-width:1400px;
     margin:auto;
+    padding:8px 18px;
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+    gap:6px;
+    overflow-x:auto;
 }
 
 .admin-nav a{
-    color:white;
+    color:#e5e7eb;
     text-decoration:none;
-    padding:8px 12px;
-    border-radius:6px;
-    font-size:14px;
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:13px;
+    white-space:nowrap;
 }
 
 .admin-nav a:hover,
@@ -89,10 +140,14 @@ header{
     color:#111827;
 }
 
+/* =========================
+   PAGE
+========================= */
+
 .container{
-    max-width:1200px;
-    margin:25px auto;
-    padding:0 15px;
+    max-width:1400px;
+    margin:auto;
+    padding:24px 16px 45px;
 }
 
 .page-title{
@@ -102,48 +157,93 @@ header{
 .page-title h1{
     font-size:28px;
     margin-bottom:6px;
+    color:#111827;
 }
 
 .page-title p{
     color:#6b7280;
+    font-size:14px;
 }
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+    padding:12px 14px;
+    border-radius:9px;
+    margin-bottom:15px;
+    display:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* =========================
+   STATS
+========================= */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    gap:15px;
+    gap:14px;
     margin-bottom:25px;
 }
 
 .stat-card{
     background:white;
-    border-radius:10px;
-    padding:18px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    border:1px solid #e5e7eb;
+    border-radius:13px;
+    padding:17px;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    transition:.2s;
+}
+
+.stat-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(0,0,0,.07);
+}
+
+.stat-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:10px;
 }
 
 .stat-icon{
-    font-size:25px;
-    margin-bottom:8px;
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    background:#fff7ed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
 }
 
 .stat-title{
     color:#6b7280;
-    font-size:13px;
+    font-size:12px;
     margin-bottom:5px;
 }
 
 .stat-value{
-    font-size:24px;
+    font-size:23px;
     font-weight:bold;
+    color:#111827;
 }
+
+/* =========================
+   CARD
+========================= */
 
 .card{
     background:white;
-    border-radius:10px;
+    border:1px solid #e5e7eb;
+    border-radius:13px;
     padding:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
-    margin-bottom:20px;
+    box-shadow:0 2px 9px rgba(0,0,0,.04);
 }
 
 .card-header{
@@ -151,64 +251,71 @@ header{
     justify-content:space-between;
     align-items:center;
     gap:10px;
-    margin-bottom:15px;
+    margin-bottom:16px;
     flex-wrap:wrap;
 }
 
 .card-header h2{
     font-size:20px;
+    color:#111827;
 }
 
 .refresh-btn{
     background:#f59e0b;
     color:#111827;
     border:none;
-    padding:10px 15px;
-    border-radius:7px;
+    padding:9px 14px;
+    border-radius:8px;
     font-weight:bold;
     cursor:pointer;
 }
 
 .refresh-btn:hover{
     background:#d97706;
+    color:white;
 }
 
+/* =========================
+   ORDER TOOLS
+========================= */
+
 .order-tools{
-    background:#f9fafb;
+    background:#f8fafc;
     border:1px solid #e5e7eb;
-    border-radius:8px;
-    padding:15px;
-    margin-bottom:15px;
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:16px;
 }
 
 .search-box{
     width:100%;
-    padding:12px 14px;
+    padding:11px 13px;
     border:1px solid #d1d5db;
-    border-radius:7px;
+    border-radius:8px;
     font-size:14px;
     outline:none;
-    margin-bottom:12px;
+    background:white;
+    margin-bottom:11px;
 }
 
 .search-box:focus{
     border-color:#f59e0b;
-    box-shadow:0 0 0 2px rgba(245,158,11,0.15);
+    box-shadow:0 0 0 3px rgba(245,158,11,.12);
 }
 
 .filters{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
-    gap:10px;
+    gap:9px;
 }
 
 .filter-select{
     width:100%;
     padding:10px;
     border:1px solid #d1d5db;
-    border-radius:7px;
+    border-radius:8px;
     background:white;
-    font-size:14px;
+    font-size:13px;
     outline:none;
 }
 
@@ -218,12 +325,18 @@ header{
 
 .results-info{
     color:#6b7280;
-    font-size:13px;
-    margin-top:12px;
+    font-size:12px;
+    margin-top:10px;
 }
+
+/* =========================
+   TABLE
+========================= */
 
 .table-wrapper{
     overflow-x:auto;
+    border:1px solid #e5e7eb;
+    border-radius:9px;
 }
 
 table{
@@ -237,24 +350,43 @@ td{
     padding:12px 10px;
     border-bottom:1px solid #e5e7eb;
     text-align:left;
-    font-size:14px;
+    font-size:13px;
 }
 
 th{
-    background:#f9fafb;
+    background:#f8fafc;
     color:#374151;
-    font-size:13px;
+    font-size:12px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+tr:last-child td{
+    border-bottom:none;
 }
 
 tr:hover td{
-    background:#fafafa;
+    background:#fffdf8;
 }
 
+.order-number{
+    font-weight:bold;
+    color:#111827;
+}
+
+.amount{
+    font-weight:bold;
+}
+
+/* =========================
+   STATUS
+========================= */
+
 .status-select{
-    padding:8px;
+    padding:7px 8px;
     border:1px solid #d1d5db;
-    border-radius:6px;
-    font-size:13px;
+    border-radius:7px;
+    font-size:12px;
     background:white;
     outline:none;
 }
@@ -283,14 +415,18 @@ tr:hover td{
     font-weight:bold;
 }
 
+/* =========================
+   DETAILS
+========================= */
+
 .details-btn{
     display:inline-block;
     background:#111827;
     color:white;
     text-decoration:none;
-    padding:8px 11px;
-    border-radius:6px;
-    font-size:13px;
+    padding:7px 10px;
+    border-radius:7px;
+    font-size:12px;
     font-weight:bold;
     white-space:nowrap;
 }
@@ -299,24 +435,90 @@ tr:hover td{
     background:#374151;
 }
 
+/* =========================
+   EMPTY / LOADING
+========================= */
+
 .empty{
     text-align:center;
     padding:35px 15px;
     color:#6b7280;
-}
-
-.message{
-    padding:12px;
-    border-radius:7px;
-    margin-bottom:15px;
-    display:none;
     font-size:14px;
 }
 
-@media(max-width:900px){
+.loading-spinner{
+    font-size:14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1100px){
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .header-container{
+        padding:9px 12px;
+    }
+
+    .logo-icon{
+        width:38px;
+        height:38px;
+        font-size:20px;
+    }
+
+    .logo-title{
+        font-size:17px;
+    }
+
+    .logo-subtitle{
+        display:none;
+    }
+
+    .admin-name{
+        display:none;
+    }
+
+    .admin-nav{
+        position:sticky;
+        top:58px;
+        z-index:900;
+    }
+
+    .nav-container{
+        padding:7px 10px;
+    }
+
+    .container{
+        padding:18px 10px 35px;
+    }
+
+    .page-title h1{
+        font-size:24px;
+    }
 
     .stats{
         grid-template-columns:repeat(2,1fr);
+        gap:9px;
+    }
+
+    .stat-card{
+        padding:13px;
+    }
+
+    .stat-value{
+        font-size:20px;
+    }
+
+    .card{
+        padding:14px;
     }
 
     .filters{
@@ -325,252 +527,492 @@ tr:hover td{
 
 }
 
-@media(max-width:600px){
-
-    header{
-        padding:14px;
-    }
-
-    .header-container{
-        align-items:flex-start;
-    }
-
-    .admin-info{
-        flex-direction:column;
-        align-items:flex-end;
-        gap:6px;
-    }
-
-    .logo{
-        font-size:19px;
-    }
-
-    .admin-nav{
-        padding:8px 14px;
-    }
-
-    .nav-container{
-        gap:5px;
-    }
-
-    .admin-nav a{
-        font-size:13px;
-        padding:7px 9px;
-    }
-
-    .container{
-        margin:20px auto;
-    }
-
-    .page-title h1{
-        font-size:24px;
-    }
+@media(max-width:420px){
 
     .stats{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
     }
 
-    .card{
-        padding:15px;
+    .stat-card{
+        padding:11px;
+    }
+
+    .stat-icon{
+        width:34px;
+        height:34px;
+        font-size:17px;
+    }
+
+    .stat-title{
+        font-size:11px;
+    }
+
+    .stat-value{
+        font-size:18px;
+    }
+
+    .logout{
+        padding:8px 10px;
+        font-size:11px;
+    }
+
+    .card-header h2{
+        font-size:18px;
     }
 
 }
 
-</style></head><body><header><div class="header-container"><a
-href="Admin-Dashboard.html"
-class="logo"
+</style>
+</head>
 
-«»
+<body>
 
-🛒 Kaycy Mart
+<header>
 
-</a><div class="admin-info"><span id="adminName">
-    Administrator
-</span><button
-class="logout"
-onclick="logout()"
+    <div class="header-container">
 
-«»
+        <a
+            href="Admin-Dashboard.html"
+            class="logo"
+        >
 
-Logout
+            <div class="logo-icon">
+                🛒
+            </div>
 
-</button></div></div></header><nav class="admin-nav"><div class="nav-container"><a
-href="Admin-Dashboard.html"
-class="active"
+            <div class="logo-text">
 
-«»
+                <div class="logo-title">
+                    Kaycy Mart
+                </div>
 
-📊 Dashboard
+                <div class="logo-subtitle">
+                    Admin Control Centre
+                </div>
 
-</a><a href="Admin-Products.html">
-    🛍️ Products
-</a><a href="Admin-Users.html">
-    👥 Users
-</a></div></nav><div class="container"><div class="page-title"><h1>
-    Admin Dashboard
-</h1><p>
-    Manage Kaycy Mart orders, customers and products.
-</p></div><div
-    id="message"
-    class="message"
-></div><div class="stats"><div class="stat-card"><div class="stat-icon">
-    📦
-</div><div class="stat-title">
-    Total Orders
-</div><div
-    class="stat-value"
-    id="totalOrders"
->
-    0
-</div></div><div class="stat-card"><div class="stat-icon">
-    👥
-</div><div class="stat-title">
-    Customers
-</div><div
-    class="stat-value"
-    id="totalCustomers"
->
-    0
-</div></div><div class="stat-card"><div class="stat-icon">
-    🛍️
-</div><div class="stat-title">
-    Products
-</div><div
-    class="stat-value"
-    id="totalProducts"
->
-    0
-</div></div><div class="stat-card"><div class="stat-icon">
-    💰
-</div><div class="stat-title">
-    Confirmed Sales
-</div><div
-    class="stat-value"
-    id="totalSales"
->
-    ₦0
-</div></div><div class="stat-card"><div class="stat-icon">
-    ⏳
-</div><div class="stat-title">
-    Pending Orders
-</div><div
-    class="stat-value"
-    id="pendingOrders"
->
-    0
-</div></div></div><div class="card"><div class="card-header"><h2>
-    📦 Orders
-</h2><button
-class="refresh-btn"
-onclick="loadDashboard()"
+            </div>
 
-«»
+        </a>
 
-🔄 Refresh
 
-</button></div><div class="order-tools"><input
-type="search"
-id="orderSearch"
-class="search-box"
-placeholder="🔎 Search order number, customer, email, phone or payment reference..."
-oninput="filterOrders()"
+        <div class="admin-info">
 
-«»
+            <span
+                id="adminName"
+                class="admin-name"
+            >
+                Administrator
+            </span>
 
-<div class="filters"><select
-id="statusFilter"
-class="filter-select"
-onchange="filterOrders()"
+            <button
+                class="logout"
+                onclick="logout()"
+            >
+                Logout
+            </button>
 
-«»
+        </div>
 
-<option value="">
-    📦 All Order Statuses
-</option><option value="Order Received">
-    Order Received
-</option><option value="Processing">
-    Processing
-</option><option value="Shipped">
-    Shipped
-</option><option value="Out for Delivery">
-    Out for Delivery
-</option><option value="Delivered">
-    Delivered
-</option><option value="Cancelled">
-    Cancelled
-</option></select><select
-id="paymentFilter"
-class="filter-select"
-onchange="filterOrders()"
+    </div>
 
-«»
+</header>
 
-<option value="">
-    💳 All Payment Statuses
-</option><option value="Payment Pending">
-    Payment Pending
-</option><option value="Payment Submitted">
-    Payment Submitted
-</option><option value="Payment Confirmed">
-    Payment Confirmed
-</option><option value="Payment Failed">
-    Payment Failed
-</option></select><select
-id="sortFilter"
-class="filter-select"
-onchange="filterOrders()"
 
-«»
+<nav class="admin-nav">
 
-<option value="newest">
-    🕒 Newest First
-</option><option value="oldest">
-    🕒 Oldest First
-</option><option value="highest">
-    💰 Highest Amount
-</option><option value="lowest">
-    💰 Lowest Amount
-</option></select></div><div
-    id="resultsInfo"
-    class="results-info"
->
-    Showing 0 of 0 orders
-</div></div><div
-    id="ordersLoading"
-    class="empty"
->
-    Loading orders...
-</div><div
-    id="ordersEmpty"
-    class="empty"
-    style="display:none;"
->
-    No orders found.
-</div><div
-    id="ordersTable"
-    class="table-wrapper"
-    style="display:none;"
-><table><thead><tr><th>Order</th>
-<th>Customer</th>
-<th>Total</th>
-<th>Payment</th>
-<th>Status</th>
-<th>Date</th>
-<th>Details</th></tr></thead><tbody
-    id="ordersBody"
-></tbody></table></div></div></div><script>
+    <div class="nav-container">
 
-/* =====================================================
-   LIVE RENDER BACKEND
-===================================================== */
+        <a
+            href="Admin-Dashboard.html"
+            class="active"
+        >
+            📊 Dashboard
+        </a>
+
+        <a href="Admin-Products.html">
+            🛍️ Products
+        </a>
+
+        <a href="Admin-Users.html">
+            👥 Users
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+    <div class="page-title">
+
+        <h1>
+            Admin Dashboard
+        </h1>
+
+        <p>
+            Manage Kaycy Mart orders, customers and products.
+        </p>
+
+    </div>
+
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+
+    <!-- =========================
+         STATISTICS
+    ========================== -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+            </div>
+
+            <div class="stat-title">
+                Total Orders
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalOrders"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+            </div>
+
+            <div class="stat-title">
+                Customers
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalCustomers"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    🛍️
+                </div>
+
+            </div>
+
+            <div class="stat-title">
+                Products
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalProducts"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+            </div>
+
+            <div class="stat-title">
+                Confirmed Sales
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalSales"
+            >
+                ₦0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    ⏳
+                </div>
+
+            </div>
+
+            <div class="stat-title">
+                Pending Orders
+            </div>
+
+            <div
+                class="stat-value"
+                id="pendingOrders"
+            >
+                0
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ORDERS
+    ========================== -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <h2>
+                📦 Orders
+            </h2>
+
+            <button
+                class="refresh-btn"
+                onclick="loadDashboard()"
+            >
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <div class="order-tools">
+
+            <input
+                type="search"
+                id="orderSearch"
+                class="search-box"
+                placeholder="🔎 Search order, customer, email, phone or payment reference..."
+                oninput="filterOrders()"
+            >
+
+
+            <div class="filters">
+
+                <select
+                    id="statusFilter"
+                    class="filter-select"
+                    onchange="filterOrders()"
+                >
+
+                    <option value="">
+                        📦 All Order Statuses
+                    </option>
+
+                    <option value="Order Received">
+                        Order Received
+                    </option>
+
+                    <option value="Processing">
+                        Processing
+                    </option>
+
+                    <option value="Shipped">
+                        Shipped
+                    </option>
+
+                    <option value="Out for Delivery">
+                        Out for Delivery
+                    </option>
+
+                    <option value="Delivered">
+                        Delivered
+                    </option>
+
+                    <option value="Cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="paymentFilter"
+                    class="filter-select"
+                    onchange="filterOrders()"
+                >
+
+                    <option value="">
+                        💳 All Payment Statuses
+                    </option>
+
+                    <option value="Payment Pending">
+                        Payment Pending
+                    </option>
+
+                    <option value="Payment Submitted">
+                        Payment Submitted
+                    </option>
+
+                    <option value="Payment Confirmed">
+                        Payment Confirmed
+                    </option>
+
+                    <option value="Payment Failed">
+                        Payment Failed
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="sortFilter"
+                    class="filter-select"
+                    onchange="filterOrders()"
+                >
+
+                    <option value="newest">
+                        🕒 Newest First
+                    </option>
+
+                    <option value="oldest">
+                        🕒 Oldest First
+                    </option>
+
+                    <option value="highest">
+                        💰 Highest Amount
+                    </option>
+
+                    <option value="lowest">
+                        💰 Lowest Amount
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="resultsInfo"
+                class="results-info"
+            >
+                Showing 0 of 0 orders
+            </div>
+
+        </div>
+
+
+        <div
+            id="ordersLoading"
+            class="empty"
+        >
+            <div class="loading-spinner">
+                ⏳ Loading orders...
+            </div>
+        </div>
+
+
+        <div
+            id="ordersEmpty"
+            class="empty"
+            style="display:none;"
+        >
+            No orders found.
+        </div>
+
+
+        <div
+            id="ordersTable"
+            class="table-wrapper"
+            style="display:none;"
+        >
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Order
+                        </th>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Payment
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Details
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="ordersBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
 
 const API_URL =
     "https://kaycy-backend.onrender.com";
 
 
-/* =====================================================
+/* =========================
    ADMIN SESSION
-===================================================== */
+========================= */
 
 const adminLoggedIn =
     localStorage.getItem(
@@ -600,9 +1042,7 @@ let admin;
 try{
 
     admin =
-        JSON.parse(
-            adminData
-        );
+        JSON.parse(adminData);
 
 
     if(
@@ -640,9 +1080,9 @@ try{
 }
 
 
-/* =====================================================
+/* =========================
    ADMIN HEADERS
-===================================================== */
+========================= */
 
 function adminHeaders(){
 
@@ -659,16 +1099,16 @@ function adminHeaders(){
 }
 
 
-/* =====================================================
-   ALL ORDERS
-===================================================== */
+/* =========================
+   ORDERS
+========================= */
 
 let allOrders = [];
 
 
-/* =====================================================
+/* =========================
    LOAD DASHBOARD
-===================================================== */
+========================= */
 
 async function loadDashboard(){
 
@@ -700,7 +1140,9 @@ async function loadDashboard(){
 
     try{
 
-        /* ================= ORDERS ================= */
+        /* =========================
+           ORDERS
+        ========================== */
 
         const ordersResponse =
             await fetch(
@@ -739,7 +1181,9 @@ async function loadDashboard(){
                 );
 
 
-        /* ================= USERS ================= */
+        /* =========================
+           USERS
+        ========================== */
 
         const usersResponse =
             await fetch(
@@ -778,7 +1222,9 @@ async function loadDashboard(){
                 );
 
 
-        /* ================= PRODUCTS ================= */
+        /* =========================
+           PRODUCTS
+        ========================== */
 
         const productsResponse =
             await fetch(
@@ -813,7 +1259,9 @@ async function loadDashboard(){
                 );
 
 
-        /* ================= STATS ================= */
+        /* =========================
+           STATS
+        ========================== */
 
         document.getElementById(
             "totalOrders"
@@ -920,18 +1368,20 @@ async function loadDashboard(){
 }
 
 
-/* =====================================================
+/* =========================
    FILTER ORDERS
-===================================================== */
+========================= */
 
 function filterOrders(){
 
     const search =
-        document.getElementById(
-            "orderSearch"
-        ).value
-        .trim()
-        .toLowerCase();
+        document
+            .getElementById(
+                "orderSearch"
+            )
+            .value
+            .trim()
+            .toLowerCase();
 
 
     const statusFilter =
@@ -1079,20 +1529,16 @@ function filterOrders(){
     );
 
 
-    renderOrders(
-        filtered
-    );
+    renderOrders(filtered);
 
 }
 
 
-/* =====================================================
+/* =========================
    RENDER ORDERS
-===================================================== */
+========================= */
 
-function renderOrders(
-    orders
-){
+function renderOrders(orders){
 
     const loading =
         document.getElementById(
@@ -1243,44 +1689,34 @@ function renderOrders(
                     <tr>
 
                         <td>
-
-                            <strong>
-                                ${escapeHTML(
-                                    orderNumber
-                                )}
-                            </strong>
-
+                            <span class="order-number">
+                                ${escapeHTML(orderNumber)}
+                            </span>
                         </td>
 
 
                         <td>
-                            ${escapeHTML(
-                                customer
-                            )}
+                            ${escapeHTML(customer)}
                         </td>
 
 
                         <td>
-                            ₦${total.toLocaleString(
-                                "en-NG"
-                            )}
+                            <span class="amount">
+                                ₦${total.toLocaleString("en-NG")}
+                            </span>
                         </td>
 
 
                         <td>
 
-                            ${escapeHTML(
-                                payment
-                            )}
+                            ${escapeHTML(payment)}
 
                             <br>
 
                             <small
                                 class="${paymentClass}"
                             >
-                                ${escapeHTML(
-                                    paymentStatus
-                                )}
+                                ${escapeHTML(paymentStatus)}
                             </small>
 
                         </td>
@@ -1290,80 +1726,48 @@ function renderOrders(
 
                             <select
                                 class="status-select"
-                                data-order-id="${escapeHTML(
-                                    orderId
-                                )}"
+                                data-order-id="${escapeHTML(orderId)}"
                                 onchange="changeStatus(this)"
                             >
 
                                 <option
                                     value="Order Received"
-                                    ${
-                                        status ===
-                                        "Order Received"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                    ${status === "Order Received" ? "selected" : ""}
                                 >
                                     Order Received
                                 </option>
 
                                 <option
                                     value="Processing"
-                                    ${
-                                        status ===
-                                        "Processing"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                    ${status === "Processing" ? "selected" : ""}
                                 >
                                     Processing
                                 </option>
 
                                 <option
                                     value="Shipped"
-                                    ${
-                                        status ===
-                                        "Shipped"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                    ${status === "Shipped" ? "selected" : ""}
                                 >
                                     Shipped
                                 </option>
 
                                 <option
                                     value="Out for Delivery"
-                                    ${
-                                        status ===
-                                        "Out for Delivery"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                    ${status === "Out for Delivery" ? "selected" : ""}
                                 >
                                     Out for Delivery
                                 </option>
 
                                 <option
                                     value="Delivered"
-                                    ${
-                                        status ===
-                                        "Delivered"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                    ${status === "Delivered" ? "selected" : ""}
                                 >
                                     Delivered
                                 </option>
 
                                 <option
                                     value="Cancelled"
-                                    ${
-                                        status ===
-                                        "Cancelled"
-                                            ? "selected"
-                                            : ""
-                                    }
+                                    ${status === "Cancelled" ? "selected" : ""}
                                 >
                                     Cancelled
                                 </option>
@@ -1374,18 +1778,14 @@ function renderOrders(
 
 
                         <td>
-                            ${escapeHTML(
-                                date
-                            )}
+                            ${escapeHTML(date)}
                         </td>
 
 
                         <td>
 
                             <a
-                                href="Admin-Order-Details.html?id=${encodeURIComponent(
-                                    String(orderId)
-                                )}"
+                                href="Admin-Order-Details.html?id=${encodeURIComponent(String(orderId))}"
                                 class="details-btn"
                             >
                                 👁️ View
@@ -1403,17 +1803,14 @@ function renderOrders(
 }
 
 
-/* =====================================================
-   CHANGE ORDER STATUS
-===================================================== */
+/* =========================
+   CHANGE STATUS
+========================= */
 
-async function changeStatus(
-    select
-){
+async function changeStatus(select){
 
     const orderId =
         select.dataset.orderId;
-
 
     const newStatus =
         select.value;
@@ -1425,25 +1822,14 @@ async function changeStatus(
             await fetch(
                 API_URL +
                 "/api/admin/orders/" +
-                encodeURIComponent(
-                    orderId
-                ) +
+                encodeURIComponent(orderId) +
                 "/status",
                 {
-
                     method:"PATCH",
-
-                    headers:
-                        adminHeaders(),
-
-                    body:
-                        JSON.stringify({
-
-                            status:
-                                newStatus
-
-                        })
-
+                    headers:adminHeaders(),
+                    body:JSON.stringify({
+                        status:newStatus
+                    })
                 }
             );
 
@@ -1506,14 +1892,11 @@ async function changeStatus(
 }
 
 
-/* =====================================================
+/* =========================
    MESSAGE
-===================================================== */
+========================= */
 
-function showMessage(
-    text,
-    success
-){
+function showMessage(text,success){
 
     const message =
         document.getElementById(
@@ -1554,44 +1937,25 @@ function showMessage(
 }
 
 
-/* =====================================================
+/* =========================
    ESCAPE HTML
-===================================================== */
+========================= */
 
-function escapeHTML(
-    value
-){
+function escapeHTML(value){
 
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-/* =====================================================
+/* =========================
    LOGOUT
-===================================================== */
+========================= */
 
 function logout(){
 
@@ -1603,18 +1967,19 @@ function logout(){
         "kaycyMartAdmin"
     );
 
-
     window.location.href =
         "Admin-Login.html";
 
 }
 
 
-/* =====================================================
+/* =========================
    START
-===================================================== */
+========================= */
 
 loadDashboard();
 
-</script></body>
+</script>
+
+</body>
 </html>

@@ -1,12 +1,17 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Order Details | Kaycy Mart</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Details | Kaycy Mart Admin</title>
+
+<style>
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 body{
@@ -15,177 +20,445 @@ body{
     color:#111827;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
     background:#111827;
     color:white;
     padding:15px 20px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     gap:15px;
     flex-wrap:wrap;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
 }
 
 .logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#f59e0b;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:21px;
+    font-weight:800;
+}
+
+.logo-icon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:#f59e0b;
+    color:#111827;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
 }
 
 .admin-info{
     display:flex;
     align-items:center;
-    gap:15px;
-    font-size:14px;
+    gap:12px;
+}
+
+.admin-badge{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color:#e5e7eb;
+}
+
+.admin-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#22c55e;
 }
 
 .logout-btn{
-    background:#dc2626;
-    color:white;
+    background:#f59e0b;
+    color:#111827;
     border:none;
-    padding:9px 14px;
-    border-radius:6px;
+    padding:10px 15px;
+    border-radius:8px;
     cursor:pointer;
-    font-weight:bold;
+    font-weight:800;
+    transition:.2s;
 }
 
 .logout-btn:hover{
-    background:#b91c1c;
+    background:#d97706;
+    transform:translateY(-1px);
 }
 
-/* NAV */
+/* =========================
+   NAV
+========================= */
 
 nav{
     background:#1f2937;
-    padding:10px 20px;
+    padding:9px 20px;
     display:flex;
-    gap:10px;
+    gap:7px;
     flex-wrap:wrap;
+    border-bottom:1px solid #374151;
 }
 
 nav a{
-    color:white;
+    color:#d1d5db;
     text-decoration:none;
-    padding:9px 12px;
-    border-radius:5px;
+    padding:9px 14px;
+    border-radius:8px;
     font-size:14px;
+    font-weight:600;
+    transition:.2s;
 }
 
 nav a:hover{
     background:#374151;
+    color:white;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .container{
-    width:95%;
-    max-width:1100px;
-    margin:25px auto;
+    max-width:1180px;
+    margin:0 auto;
+    padding:25px 18px 50px;
+}
+
+/* =========================
+   TOP
+========================= */
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+    margin-bottom:22px;
 }
 
 .back-link{
-    display:inline-block;
-    margin-bottom:15px;
-    color:#2563eb;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:#374151;
     text-decoration:none;
-    font-weight:bold;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:10px;
 }
 
 .back-link:hover{
-    text-decoration:underline;
+    color:#f59e0b;
 }
 
-h1{
-    margin-bottom:20px;
+.page-title h1{
+    font-size:29px;
+    margin-bottom:6px;
+    letter-spacing:-.4px;
 }
 
-/* CARD */
+.page-title p{
+    color:#6b7280;
+    font-size:13px;
+}
+
+.order-number{
+    background:#111827;
+    color:#f59e0b;
+    padding:9px 13px;
+    border-radius:9px;
+    font-size:13px;
+    font-weight:800;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+    padding:13px 15px;
+    border-radius:10px;
+    margin-bottom:18px;
+    display:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.message.success{
+    background:#dcfce7;
+    color:#166534;
+    border:1px solid #bbf7d0;
+    display:block;
+}
+
+.message.error{
+    background:#fee2e2;
+    color:#991b1b;
+    border:1px solid #fecaca;
+    display:block;
+}
+
+/* =========================
+   CARDS
+========================= */
 
 .card{
     background:white;
-    border-radius:10px;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
     padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom:18px;
+    box-shadow:0 3px 14px rgba(17,24,39,.06);
+}
+
+.card-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:17px;
+}
+
+.card-title-icon{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    background:#fff7ed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
 }
 
 .card h2{
-    margin-bottom:15px;
-    font-size:20px;
+    font-size:18px;
 }
 
-/* INFO GRID */
+.card-subtitle{
+    color:#9ca3af;
+    font-size:12px;
+    margin-top:3px;
+}
+
+/* =========================
+   INFO GRID
+========================= */
 
 .info-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:15px;
+    gap:12px;
 }
 
 .info-box{
     background:#f9fafb;
     border:1px solid #e5e7eb;
     padding:14px;
-    border-radius:7px;
+    border-radius:10px;
+    min-width:0;
+}
+
+.info-box.full{
+    grid-column:1/-1;
 }
 
 .info-box strong{
     display:block;
     color:#6b7280;
-    font-size:13px;
-    margin-bottom:5px;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.45px;
+    margin-bottom:7px;
 }
 
 .info-box span{
-    font-size:15px;
+    font-size:14px;
     word-break:break-word;
+    line-height:1.5;
 }
 
-/* ITEMS */
+/* =========================
+   STATUS
+========================= */
+
+.status-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 10px;
+    border-radius:20px;
+    background:#fff7ed;
+    color:#c2410c;
+    font-weight:800;
+    font-size:12px;
+}
+
+.status-badge::before{
+    content:"";
+    width:6px;
+    height:6px;
+    background:currentColor;
+    border-radius:50%;
+}
+
+/* =========================
+   PAYMENT
+========================= */
+
+.payment-status{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-weight:800;
+    font-size:13px;
+}
+
+.payment-status::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:currentColor;
+}
+
+.payment-pending{
+    color:#d97706;
+}
+
+.payment-confirmed{
+    color:#16a34a;
+}
+
+.payment-failed{
+    color:#dc2626;
+}
+
+.payment-submitted{
+    color:#2563eb;
+}
+
+/* =========================
+   CUSTOMER
+========================= */
+
+.customer-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+/* =========================
+   ORDER ITEMS
+========================= */
+
+.items-list{
+    display:flex;
+    flex-direction:column;
+}
 
 .item{
     display:flex;
+    align-items:center;
     justify-content:space-between;
     gap:15px;
-    padding:14px 0;
-    border-bottom:1px solid #e5e7eb;
+    padding:15px 0;
+    border-bottom:1px solid #eef0f3;
 }
 
 .item:last-child{
     border-bottom:none;
 }
 
+.item-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+}
+
+.item-icon{
+    width:48px;
+    height:48px;
+    border-radius:10px;
+    background:#f3f4f6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    flex-shrink:0;
+}
+
+.item-info{
+    min-width:0;
+}
+
 .item-name{
-    font-weight:bold;
+    font-weight:800;
+    font-size:14px;
+    margin-bottom:5px;
+    word-break:break-word;
 }
 
 .item-details{
     color:#6b7280;
-    font-size:14px;
-    margin-top:4px;
+    font-size:12px;
+    line-height:1.5;
 }
 
 .item-total{
-    font-weight:bold;
+    font-weight:800;
     white-space:nowrap;
+    font-size:14px;
 }
-
-/* TOTAL */
 
 .total-box{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-top:15px;
-    padding-top:15px;
+    gap:15px;
+    margin-top:5px;
+    padding:17px 0 0;
     border-top:2px solid #111827;
-    font-size:20px;
-    font-weight:bold;
 }
 
-/* CONTROLS */
+.total-label{
+    font-size:15px;
+    font-weight:700;
+}
+
+.total-amount{
+    font-size:22px;
+    font-weight:900;
+    color:#111827;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls-card{
+    background:#111827;
+    color:white;
+    border:none;
+}
+
+.controls-card .card-title{
+    margin-bottom:20px;
+}
+
+.controls-card .card-title-icon{
+    background:#374151;
+}
+
+.controls-card .card-subtitle{
+    color:#9ca3af;
+}
 
 .control-group{
     margin-bottom:18px;
@@ -193,34 +466,52 @@ h1{
 
 .control-group label{
     display:block;
-    font-weight:bold;
-    margin-bottom:7px;
+    color:#d1d5db;
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    margin-bottom:8px;
 }
 
 select{
     width:100%;
-    padding:11px;
-    border:1px solid #d1d5db;
-    border-radius:6px;
-    font-size:15px;
-    background:white;
+    padding:12px 13px;
+    border:1px solid #4b5563;
+    border-radius:9px;
+    font-size:14px;
+    background:#1f2937;
+    color:white;
+    outline:none;
+}
+
+select:focus{
+    border-color:#f59e0b;
+}
+
+.button-row{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
 }
 
 button{
     border:none;
-    border-radius:6px;
-    padding:11px 16px;
+    border-radius:8px;
+    padding:11px 15px;
     cursor:pointer;
-    font-weight:bold;
+    font-weight:800;
+    font-size:13px;
+    transition:.2s;
 }
 
 .primary-btn{
-    background:#2563eb;
-    color:white;
+    background:#f59e0b;
+    color:#111827;
 }
 
 .primary-btn:hover{
-    background:#1d4ed8;
+    background:#d97706;
 }
 
 .success-btn{
@@ -242,7 +533,7 @@ button{
 }
 
 .print-btn{
-    background:#6b7280;
+    background:#374151;
     color:white;
 }
 
@@ -250,93 +541,51 @@ button{
     background:#4b5563;
 }
 
-.button-row{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+button:hover{
+    transform:translateY(-1px);
 }
 
-/* STATUS */
-
-.status-badge{
-    display:inline-block;
-    padding:7px 11px;
-    border-radius:20px;
-    background:#fef3c7;
-    color:#92400e;
-    font-weight:bold;
-    font-size:13px;
-}
-
-/* PAYMENT */
-
-.payment-status{
-    font-weight:bold;
-}
-
-.payment-pending{
-    color:#d97706;
-}
-
-.payment-confirmed{
-    color:#16a34a;
-}
-
-.payment-failed{
-    color:#dc2626;
-}
-
-.payment-submitted{
-    color:#2563eb;
-}
-
-/* MESSAGE */
-
-.message{
-    padding:12px;
-    border-radius:6px;
-    margin-bottom:15px;
-    display:none;
-}
-
-.message.success{
-    background:#dcfce7;
-    color:#166534;
-    display:block;
-}
-
-.message.error{
-    background:#fee2e2;
-    color:#991b1b;
-    display:block;
-}
-
-/* LOADING */
+/* =========================
+   LOADING
+========================= */
 
 .loading{
     text-align:center;
-    padding:40px;
-    font-size:18px;
+    padding:55px 20px;
+    font-size:15px;
     color:#6b7280;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#111827;
-    color:#d1d5db;
+    color:#9ca3af;
     text-align:center;
     padding:20px;
-    margin-top:40px;
-    font-size:14px;
+    font-size:13px;
+    margin-top:25px;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
-@media(max-width:700px){
+@media(max-width:750px){
 
     header{
-        align-items:flex-start;
+        padding:13px 14px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-icon{
+        width:35px;
+        height:35px;
     }
 
     .admin-info{
@@ -344,31 +593,101 @@ footer{
         justify-content:space-between;
     }
 
-    .info-grid{
-        grid-template-columns:1fr;
-    }
-
-    .item{
-        flex-direction:column;
-    }
-
-    .item-total{
-        text-align:left;
-    }
-
-    .total-box{
-        font-size:18px;
-    }
-
     nav{
-        padding:10px;
+        padding:8px;
+        gap:5px;
     }
 
     nav a{
+        flex:1;
+        text-align:center;
+        padding:9px 7px;
+        font-size:12px;
+    }
+
+    .container{
+        padding:20px 12px 40px;
+    }
+
+    .top-bar{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .page-title h1{
+        font-size:24px;
+    }
+
+    .order-number{
+        align-self:stretch;
+        text-align:center;
+    }
+
+    .info-grid,
+    .customer-layout{
+        grid-template-columns:1fr;
+    }
+
+    .info-box.full{
+        grid-column:auto;
+    }
+
+    .card{
+        padding:16px;
+        border-radius:12px;
+    }
+
+    .card h2{
+        font-size:17px;
+    }
+
+    .item{
+        align-items:flex-start;
+    }
+
+    .item-total{
         font-size:13px;
     }
 
+    .total-amount{
+        font-size:19px;
+    }
+
+    .button-row{
+        flex-direction:column;
+    }
+
+    .button-row button{
+        width:100%;
+    }
 }
+
+@media(max-width:420px){
+
+    .admin-badge{
+        font-size:12px;
+    }
+
+    .logout-btn{
+        padding:9px 12px;
+        font-size:12px;
+    }
+
+    .item-left{
+        align-items:flex-start;
+    }
+
+    .item-icon{
+        width:42px;
+        height:42px;
+    }
+
+}
+
+/* =========================
+   PRINT
+========================= */
 
 @media print{
 
@@ -377,7 +696,7 @@ footer{
     .back-link,
     .controls-card,
     footer,
-    .print-btn{
+    #message{
         display:none !important;
     }
 
@@ -388,327 +707,507 @@ footer{
     .container{
         width:100%;
         max-width:none;
-        margin:0;
+        padding:0;
     }
 
     .card{
         box-shadow:none;
         border:1px solid #ddd;
+        break-inside:avoid;
     }
 
 }
 
-</style></head><body><header><div class="logo">
-    🛒 Kaycy Mart Admin
-</div>
+</style>
+</head>
 
-<div class="admin-info">
-    <span>
-        Admin: <strong id="adminName">Administrator</strong>
-    </span>
+<body>
 
-    <button
-        class="logout-btn"
-        onclick="logoutAdmin()"
-    >
-        Logout
-    </button>
-</div>
+<!-- =========================
+     HEADER
+========================= -->
 
-</header><nav><a href="Admin-Dashboard.html">
-    Dashboard
-</a>
+<header>
 
-<a href="Admin-Products.html">
-    Products
-</a>
+    <div class="logo">
 
-<a href="Admin-Users.html">
-    Users
-</a>
-
-</nav><div class="container"><a
-    href="Admin-Dashboard.html"
-    class="back-link"
->
-    ← Back to Dashboard
-</a>
-
-<h1>
-    Order Details
-</h1>
-
-<div id="message" class="message"></div>
-
-<div id="loading" class="loading">
-    Loading order...
-</div>
-
-<div id="orderContent" style="display:none;">
-
-    <!-- ORDER INFORMATION -->
-
-    <div class="card">
-
-        <h2>
-            Order Information
-        </h2>
-
-        <div class="info-grid">
-
-            <div class="info-box">
-
-                <strong>
-                    Order Number
-                </strong>
-
-                <span id="orderNumber">
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    Date
-                </strong>
-
-                <span id="orderDate">
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    Order Status
-                </strong>
-
-                <span id="orderStatus">
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    Payment Method
-                </strong>
-
-                <span id="paymentMethod">
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    Payment Status
-                </strong>
-
-                <span
-                    id="paymentStatus"
-                    class="payment-status"
-                >
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    Payment Reference
-                </strong>
-
-                <span id="paymentReference">
-                    -
-                </span>
-
-            </div>
-
+        <div class="logo-icon">
+            🛒
         </div>
+
+        <span>
+            Kaycy Mart
+        </span>
 
     </div>
 
-    <!-- CUSTOMER -->
+    <div class="admin-info">
 
-    <div class="card">
+        <div class="admin-badge">
 
-        <h2>
-            Customer Information
-        </h2>
-
-        <div class="info-grid">
-
-            <div class="info-box">
-
-                <strong>
-                    Name
-                </strong>
-
-                <span id="customerName">
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    Email
-                </strong>
-
-                <span id="customerEmail">
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    Phone
-                </strong>
-
-                <span id="customerPhone">
-                    -
-                </span>
-
-            </div>
-
-            <div class="info-box">
-
-                <strong>
-                    City
-                </strong>
-
-                <span id="customerCity">
-                    -
-                </span>
-
-            </div>
-
-            <div
-                class="info-box"
-                style="grid-column:1/-1;"
-            >
-
-                <strong>
-                    Delivery Address
-                </strong>
-
-                <span id="deliveryAddress">
-                    -
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- ORDER ITEMS -->
-
-    <div class="card">
-
-        <h2>
-            Ordered Products
-        </h2>
-
-        <div id="itemsContainer"></div>
-
-        <div class="total-box">
+            <span class="admin-dot"></span>
 
             <span>
-                Total
+                <span id="adminName">
+                    Administrator
+                </span>
             </span>
 
-            <span id="orderTotal">
-                ₦0
-            </span>
+        </div>
 
+        <button
+            class="logout-btn"
+            onclick="logoutAdmin()"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     NAV
+========================= -->
+
+<nav>
+
+    <a href="Admin-Dashboard.html">
+        📊 Dashboard
+    </a>
+
+    <a href="Admin-Products.html">
+        📦 Products
+    </a>
+
+    <a href="Admin-Users.html">
+        👥 Users
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="container">
+
+    <div class="top-bar">
+
+        <div class="page-title">
+
+            <a
+                href="Admin-Dashboard.html"
+                class="back-link"
+            >
+                ← Back to Dashboard
+            </a>
+
+            <h1>
+                Order Details
+            </h1>
+
+            <p>
+                View customer, payment and order information.
+            </p>
+
+        </div>
+
+        <div
+            class="order-number"
+            id="topOrderNumber"
+        >
+            Order #—
         </div>
 
     </div>
 
-    <!-- ADMIN CONTROLS -->
 
-    <div class="card controls-card">
+    <!-- MESSAGE -->
 
-        <h2>
-            Manage Order
-        </h2>
+    <div
+        id="message"
+        class="message"
+    ></div>
 
-        <div class="control-group">
 
-            <label for="statusSelect">
-                Order Status
-            </label>
+    <!-- LOADING -->
 
-            <select id="statusSelect">
+    <div
+        id="loading"
+        class="loading"
+    >
+        Loading order...
+    </div>
 
-                <option value="Order Received">
-                    Order Received
-                </option>
 
-                <option value="Processing">
-                    Processing
-                </option>
+    <!-- ORDER CONTENT -->
 
-                <option value="Shipped">
-                    Shipped
-                </option>
+    <div
+        id="orderContent"
+        style="display:none;"
+    >
 
-                <option value="Out for Delivery">
-                    Out for Delivery
-                </option>
+        <!-- =========================
+             ORDER INFORMATION
+        ========================= -->
 
-                <option value="Delivered">
-                    Delivered
-                </option>
+        <div class="card">
 
-                <option value="Cancelled">
-                    Cancelled
-                </option>
+            <div class="card-title">
 
-            </select>
+                <div class="card-title-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <h2>
+                        Order Information
+                    </h2>
+
+                    <div class="card-subtitle">
+                        Basic order and payment details
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="info-box">
+
+                    <strong>
+                        Order Number
+                    </strong>
+
+                    <span id="orderNumber">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Date
+                    </strong>
+
+                    <span id="orderDate">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Order Status
+                    </strong>
+
+                    <span id="orderStatus">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Payment Method
+                    </strong>
+
+                    <span id="paymentMethod">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Payment Status
+                    </strong>
+
+                    <span
+                        id="paymentStatus"
+                        class="payment-status"
+                    >
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Payment Reference
+                    </strong>
+
+                    <span id="paymentReference">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="button-row">
 
-            <button
-                class="primary-btn"
-                onclick="updateOrderStatus()"
-            >
-                Update Order Status
-            </button>
+        <!-- =========================
+             CUSTOMER
+        ========================= -->
 
-            <button
-                class="success-btn"
-                onclick="confirmPayment()"
-            >
-                Confirm Payment
-            </button>
+        <div class="card">
 
-            <button
-                class="danger-btn"
-                onclick="failPayment()"
-            >
-                Mark Payment Failed
-            </button>
+            <div class="card-title">
 
-            <button
-                class="print-btn"
-                onclick="window.print()"
-            >
-                Print Order
-            </button>
+                <div class="card-title-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <h2>
+                        Customer Information
+                    </h2>
+
+                    <div class="card-subtitle">
+                        Customer contact and delivery information
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="info-box">
+
+                    <strong>
+                        Name
+                    </strong>
+
+                    <span id="customerName">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Email
+                    </strong>
+
+                    <span id="customerEmail">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Phone
+                    </strong>
+
+                    <span id="customerPhone">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        City
+                    </strong>
+
+                    <span id="customerCity">
+                        -
+                    </span>
+
+                </div>
+
+
+                <div class="info-box full">
+
+                    <strong>
+                        Delivery Address
+                    </strong>
+
+                    <span id="deliveryAddress">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ORDER ITEMS
+        ========================= -->
+
+        <div class="card">
+
+            <div class="card-title">
+
+                <div class="card-title-icon">
+                    🛍️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Ordered Products
+                    </h2>
+
+                    <div class="card-subtitle">
+                        Products included in this order
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="itemsContainer"
+                class="items-list"
+            ></div>
+
+
+            <div class="total-box">
+
+                <span class="total-label">
+                    Order Total
+                </span>
+
+                <span
+                    id="orderTotal"
+                    class="total-amount"
+                >
+                    ₦0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ADMIN CONTROLS
+        ========================= -->
+
+        <div class="card controls-card">
+
+            <div class="card-title">
+
+                <div class="card-title-icon">
+                    ⚙️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Manage Order
+                    </h2>
+
+                    <div class="card-subtitle">
+                        Update order status and payment
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="control-group">
+
+                <label for="statusSelect">
+                    Order Status
+                </label>
+
+                <select id="statusSelect">
+
+                    <option value="Order Received">
+                        Order Received
+                    </option>
+
+                    <option value="Processing">
+                        Processing
+                    </option>
+
+                    <option value="Shipped">
+                        Shipped
+                    </option>
+
+                    <option value="Out for Delivery">
+                        Out for Delivery
+                    </option>
+
+                    <option value="Delivered">
+                        Delivered
+                    </option>
+
+                    <option value="Cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="primary-btn"
+                    onclick="updateOrderStatus()"
+                >
+                    Update Order Status
+                </button>
+
+                <button
+                    class="success-btn"
+                    onclick="confirmPayment()"
+                >
+                    Confirm Payment
+                </button>
+
+                <button
+                    class="danger-btn"
+                    onclick="failPayment()"
+                >
+                    Mark Payment Failed
+                </button>
+
+                <button
+                    class="print-btn"
+                    onclick="window.print()"
+                >
+                    🖨️ Print Order
+                </button>
+
+            </div>
 
         </div>
 
@@ -716,9 +1215,21 @@ footer{
 
 </div>
 
-</div><footer>© 2026 Kaycy Mart. All Rights Reserved.
 
-</footer><script>
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+    © 2026 Kaycy Mart. All Rights Reserved.
+</footer>
+
+
+<script>
+
+/* =========================
+   API
+========================= */
 
 const API_URL =
     "https://kaycy-backend.onrender.com";
@@ -743,6 +1254,7 @@ function checkAdmin(){
             "kaycyMartAdmin"
         );
 
+
     if(
         loggedIn !== "true" ||
         !savedAdmin
@@ -754,16 +1266,14 @@ function checkAdmin(){
         return false;
     }
 
+
     try{
 
-        admin = JSON.parse(savedAdmin);
+        admin =
+            JSON.parse(
+                savedAdmin
+            );
 
-        /*
-         * IMPORTANT:
-         * The frontend must also verify
-         * that the saved account is actually
-         * an administrator.
-         */
 
         if(
             !admin ||
@@ -785,12 +1295,15 @@ function checkAdmin(){
             return false;
         }
 
+
         document.getElementById(
             "adminName"
         ).textContent =
             admin.name || "Admin";
 
+
         return true;
+
 
     }catch(error){
 
@@ -845,7 +1358,8 @@ function showMessage(
             "message"
         );
 
-    message.textContent = text;
+    message.textContent =
+        text;
 
     message.className =
         "message " + type;
@@ -859,7 +1373,7 @@ function showMessage(
 
 
 /* =========================
-   FORMAT MONEY
+   MONEY
 ========================= */
 
 function formatMoney(amount){
@@ -898,35 +1412,33 @@ function escapeHTML(value){
 function paymentStatusClass(status){
 
     const value =
-        String(status || "")
-        .toLowerCase();
+        String(
+            status || ""
+        ).toLowerCase();
+
 
     if(
         value.includes("confirmed")
     ){
-
         return "payment-confirmed";
-
     }
+
 
     if(
         value.includes("failed")
     ){
-
         return "payment-failed";
-
     }
+
 
     if(
         value.includes("submitted")
     ){
-
         return "payment-submitted";
-
     }
 
-    return "payment-pending";
 
+    return "payment-pending";
 }
 
 
@@ -948,6 +1460,7 @@ async function loadOrder(){
                 }
             );
 
+
         if(!response.ok){
 
             throw new Error(
@@ -956,8 +1469,10 @@ async function loadOrder(){
 
         }
 
+
         const orders =
             await response.json();
+
 
         const order =
             orders.find(
@@ -965,6 +1480,7 @@ async function loadOrder(){
                     String(item.id) ===
                     String(orderId)
             );
+
 
         if(!order){
 
@@ -974,7 +1490,9 @@ async function loadOrder(){
 
         }
 
+
         displayOrder(order);
+
 
     }catch(error){
 
@@ -1002,17 +1520,29 @@ function displayOrder(order){
     ).style.display =
         "none";
 
+
     document.getElementById(
         "orderContent"
     ).style.display =
         "block";
 
 
+    const orderNumber =
+        order.order_number ||
+        "-";
+
+
+    document.getElementById(
+        "topOrderNumber"
+    ).textContent =
+        "Order #" +
+        orderNumber;
+
+
     document.getElementById(
         "orderNumber"
     ).textContent =
-        order.order_number ||
-        "-";
+        orderNumber;
 
 
     document.getElementById(
@@ -1030,12 +1560,14 @@ function displayOrder(order){
     document.getElementById(
         "orderStatus"
     ).innerHTML =
-        `<span class="status-badge">
+        `
+        <span class="status-badge">
             ${escapeHTML(
                 order.status ||
                 "Order Received"
             )}
-        </span>`;
+        </span>
+        `;
 
 
     document.getElementById(
@@ -1050,9 +1582,11 @@ function displayOrder(order){
             "paymentStatus"
         );
 
+
     paymentStatus.textContent =
         order.payment_status ||
         "Payment Pending";
+
 
     paymentStatus.className =
         "payment-status " +
@@ -1116,6 +1650,7 @@ function displayOrder(order){
             "statusSelect"
         );
 
+
     statusSelect.value =
         order.status ||
         "Order Received";
@@ -1137,23 +1672,20 @@ function displayItems(order){
             "itemsContainer"
         );
 
-    /*
-     * The backend may return items
-     * in an "items" property.
-     */
 
     const items =
         Array.isArray(order.items)
         ? order.items
         : [];
 
+
     if(items.length === 0){
 
         container.innerHTML =
             `
-            <p style="color:#6b7280;">
+            <div class="loading">
                 No item details available.
-            </p>
+            </div>
             `;
 
         return;
@@ -1161,56 +1693,160 @@ function displayItems(order){
 
 
     container.innerHTML =
-        items.map(item => {
+        items.map(
+            item => {
 
-            const price =
-                Number(
-                    item.price || 0
-                );
+                const price =
+                    Number(
+                        item.price || 0
+                    );
 
-            const quantity =
-                Number(
-                    item.quantity || 0
-                );
 
-            const total =
-                price * quantity;
+                const quantity =
+                    Number(
+                        item.quantity || 0
+                    );
 
-            return `
-                <div class="item">
 
-                    <div>
+                const total =
+                    price * quantity;
 
-                        <div class="item-name">
-                            ${escapeHTML(
-                                item.product_name ||
-                                item.name ||
-                                "Product"
-                            )}
+
+                /*
+                 * Support the newer selected-options
+                 * data already stored by the backend.
+                 */
+
+                let optionText = "";
+
+
+                if(
+                    Array.isArray(
+                        item.selected_options
+                    ) &&
+                    item.selected_options.length
+                ){
+
+                    optionText =
+                        item.selected_options
+                        .map(
+                            option =>
+
+                                `${escapeHTML(
+                                    option.name ||
+                                    ""
+                                )}: ${escapeHTML(
+                                    option.value ||
+                                    ""
+                                )}`
+                        )
+                        .join(" • ");
+
+                }
+
+
+                if(
+                    !optionText &&
+                    Array.isArray(
+                        item.selectedOptions
+                    ) &&
+                    item.selectedOptions.length
+                ){
+
+                    optionText =
+                        item.selectedOptions
+                        .map(
+                            option =>
+
+                                `${escapeHTML(
+                                    option.name ||
+                                    ""
+                                )}: ${escapeHTML(
+                                    option.value ||
+                                    ""
+                                )}`
+                        )
+                        .join(" • ");
+
+                }
+
+
+                const details =
+                    optionText
+                    ? `${formatMoney(price)} × ${quantity} • ${optionText}`
+                    : `${formatMoney(price)} × ${quantity}`;
+
+
+                const image =
+                    item.product_image ||
+                    item.productImage ||
+                    item.image ||
+                    "";
+
+
+                return `
+                    <div class="item">
+
+                        <div class="item-left">
+
+                            <div class="item-icon">
+
+                                ${
+                                    image
+                                    ?
+                                    `
+                                    <img
+                                        src="${escapeHTML(image)}"
+                                        alt=""
+                                        style="
+                                            width:100%;
+                                            height:100%;
+                                            object-fit:contain;
+                                            border-radius:10px;
+                                        "
+                                    >
+                                    `
+                                    :
+                                    "🛍️"
+                                }
+
+                            </div>
+
+
+                            <div class="item-info">
+
+                                <div class="item-name">
+                                    ${escapeHTML(
+                                        item.product_name ||
+                                        item.name ||
+                                        "Product"
+                                    )}
+                                </div>
+
+                                <div class="item-details">
+                                    ${details}
+                                </div>
+
+                            </div>
+
                         </div>
 
-                        <div class="item-details">
-                            ${formatMoney(price)}
-                            ×
-                            ${quantity}
+
+                        <div class="item-total">
+                            ${formatMoney(total)}
                         </div>
 
                     </div>
+                `;
 
-                    <div class="item-total">
-                        ${formatMoney(total)}
-                    </div>
-
-                </div>
-            `;
-
-        }).join("");
+            }
+        ).join("");
 
 }
 
 
 /* =========================
-   UPDATE ORDER STATUS
+   UPDATE STATUS
 ========================= */
 
 async function updateOrderStatus(){
@@ -1219,6 +1855,7 @@ async function updateOrderStatus(){
         document.getElementById(
             "statusSelect"
         ).value;
+
 
     if(!status){
 
@@ -1245,21 +1882,24 @@ async function updateOrderStatus(){
                     headers:
                         adminHeaders(),
 
-                    body:JSON.stringify({
-                        status:status
-                    })
+                    body:
+                        JSON.stringify({
+                            status:status
+                        })
                 }
             );
 
 
         const data =
-            await response.json();
+            await response.json()
+            .catch(() => ({}));
 
 
         if(!response.ok){
 
             throw new Error(
                 data.message ||
+                data.error ||
                 "Unable to update order status."
             );
 
@@ -1267,11 +1907,12 @@ async function updateOrderStatus(){
 
 
         showMessage(
-            "Status updated successfully."
+            "Order status updated successfully."
         );
 
 
         await loadOrder();
+
 
     }catch(error){
 
@@ -1299,6 +1940,7 @@ async function confirmPayment(){
             "Are you sure you want to confirm this payment?"
         );
 
+
     if(!confirmed){
         return;
     }
@@ -1322,13 +1964,15 @@ async function confirmPayment(){
 
 
         const data =
-            await response.json();
+            await response.json()
+            .catch(() => ({}));
 
 
         if(!response.ok){
 
             throw new Error(
                 data.message ||
+                data.error ||
                 "Unable to confirm payment."
             );
 
@@ -1341,6 +1985,7 @@ async function confirmPayment(){
 
 
         await loadOrder();
+
 
     }catch(error){
 
@@ -1368,6 +2013,7 @@ async function failPayment(){
             "Are you sure you want to mark this payment as failed?"
         );
 
+
     if(!confirmed){
         return;
     }
@@ -1391,13 +2037,15 @@ async function failPayment(){
 
 
         const data =
-            await response.json();
+            await response.json()
+            .catch(() => ({}));
 
 
         if(!response.ok){
 
             throw new Error(
                 data.message ||
+                data.error ||
                 "Unable to update payment."
             );
 
@@ -1410,6 +2058,7 @@ async function failPayment(){
 
 
         await loadOrder();
+
 
     }catch(error){
 
@@ -1458,10 +2107,12 @@ window.addEventListener(
             return;
         }
 
+
         const params =
             new URLSearchParams(
                 window.location.search
             );
+
 
         orderId =
             params.get("id");
@@ -1483,5 +2134,7 @@ window.addEventListener(
     }
 );
 
-</script></body>
+</script>
+
+</body>
 </html>
