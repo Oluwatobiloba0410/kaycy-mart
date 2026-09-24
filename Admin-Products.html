@@ -29,9 +29,7 @@ button{
     cursor:pointer;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
     background:#111827;
@@ -57,7 +55,6 @@ button{
     display:flex;
     align-items:center;
     gap:10px;
-    min-width:0;
 }
 
 .brand-icon{
@@ -69,16 +66,10 @@ button{
     align-items:center;
     justify-content:center;
     font-size:23px;
-    flex-shrink:0;
-}
-
-.brand-text{
-    min-width:0;
 }
 
 .brand-text h1{
     font-size:20px;
-    white-space:nowrap;
 }
 
 .brand-text p{
@@ -90,7 +81,6 @@ button{
 .header-actions{
     display:flex;
     gap:8px;
-    align-items:center;
 }
 
 .header-btn{
@@ -107,9 +97,7 @@ button{
     background:#374151;
 }
 
-/* =========================
-   PAGE
-========================= */
+/* PAGE */
 
 .container{
     max-width:1400px;
@@ -142,12 +130,9 @@ button{
     padding:9px 13px;
     border-radius:9px;
     font-size:13px;
-    color:#4b5563;
 }
 
-/* =========================
-   FORM CARD
-========================= */
+/* FORM */
 
 .form-card{
     background:white;
@@ -211,30 +196,9 @@ button{
     box-shadow:0 0 0 3px rgba(245,158,11,.12);
 }
 
-/* =========================
-   IMAGE UPLOAD
-========================= */
+/* IMAGE */
 
-.upload-box{
-    border:1px dashed #cbd5e1;
-    border-radius:10px;
-    padding:12px;
-    background:#f8fafc;
-}
-
-.upload-box input{
-    border:none;
-    padding:4px 0;
-    background:transparent;
-}
-
-.upload-status{
-    font-size:12px;
-    margin-top:7px;
-    color:#6b7280;
-}
-
-.main-image-preview{
+.image-preview{
     width:100%;
     max-width:220px;
     height:180px;
@@ -246,122 +210,12 @@ button{
     display:none;
 }
 
-/* =========================
-   OPTIONS
-========================= */
-
-.options-section{
-    margin-top:22px;
-    border-top:1px solid #e5e7eb;
-    padding-top:20px;
-}
-
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:13px;
-}
-
-.section-head h3{
-    font-size:17px;
-    color:#111827;
-}
-
-.small-note{
-    font-size:12px;
+.image-note{
     color:#6b7280;
-    margin-bottom:14px;
-}
-
-.option-card{
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    padding:15px;
-    margin-bottom:14px;
-    background:#fafafa;
-}
-
-.option-top{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:10px;
-    align-items:end;
-    margin-bottom:13px;
-}
-
-.option-name-wrap{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-.option-name-wrap label{
     font-size:12px;
-    font-weight:bold;
-    color:#4b5563;
 }
 
-.option-name-input{
-    border:1px solid #d1d5db;
-    border-radius:8px;
-    padding:10px;
-    outline:none;
-}
-
-.option-name-input:focus{
-    border-color:#f59e0b;
-}
-
-.values-title{
-    font-size:13px;
-    font-weight:bold;
-    color:#374151;
-    margin-bottom:9px;
-}
-
-.value-row{
-    display:grid;
-    grid-template-columns:minmax(130px,1fr) 130px minmax(150px,1fr) auto;
-    gap:8px;
-    align-items:center;
-    margin-bottom:9px;
-}
-
-.value-row input{
-    width:100%;
-    border:1px solid #d1d5db;
-    border-radius:8px;
-    padding:9px;
-    outline:none;
-    background:white;
-}
-
-.value-row input:focus{
-    border-color:#f59e0b;
-}
-
-.value-image-preview{
-    width:58px;
-    height:42px;
-    border:1px solid #d1d5db;
-    border-radius:7px;
-    object-fit:contain;
-    background:white;
-}
-
-.image-upload-mini{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    min-width:0;
-}
-
-.image-upload-mini input[type="file"]{
-    padding:5px;
-    font-size:11px;
-}
+/* BUTTONS */
 
 .btn{
     border:none;
@@ -407,75 +261,7 @@ button{
     font-size:12px;
 }
 
-.add-option-btn{
-    background:#fff7ed;
-    color:#c2410c;
-    border:1px solid #fed7aa;
-}
-
-.add-value-btn{
-    margin-top:4px;
-}
-
-/* =========================
-   STOCK
-========================= */
-
-.stock-section{
-    margin-top:22px;
-    border-top:1px solid #e5e7eb;
-    padding-top:20px;
-}
-
-.stock-info{
-    font-size:12px;
-    color:#6b7280;
-    margin:5px 0 12px;
-}
-
-.stock-input{
-    max-width:240px;
-}
-
-.variant-stock-list{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:10px;
-    margin-top:13px;
-}
-
-.variant-stock-row{
-    display:grid;
-    grid-template-columns:1fr 100px;
-    gap:8px;
-    align-items:center;
-    background:#f8fafc;
-    border:1px solid #e5e7eb;
-    border-radius:9px;
-    padding:9px;
-}
-
-.variant-label{
-    font-size:12px;
-    color:#374151;
-    word-break:break-word;
-}
-
-.variant-stock-row input{
-    width:100%;
-    border:1px solid #d1d5db;
-    border-radius:7px;
-    padding:8px;
-    outline:none;
-}
-
-.variant-stock-row input:focus{
-    border-color:#f59e0b;
-}
-
-/* =========================
-   FORM ACTIONS
-========================= */
+/* FORM ACTIONS */
 
 .form-actions{
     display:flex;
@@ -503,9 +289,7 @@ button{
     display:none!important;
 }
 
-/* =========================
-   PRODUCT LIST
-========================= */
+/* INVENTORY */
 
 .list-heading{
     display:flex;
@@ -551,6 +335,11 @@ button{
     box-shadow:0 7px 18px rgba(0,0,0,.08);
 }
 
+.product-card.is-hidden{
+    opacity:.78;
+    border-color:#fca5a5;
+}
+
 .product-image-wrap{
     height:190px;
     background:#f8fafc;
@@ -565,12 +354,36 @@ button{
     width:100%;
     height:100%;
     object-fit:contain;
-    display:block;
 }
 
 .no-image{
     font-size:42px;
     opacity:.6;
+}
+
+/* STATUS */
+
+.status-badge{
+    position:absolute;
+    top:9px;
+    left:9px;
+    padding:5px 8px;
+    border-radius:999px;
+    font-size:10px;
+    font-weight:bold;
+    z-index:2;
+}
+
+.status-active{
+    background:#dcfce7;
+    color:#166534;
+    border:1px solid #bbf7d0;
+}
+
+.status-hidden{
+    background:#fee2e2;
+    color:#991b1b;
+    border:1px solid #fecaca;
 }
 
 .product-body{
@@ -599,25 +412,11 @@ button{
     color:#111827;
 }
 
-.product-stock{
+.product-description{
     font-size:11px;
-    margin-top:5px;
     color:#6b7280;
-}
-
-.product-options{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin-top:7px;
-}
-
-.option-tag{
-    background:#fff7ed;
-    color:#c2410c;
-    border-radius:5px;
-    padding:4px 6px;
-    font-size:10px;
+    margin-top:5px;
+    line-height:1.4;
 }
 
 .card-actions{
@@ -627,9 +426,34 @@ button{
     margin-top:12px;
 }
 
-/* =========================
-   EMPTY
-========================= */
+.visibility-btn{
+    width:100%;
+    margin-top:7px;
+}
+
+.btn-hide{
+    background:#fff7ed;
+    color:#c2410c;
+    border:1px solid #fed7aa;
+}
+
+.btn-hide:hover{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.btn-show{
+    background:#dcfce7;
+    color:#166534;
+    border:1px solid #bbf7d0;
+}
+
+.btn-show:hover{
+    background:#16a34a;
+    color:white;
+}
+
+/* EMPTY / LOADING */
 
 .empty-state{
     background:white;
@@ -641,10 +465,6 @@ button{
     grid-column:1/-1;
 }
 
-/* =========================
-   LOADING
-========================= */
-
 .loading{
     text-align:center;
     padding:35px;
@@ -652,25 +472,18 @@ button{
     grid-column:1/-1;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:1050px){
+
     .products-grid{
         grid-template-columns:repeat(3,minmax(0,1fr));
     }
 
-    .value-row{
-        grid-template-columns:1fr 110px;
-    }
-
-    .image-upload-mini{
-        grid-column:1/-1;
-    }
 }
 
 @media(max-width:750px){
+
     .header-inner{
         min-height:60px;
         padding:8px 12px;
@@ -705,7 +518,6 @@ button{
 
     .form-card{
         padding:14px;
-        border-radius:11px;
     }
 
     .form-grid{
@@ -714,27 +526,6 @@ button{
 
     .field.full{
         grid-column:auto;
-    }
-
-    .option-top{
-        grid-template-columns:1fr;
-    }
-
-    .value-row{
-        grid-template-columns:1fr;
-        background:white;
-        border:1px solid #e5e7eb;
-        border-radius:9px;
-        padding:9px;
-    }
-
-    .image-upload-mini{
-        grid-column:auto;
-        flex-wrap:wrap;
-    }
-
-    .variant-stock-list{
-        grid-template-columns:1fr;
     }
 
     .list-heading{
@@ -778,9 +569,11 @@ button{
     .form-actions .btn{
         width:100%;
     }
+
 }
 
 @media(max-width:380px){
+
     .products-grid{
         gap:7px;
     }
@@ -789,13 +582,6 @@ button{
         height:125px;
     }
 
-    .product-body{
-        padding:8px;
-    }
-
-    .product-name{
-        font-size:12px;
-    }
 }
 </style>
 </head>
@@ -803,15 +589,27 @@ button{
 <body>
 
 <header class="header">
+
     <div class="header-inner">
 
         <div class="brand">
-            <div class="brand-icon">🛒</div>
+
+            <div class="brand-icon">
+                🛒
+            </div>
 
             <div class="brand-text">
-                <h1>Kaycy Mart</h1>
-                <p>Admin Product Management</p>
+
+                <h1>
+                    Kaycy Mart
+                </h1>
+
+                <p>
+                    Admin Product Management
+                </p>
+
             </div>
+
         </div>
 
         <div class="header-actions">
@@ -833,35 +631,56 @@ button{
         </div>
 
     </div>
+
 </header>
+
 
 <main class="container">
 
     <div class="page-heading">
 
         <div>
+
             <h2>Products</h2>
-            <p>Add, edit and manage products, variants and stock.</p>
+
+            <p>
+                Add, edit and manage products.
+                You can hide products instead of deleting them.
+            </p>
+
         </div>
 
-        <div class="product-count" id="productCount">
+        <div
+            class="product-count"
+            id="productCount"
+        >
             0 products
         </div>
 
     </div>
 
+
+    <!-- PRODUCT FORM -->
+
     <section class="form-card">
 
-        <div class="form-title" id="formTitle">
+        <div
+            class="form-title"
+            id="formTitle"
+        >
             Add New Product
         </div>
+
 
         <form id="productForm">
 
             <div class="form-grid">
 
                 <div class="field">
-                    <label>Product Name</label>
+
+                    <label>
+                        Product Name
+                    </label>
 
                     <input
                         type="text"
@@ -869,10 +688,15 @@ button{
                         placeholder="e.g. Men's Sneakers"
                         required
                     >
+
                 </div>
 
+
                 <div class="field">
-                    <label>Base Price (₦)</label>
+
+                    <label>
+                        Price (₦)
+                    </label>
 
                     <input
                         type="number"
@@ -882,12 +706,20 @@ button{
                         placeholder="25000"
                         required
                     >
+
                 </div>
 
-                <div class="field">
-                    <label>Category</label>
 
-                    <select id="category" required>
+                <div class="field">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select
+                        id="category"
+                        required
+                    >
 
                         <option value="">
                             Select category
@@ -926,11 +758,15 @@ button{
                         </option>
 
                     </select>
+
                 </div>
+
 
                 <div class="field">
 
-                    <label>Emoji</label>
+                    <label>
+                        Emoji
+                    </label>
 
                     <input
                         type="text"
@@ -940,36 +776,31 @@ button{
 
                 </div>
 
+
                 <div class="field full">
 
                     <label>
-                        Main Product Image
+                        Product Image URL
                     </label>
 
-                    <div class="upload-box">
+                    <input
+                        type="url"
+                        id="image"
+                        placeholder="https://example.com/product-image.jpg"
+                    >
 
-                        <input
-                            type="file"
-                            id="mainImageFile"
-                            accept="image/*"
-                        >
-
-                        <div
-                            class="upload-status"
-                            id="mainImageStatus"
-                        >
-                            Choose an image to upload.
-                        </div>
-
-                        <img
-                            id="mainImagePreview"
-                            class="main-image-preview"
-                            alt="Product preview"
-                        >
-
+                    <div class="image-note">
+                        Paste the direct image URL here.
                     </div>
 
+                    <img
+                        id="imagePreview"
+                        class="image-preview"
+                        alt="Product image preview"
+                    >
+
                 </div>
+
 
                 <div class="field full">
 
@@ -986,84 +817,6 @@ button{
 
             </div>
 
-            <div class="options-section">
-
-                <div class="section-head">
-
-                    <h3>
-                        Product Options / Variants
-                    </h3>
-
-                    <button
-                        type="button"
-                        class="btn add-option-btn"
-                        onclick="addOption()"
-                    >
-                        + Add Option
-                    </button>
-
-                </div>
-
-                <div class="small-note">
-                    Add options such as Color, Size, Storage or Model.
-                    You can also give each option value its own image and price.
-                </div>
-
-                <div id="optionsContainer"></div>
-
-            </div>
-
-            <div class="stock-section">
-
-                <div class="section-head">
-
-                    <h3>
-                        Stock Management
-                    </h3>
-
-                </div>
-
-                <div id="simpleStockBox">
-
-                    <div class="field stock-input">
-
-                        <label>
-                            Total Stock
-                        </label>
-
-                        <input
-                            type="number"
-                            id="stock"
-                            min="0"
-                            step="1"
-                            value="0"
-                        >
-
-                    </div>
-
-                    <div class="stock-info">
-                        For products without variants.
-                    </div>
-
-                </div>
-
-                <div
-                    id="variantStockBox"
-                    class="hidden"
-                >
-
-                    <div class="stock-info">
-                        Enter the available quantity for each exact product combination.
-                    </div>
-
-                    <div
-                        id="variantStockList"
-                        class="variant-stock-list"
-                    ></div>
-
-                </div>
-
-            </div>
 
             <div class="form-actions">
 
@@ -1086,20 +839,26 @@ button{
 
             </div>
 
+
             <div id="message"></div>
 
         </form>
 
     </section>
 
+
+    <!-- INVENTORY -->
+
     <section>
 
         <div class="list-heading">
 
             <div>
+
                 <h2>
                     Product Inventory
                 </h2>
+
             </div>
 
             <input
@@ -1112,18 +871,22 @@ button{
 
         </div>
 
+
         <div
             id="productsGrid"
             class="products-grid"
         >
+
             <div class="loading">
                 Loading products...
             </div>
+
         </div>
 
     </section>
 
 </main>
+
 
 <script>
 
@@ -1137,7 +900,6 @@ const API_URL =
 
 /* =====================================================
    ADMIN AUTHENTICATION
-   FIXED TO MATCH ADMIN-LOGIN.HTML
 ===================================================== */
 
 const adminLoggedIn =
@@ -1152,33 +914,19 @@ const adminRaw =
 
 let admin = null;
 
-try {
+try{
 
     admin =
         JSON.parse(
             adminRaw
         );
 
-} catch(error) {
-
-    console.error(
-        "Could not read admin session:",
-        error
-    );
+}catch(error){
 
     admin = null;
 
 }
 
-
-/*
-   Admin-Login.html stores kaycyMartAdmin
-   as a JSON object containing:
-   id, name, email and role.
-
-   We only send the numeric admin ID
-   to the backend.
-*/
 
 if(
     adminLoggedIn !== "true" ||
@@ -1203,11 +951,6 @@ if(
 }
 
 
-/* IMPORTANT:
-   This is now the actual ID sent
-   in x-admin-user-id.
-*/
-
 const adminUserId =
     String(
         admin.id
@@ -1221,14 +964,6 @@ const adminUserId =
 let products = [];
 
 let editingProductId = null;
-
-let productOptions = [];
-
-let selectedImageUrl = "";
-
-let variantStockMap = {};
-
-let optionIdCounter = 1;
 
 
 /* =====================================================
@@ -1261,10 +996,6 @@ function formatMoney(value){
 }
 
 
-/* =====================================================
-   ADMIN HEADERS
-===================================================== */
-
 function adminHeaders(
     extraHeaders = {}
 ){
@@ -1282,7 +1013,7 @@ function adminHeaders(
 
 
 /* =====================================================
-   SHOW MESSAGE
+   MESSAGE
 ===================================================== */
 
 function showMessage(
@@ -1313,889 +1044,50 @@ function showMessage(
 
 
 /* =====================================================
-   IMAGE UPLOAD
-===================================================== */
-
-async function uploadImage(
-    file,
-    statusElement
-){
-
-    if(!file){
-
-        return "";
-
-    }
-
-
-    if(
-        !file.type.startsWith(
-            "image/"
-        )
-    ){
-
-        throw new Error(
-            "Please select an image file."
-        );
-
-    }
-
-
-    if(
-        file.size >
-        5 * 1024 * 1024
-    ){
-
-        throw new Error(
-            "Image must be 5MB or smaller."
-        );
-
-    }
-
-
-    statusElement.textContent =
-        "Uploading image...";
-
-
-    const formData =
-        new FormData();
-
-
-    formData.append(
-        "image",
-        file
-    );
-
-
-    const response =
-        await fetch(
-            `${API_URL}/api/admin/upload-image`,
-            {
-
-                method:"POST",
-
-                headers:
-                    adminHeaders()
-
-                ,
-
-                body:
-                    formData
-
-            }
-        );
-
-
-    const data =
-        await response.json();
-
-
-    if(!response.ok){
-
-        throw new Error(
-            data.message ||
-            "Image upload failed."
-        );
-
-    }
-
-
-    statusElement.textContent =
-        "Image uploaded successfully.";
-
-
-    return data.imageUrl;
-
-}
-
-
-/* =====================================================
-   MAIN IMAGE
+   IMAGE PREVIEW
 ===================================================== */
 
 document
-    .getElementById(
-        "mainImageFile"
-    )
+    .getElementById("image")
     .addEventListener(
-        "change",
-        async function(){
+        "input",
+        function(){
 
-            const file =
-                this.files[0];
+            const preview =
+                document.getElementById(
+                    "imagePreview"
+                );
 
-            if(!file){
+            const url =
+                this.value.trim();
+
+            if(!url){
+
+                preview.src = "";
+
+                preview.style.display =
+                    "none";
 
                 return;
 
             }
 
-
-            const preview =
-                document.getElementById(
-                    "mainImagePreview"
-                );
-
-
-            const status =
-                document.getElementById(
-                    "mainImageStatus"
-                );
-
-
             preview.src =
-                URL.createObjectURL(
-                    file
-                );
-
+                url;
 
             preview.style.display =
                 "block";
 
+            preview.onerror =
+                function(){
 
-            try{
+                    this.style.display =
+                        "none";
 
-                selectedImageUrl =
-                    await uploadImage(
-                        file,
-                        status
-                    );
-
-            }catch(error){
-
-                status.textContent =
-                    error.message;
-
-                selectedImageUrl =
-                    "";
-
-                preview.style.display =
-                    "none";
-
-            }
+                };
 
         }
     );
-
-
-/* =====================================================
-   ADD OPTION
-===================================================== */
-
-function addOption(
-    optionData = null
-){
-
-    const option = {
-
-        id:
-            optionIdCounter++,
-
-        name:
-            optionData?.name ||
-            "",
-
-        values:
-            optionData?.values?.map(
-                value => ({
-
-                    name:
-                        value.name ||
-                        "",
-
-                    price:
-                        value.price === null ||
-                        value.price === undefined
-                            ? ""
-                            : value.price,
-
-                    image:
-                        value.image ||
-                        ""
-
-                })
-            ) ||
-            [
-                {
-                    name:"",
-                    price:"",
-                    image:""
-                }
-            ]
-
-    };
-
-
-    productOptions.push(
-        option
-    );
-
-
-    renderOptions();
-
-    updateStockUI();
-
-}
-
-
-/* =====================================================
-   REMOVE OPTION
-===================================================== */
-
-function removeOption(
-    optionId
-){
-
-    productOptions =
-        productOptions.filter(
-            option =>
-                option.id !==
-                optionId
-        );
-
-
-    renderOptions();
-
-    updateStockUI();
-
-}
-
-
-/* =====================================================
-   ADD VALUE
-===================================================== */
-
-function addOptionValue(
-    optionId
-){
-
-    const option =
-        productOptions.find(
-            item =>
-                item.id ===
-                optionId
-        );
-
-
-    if(!option){
-
-        return;
-
-    }
-
-
-    option.values.push({
-
-        name:"",
-        price:"",
-        image:""
-
-    });
-
-
-    renderOptions();
-
-    updateStockUI();
-
-}
-
-
-/* =====================================================
-   REMOVE VALUE
-===================================================== */
-
-function removeOptionValue(
-    optionId,
-    valueIndex
-){
-
-    const option =
-        productOptions.find(
-            item =>
-                item.id ===
-                optionId
-        );
-
-
-    if(!option){
-
-        return;
-
-    }
-
-
-    if(
-        option.values.length <= 1
-    ){
-
-        alert(
-            "Each option needs at least one value."
-        );
-
-        return;
-
-    }
-
-
-    option.values.splice(
-        valueIndex,
-        1
-    );
-
-
-    renderOptions();
-
-    updateStockUI();
-
-}
-
-
-/* =====================================================
-   RENDER OPTIONS
-===================================================== */
-
-function renderOptions(){
-
-    const container =
-        document.getElementById(
-            "optionsContainer"
-        );
-
-
-    container.innerHTML =
-        "";
-
-
-    productOptions.forEach(
-        option => {
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "option-card";
-
-
-            card.innerHTML = `
-
-                <div class="option-top">
-
-                    <div class="option-name-wrap">
-
-                        <label>
-                            Option Name
-                        </label>
-
-                        <input
-                            type="text"
-                            class="option-name-input"
-                            value="${escapeHtml(option.name)}"
-                            placeholder="e.g. Color"
-                            oninput="updateOptionName(${option.id}, this.value)"
-                        >
-
-                    </div>
-
-                    <button
-                        type="button"
-                        class="btn btn-danger btn-small"
-                        onclick="removeOption(${option.id})"
-                    >
-                        Remove Option
-                    </button>
-
-                </div>
-
-                <div class="values-title">
-                    Option Values
-                </div>
-
-                <div
-                    id="option-values-${option.id}"
-                ></div>
-
-                <button
-                    type="button"
-                    class="btn add-option-btn btn-small add-value-btn"
-                    onclick="addOptionValue(${option.id})"
-                >
-                    + Add Value
-                </button>
-
-            `;
-
-
-            container.appendChild(
-                card
-            );
-
-
-            const valuesContainer =
-                document.getElementById(
-                    `option-values-${option.id}`
-                );
-
-
-            option.values.forEach(
-                (
-                    value,
-                    valueIndex
-                ) => {
-
-                    const row =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    row.className =
-                        "value-row";
-
-
-                    row.innerHTML = `
-
-                        <input
-                            type="text"
-                            placeholder="Value e.g. Black"
-                            value="${escapeHtml(value.name)}"
-                            oninput="updateOptionValue(${option.id}, ${valueIndex}, 'name', this.value)"
-                        >
-
-                        <input
-                            type="number"
-                            min="0"
-                            step="1"
-                            placeholder="Price"
-                            value="${
-                                value.price === ""
-                                ? ""
-                                : escapeHtml(value.price)
-                            }"
-                            oninput="updateOptionValue(${option.id}, ${valueIndex}, 'price', this.value)"
-                        >
-
-                        <div class="image-upload-mini">
-
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onchange="handleOptionImageUpload(${option.id}, ${valueIndex}, this)"
-                            >
-
-                            ${
-                                value.image
-                                ?
-                                `
-                                <img
-                                    src="${escapeHtml(value.image)}"
-                                    class="value-image-preview"
-                                    alt="Variant image"
-                                >
-                                `
-                                :
-                                `
-                                <div class="value-image-preview"></div>
-                                `
-                            }
-
-                        </div>
-
-                        <button
-                            type="button"
-                            class="btn btn-danger btn-small"
-                            onclick="removeOptionValue(${option.id}, ${valueIndex})"
-                        >
-                            Remove
-                        </button>
-
-                    `;
-
-
-                    valuesContainer.appendChild(
-                        row
-                    );
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   OPTION UPDATES
-===================================================== */
-
-function updateOptionName(
-    optionId,
-    value
-){
-
-    const option =
-        productOptions.find(
-            item =>
-                item.id ===
-                optionId
-        );
-
-
-    if(option){
-
-        option.name =
-            value;
-
-    }
-
-
-    updateStockUI();
-
-}
-
-
-function updateOptionValue(
-    optionId,
-    valueIndex,
-    field,
-    value
-){
-
-    const option =
-        productOptions.find(
-            item =>
-                item.id ===
-                optionId
-        );
-
-
-    if(
-        !option ||
-        !option.values[valueIndex]
-    ){
-
-        return;
-
-    }
-
-
-    option.values[
-        valueIndex
-    ][field] =
-        value;
-
-
-    if(
-        field === "name"
-    ){
-
-        updateStockUI();
-
-    }
-
-}
-
-
-/* =====================================================
-   OPTION IMAGE UPLOAD
-===================================================== */
-
-async function handleOptionImageUpload(
-    optionId,
-    valueIndex,
-    input
-){
-
-    const file =
-        input.files[0];
-
-
-    if(!file){
-
-        return;
-
-    }
-
-
-    try{
-
-        const option =
-            productOptions.find(
-                item =>
-                    item.id ===
-                    optionId
-            );
-
-
-        if(!option){
-
-            return;
-
-        }
-
-
-        const temporaryStatus = {
-
-            textContent:
-                "Uploading..."
-
-        };
-
-
-        const imageUrl =
-            await uploadImage(
-                file,
-                temporaryStatus
-            );
-
-
-        option.values[
-            valueIndex
-        ].image =
-            imageUrl;
-
-
-        renderOptions();
-
-
-    }catch(error){
-
-        alert(
-            error.message ||
-            "Variant image upload failed."
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   VARIANT KEY
-===================================================== */
-
-function makeVariantKey(
-    combination
-){
-
-    return combination
-        .map(
-            item =>
-                `${item.option}:${item.value}`
-        )
-        .join("|");
-
-}
-
-
-/* =====================================================
-   GENERATE COMBINATIONS
-===================================================== */
-
-function generateCombinations(
-    options
-){
-
-    if(!options.length){
-
-        return [];
-
-    }
-
-
-    let combinations =
-        [[]];
-
-
-    options.forEach(
-        option => {
-
-            const next = [];
-
-
-            option.values.forEach(
-                value => {
-
-                    combinations.forEach(
-                        combination => {
-
-                            next.push([
-                                ...combination,
-
-                                {
-
-                                    option:
-                                        option.name.trim(),
-
-                                    value:
-                                        value.name.trim()
-
-                                }
-
-                            ]);
-
-                        }
-                    );
-
-                }
-            );
-
-
-            combinations =
-                next;
-
-        }
-    );
-
-
-    return combinations;
-
-}
-
-
-/* =====================================================
-   STOCK UI
-===================================================== */
-
-function updateStockUI(){
-
-    const simpleBox =
-        document.getElementById(
-            "simpleStockBox"
-        );
-
-
-    const variantBox =
-        document.getElementById(
-            "variantStockBox"
-        );
-
-
-    const list =
-        document.getElementById(
-            "variantStockList"
-        );
-
-
-    const validOptions =
-        productOptions.filter(
-            option =>
-                option.name.trim() &&
-                option.values.some(
-                    value =>
-                        value.name.trim()
-                )
-        );
-
-
-    if(!validOptions.length){
-
-        simpleBox.classList.remove(
-            "hidden"
-        );
-
-        variantBox.classList.add(
-            "hidden"
-        );
-
-        list.innerHTML =
-            "";
-
-        return;
-
-    }
-
-
-    simpleBox.classList.add(
-        "hidden"
-    );
-
-
-    variantBox.classList.remove(
-        "hidden"
-    );
-
-
-    const combinations =
-        generateCombinations(
-            validOptions
-        );
-
-
-    list.innerHTML =
-        "";
-
-
-    combinations.forEach(
-        combination => {
-
-            const key =
-                makeVariantKey(
-                    combination
-                );
-
-
-            if(
-                variantStockMap[key] ===
-                undefined
-            ){
-
-                variantStockMap[key] =
-                    0;
-
-            }
-
-
-            const row =
-                document.createElement(
-                    "div"
-                );
-
-
-            row.className =
-                "variant-stock-row";
-
-
-            row.innerHTML = `
-
-                <div class="variant-label">
-
-                    ${escapeHtml(
-                        combination
-                            .map(
-                                item =>
-                                    `${item.option}: ${item.value}`
-                            )
-                            .join(" • ")
-                    )}
-
-                </div>
-
-                <input
-                    type="number"
-                    min="0"
-                    step="1"
-                    value="${Number(
-                        variantStockMap[key] ||
-                        0
-                    )}"
-                    oninput="variantStockMap['${escapeHtml(key)}'] = Math.max(0, Math.floor(Number(this.value) || 0))"
-                >
-
-            `;
-
-
-            list.appendChild(
-                row
-            );
-
-        }
-    );
-
-}
 
 
 /* =====================================================
@@ -2203,116 +1095,33 @@ function updateStockUI(){
 ===================================================== */
 
 document
-    .getElementById(
-        "productForm"
-    )
+    .getElementById("productForm")
     .addEventListener(
         "submit",
         async function(event){
 
             event.preventDefault();
 
-
             const submitBtn =
                 document.getElementById(
                     "submitBtn"
                 );
 
+            const wasEditing =
+                Boolean(
+                    editingProductId
+                );
 
             submitBtn.disabled =
                 true;
 
-
             submitBtn.textContent =
-                editingProductId
+                wasEditing
                     ? "Updating..."
                     : "Adding...";
 
 
             try{
-
-                const cleanOptions =
-                    productOptions
-                        .map(
-                            option => ({
-
-                                name:
-                                    option.name.trim(),
-
-                                values:
-                                    option.values
-                                        .filter(
-                                            value =>
-                                                value.name.trim()
-                                        )
-                                        .map(
-                                            value => ({
-
-                                                name:
-                                                    value.name.trim(),
-
-                                                price:
-                                                    value.price === ""
-                                                        ? null
-                                                        : Number(
-                                                            value.price
-                                                        ),
-
-                                                image:
-                                                    value.image ||
-                                                    ""
-
-                                            })
-                                        )
-
-                            })
-                        )
-                        .filter(
-                            option =>
-                                option.name &&
-                                option.values.length
-                        );
-
-
-                let finalVariantStock =
-                    {};
-
-
-                if(
-                    cleanOptions.length
-                ){
-
-                    const combinations =
-                        generateCombinations(
-                            cleanOptions
-                        );
-
-
-                    combinations.forEach(
-                        combination => {
-
-                            const key =
-                                makeVariantKey(
-                                    combination
-                                );
-
-
-                            finalVariantStock[key] =
-                                Math.max(
-                                    0,
-                                    Math.floor(
-                                        Number(
-                                            variantStockMap[key] ||
-                                            0
-                                        )
-                                    )
-                                );
-
-                        }
-                    );
-
-                }
-
 
                 const payload = {
 
@@ -2362,29 +1171,12 @@ document
                             .trim(),
 
                     image:
-                        selectedImageUrl,
-
-                    options:
-                        cleanOptions,
-
-                    stock:
-                        cleanOptions.length === 0
-                            ? Math.max(
-                                0,
-                                Math.floor(
-                                    Number(
-                                        document
-                                            .getElementById(
-                                                "stock"
-                                            )
-                                            .value
-                                    ) || 0
-                                )
+                        document
+                            .getElementById(
+                                "image"
                             )
-                            : 0,
-
-                    variantStock:
-                        finalVariantStock
+                            .value
+                            .trim()
 
                 };
 
@@ -2408,7 +1200,7 @@ document
 
 
                 const endpoint =
-                    editingProductId
+                    wasEditing
 
                         ? `${API_URL}/api/admin/products/${editingProductId}`
 
@@ -2416,7 +1208,7 @@ document
 
 
                 const method =
-                    editingProductId
+                    wasEditing
                         ? "PATCH"
                         : "POST";
 
@@ -2458,14 +1250,13 @@ document
 
 
                 showMessage(
-                    editingProductId
+                    wasEditing
                         ? "Product updated successfully."
                         : "Product added successfully."
                 );
 
 
                 resetForm();
-
 
                 await loadProducts();
 
@@ -2475,7 +1266,6 @@ document
                 console.error(
                     error
                 );
-
 
                 showMessage(
                     error.message ||
@@ -2489,13 +1279,6 @@ document
                 submitBtn.disabled =
                     false;
 
-
-                /*
-                   editingProductId becomes null
-                   after resetForm(), so determine
-                   the button from the current form state.
-                */
-
                 submitBtn.textContent =
                     editingProductId
                         ? "Update Product"
@@ -2508,7 +1291,7 @@ document
 
 
 /* =====================================================
-   LOAD PRODUCTS
+   LOAD ADMIN PRODUCTS
 ===================================================== */
 
 async function loadProducts(){
@@ -2520,9 +1303,11 @@ async function loadProducts(){
 
 
     grid.innerHTML = `
+
         <div class="loading">
             Loading products...
         </div>
+
     `;
 
 
@@ -2530,13 +1315,22 @@ async function loadProducts(){
 
         const response =
             await fetch(
-                `${API_URL}/api/products`
+                `${API_URL}/api/admin/products`,
+                {
+                    headers:
+                        adminHeaders()
+                }
             );
+
+
+        const data =
+            await response.json();
 
 
         if(!response.ok){
 
             throw new Error(
+                data.message ||
                 "Could not load products."
             );
 
@@ -2544,7 +1338,11 @@ async function loadProducts(){
 
 
         products =
-            await response.json();
+            Array.isArray(data)
+                ? data
+                : Array.isArray(data.products)
+                    ? data.products
+                    : [];
 
 
         renderProducts(
@@ -2564,6 +1362,15 @@ async function loadProducts(){
             <div class="empty-state">
 
                 Could not load products.
+
+                <br><br>
+
+                <small>
+                    ${escapeHtml(
+                        error.message ||
+                        ""
+                    )}
+                </small>
 
                 <br><br>
 
@@ -2596,7 +1403,6 @@ function renderProducts(
             "productsGrid"
         );
 
-
     const count =
         document.getElementById(
             "productCount"
@@ -2627,218 +1433,199 @@ function renderProducts(
 
 
     grid.innerHTML =
-        list
-            .map(
-                product => {
+        list.map(
+            product => {
 
-                    const options =
-                        Array.isArray(
-                            product.options
-                        )
-                            ? product.options
-                            : [];
+                const isActive =
+                    Number(
+                        product.active
+                    ) === 1;
 
 
-                    const variantStock =
-                        product.variant_stock ||
-                        product.variantStock ||
-                        {};
+                const statusText =
+                    isActive
+                        ? "ACTIVE"
+                        : "HIDDEN";
 
 
-                    let totalStock =
-                        0;
+                const statusClass =
+                    isActive
+                        ? "status-active"
+                        : "status-hidden";
 
 
-                    if(options.length){
-
-                        totalStock =
-                            Object.values(
-                                variantStock
-                            )
-                            .reduce(
-                                (
-                                    sum,
-                                    value
-                                ) =>
-                                    sum +
-                                    Number(
-                                        value ||
-                                        0
-                                    ),
-                                0
-                            );
-
-                    }else{
-
-                        totalStock =
-                            Number(
-                                product.stock ||
-                                0
-                            );
-
-                    }
+                const stockText =
+                    "Stock managed on customer checkout";
 
 
-                    const stockText =
-                        totalStock > 0
-                            ? `${totalStock} in stock`
-                            : "Out of stock";
+                return `
+
+                    <article
+                        class="product-card ${
+                            isActive
+                                ? ""
+                                : "is-hidden"
+                        }"
+                    >
+
+                        <div
+                            class="product-image-wrap"
+                        >
+
+                            <span
+                                class="status-badge ${statusClass}"
+                            >
+                                ${statusText}
+                            </span>
 
 
-                    const optionTags =
-                        options
-                            .slice(0,4)
-                            .map(
-                                option =>
-                                    `
-                                    <span class="option-tag">
-                                        ${escapeHtml(
-                                            option.name
-                                        )}
-                                    </span>
-                                    `
-                            )
-                            .join("");
+                            ${
+                                product.image
+
+                                ?
+
+                                `
+                                <img
+                                    src="${escapeHtml(
+                                        product.image
+                                    )}"
+                                    alt="${escapeHtml(
+                                        product.name
+                                    )}"
+                                    loading="lazy"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+                                >
+
+                                <div
+                                    class="no-image"
+                                    style="display:none;"
+                                >
+                                    ${escapeHtml(
+                                        product.emoji ||
+                                        "🛍️"
+                                    )}
+                                </div>
+                                `
+
+                                :
+
+                                `
+                                <div class="no-image">
+                                    ${escapeHtml(
+                                        product.emoji ||
+                                        "🛍️"
+                                    )}
+                                </div>
+                                `
+                            }
+
+                        </div>
 
 
-                    return `
-
-                        <article
-                            class="product-card"
+                        <div
+                            class="product-body"
                         >
 
                             <div
-                                class="product-image-wrap"
+                                class="product-category"
                             >
-
-                                ${
-                                    product.image
-
-                                    ?
-
-                                    `
-                                    <img
-                                        src="${escapeHtml(
-                                            product.image
-                                        )}"
-                                        alt="${escapeHtml(
-                                            product.name
-                                        )}"
-                                        loading="lazy"
-                                    >
-                                    `
-
-                                    :
-
-                                    `
-                                    <div
-                                        class="no-image"
-                                    >
-                                        ${escapeHtml(
-                                            product.emoji ||
-                                            "🛍️"
-                                        )}
-                                    </div>
-                                    `
-                                }
-
+                                ${escapeHtml(
+                                    product.category ||
+                                    "Product"
+                                )}
                             </div>
 
 
                             <div
-                                class="product-body"
+                                class="product-name"
+                            >
+                                ${escapeHtml(
+                                    product.name
+                                )}
+                            </div>
+
+
+                            <div
+                                class="product-price"
+                            >
+                                ${formatMoney(
+                                    product.price
+                                )}
+                            </div>
+
+
+                            <div
+                                class="product-description"
+                            >
+                                ${escapeHtml(
+                                    product.description ||
+                                    "No description."
+                                )}
+                            </div>
+
+
+                            <div
+                                class="product-description"
+                            >
+                                ${stockText}
+                            </div>
+
+
+                            <div
+                                class="card-actions"
                             >
 
-                                <div
-                                    class="product-category"
+                                <button
+                                    class="btn btn-primary btn-small"
+                                    onclick="editProduct(
+                                        ${Number(product.id)}
+                                    )"
                                 >
-                                    ${escapeHtml(
-                                        product.category ||
-                                        "Product"
-                                    )}
-                                </div>
+                                    Edit
+                                </button>
 
 
-                                <div
-                                    class="product-name"
+                                <button
+                                    class="btn btn-danger btn-small"
+                                    onclick="deleteProduct(
+                                        ${Number(product.id)}
+                                    )"
                                 >
-                                    ${escapeHtml(
-                                        product.name
-                                    )}
-                                </div>
-
-
-                                <div
-                                    class="product-price"
-                                >
-                                    ${formatMoney(
-                                        product.price
-                                    )}
-                                </div>
-
-
-                                <div
-                                    class="product-stock"
-                                >
-                                    ${escapeHtml(
-                                        stockText
-                                    )}
-                                </div>
-
-
-                                ${
-                                    options.length
-
-                                    ?
-
-                                    `
-                                    <div
-                                        class="product-options"
-                                    >
-                                        ${optionTags}
-                                    </div>
-                                    `
-
-                                    :
-
-                                    ""
-                                }
-
-
-                                <div
-                                    class="card-actions"
-                                >
-
-                                    <button
-                                        class="btn btn-primary btn-small"
-                                        onclick="editProduct(${Number(
-                                            product.id
-                                        )})"
-                                    >
-                                        Edit
-                                    </button>
-
-
-                                    <button
-                                        class="btn btn-danger btn-small"
-                                        onclick="deleteProduct(${Number(
-                                            product.id
-                                        )})"
-                                    >
-                                        Delete
-                                    </button>
-
-                                </div>
+                                    Delete
+                                </button>
 
                             </div>
 
-                        </article>
 
-                    `;
+                            <button
+                                class="btn btn-small visibility-btn ${
+                                    isActive
+                                        ? "btn-hide"
+                                        : "btn-show"
+                                }"
+                                onclick="toggleProductVisibility(
+                                    ${Number(product.id)},
+                                    ${isActive}
+                                )"
+                            >
 
-                }
-            )
-            .join("");
+                                ${
+                                    isActive
+                                        ? "👁️ Hide Product"
+                                        : "👁️ Show Product"
+                                }
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            }
+        )
+        .join("");
 
 }
 
@@ -2905,10 +1692,126 @@ function filterProducts(){
 
 
 /* =====================================================
+   HIDE / SHOW PRODUCT
+===================================================== */
+
+async function toggleProductVisibility(
+    id,
+    currentlyActive
+){
+
+    const product =
+        products.find(
+            item =>
+                Number(
+                    item.id
+                ) ===
+                Number(id)
+        );
+
+
+    if(!product){
+
+        return;
+
+    }
+
+
+    const message =
+        currentlyActive
+
+            ?
+
+            `Hide "${product.name}"?\n\nCustomers will no longer see this product in the store.`
+
+            :
+
+            `Show "${product.name}"?\n\nCustomers will be able to see this product again.`;
+
+
+    if(
+        !confirm(message)
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                `${API_URL}/api/admin/products/${id}/visibility`,
+                {
+
+                    method:"PATCH",
+
+                    headers:
+                        adminHeaders({
+                            "Content-Type":
+                                "application/json"
+                        }),
+
+                    body:
+                        JSON.stringify({
+                            active:
+                                currentlyActive
+                                    ? 0
+                                    : 1
+                        })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Could not change product visibility."
+            );
+
+        }
+
+
+        showMessage(
+            currentlyActive
+                ? "Product hidden successfully."
+                : "Product is visible again."
+        );
+
+
+        await loadProducts();
+
+
+    }catch(error){
+
+        console.error(
+            error
+        );
+
+
+        showMessage(
+            error.message ||
+            "Could not change product visibility.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
    EDIT PRODUCT
 ===================================================== */
 
-async function editProduct(
+function editProduct(
     id
 ){
 
@@ -3008,143 +1911,37 @@ async function editProduct(
         "";
 
 
-    selectedImageUrl =
+    document
+        .getElementById(
+            "image"
+        )
+        .value =
         product.image ||
         "";
 
 
     const preview =
         document.getElementById(
-            "mainImagePreview"
+            "imagePreview"
         );
 
 
-    const status =
-        document.getElementById(
-            "mainImageStatus"
-        );
-
-
-    if(selectedImageUrl){
+    if(product.image){
 
         preview.src =
-            selectedImageUrl;
+            product.image;
 
         preview.style.display =
             "block";
 
-        status.textContent =
-            "Current product image.";
-
     }else{
+
+        preview.src = "";
 
         preview.style.display =
             "none";
 
-        status.textContent =
-            "Choose an image to upload.";
-
     }
-
-
-    document
-        .getElementById(
-            "stock"
-        )
-        .value =
-        Number(
-            product.stock ||
-            0
-        );
-
-
-    variantStockMap =
-        {};
-
-
-    const storedVariantStock =
-        product.variant_stock ||
-        product.variantStock ||
-        {};
-
-
-    Object.keys(
-        storedVariantStock
-    )
-    .forEach(
-        key => {
-
-            variantStockMap[key] =
-                Number(
-                    storedVariantStock[key] ||
-                    0
-                );
-
-        }
-    );
-
-
-    const storedOptions =
-        Array.isArray(
-            product.options
-        )
-            ? product.options
-            : [];
-
-
-    productOptions =
-        [];
-
-
-    storedOptions.forEach(
-        option => {
-
-            addOption({
-
-                name:
-                    option.name ||
-                    "",
-
-                values:
-                    Array.isArray(
-                        option.values
-                    )
-
-                        ?
-
-                        option.values.map(
-                            value => ({
-
-                                name:
-                                    value.name ||
-                                    "",
-
-                                price:
-                                    value.price === null ||
-                                    value.price === undefined
-                                        ? ""
-                                        : value.price,
-
-                                image:
-                                    value.image ||
-                                    ""
-
-                            })
-                        )
-
-                        :
-
-                        []
-
-            });
-
-        }
-    );
-
-
-    renderOptions();
-
-    updateStockUI();
 
 
     window.scrollTo({
@@ -3177,18 +1974,6 @@ function resetForm(){
 
     editingProductId =
         null;
-
-
-    productOptions =
-        [];
-
-
-    variantStockMap =
-        {};
-
-
-    selectedImageUrl =
-        "";
 
 
     document
@@ -3224,62 +2009,16 @@ function resetForm(){
         );
 
 
-    document
-        .getElementById(
-            "optionsContainer"
-        )
-        .innerHTML =
-        "";
-
-
-    document
-        .getElementById(
-            "variantStockList"
-        )
-        .innerHTML =
-        "";
-
-
-    document
-        .getElementById(
-            "simpleStockBox"
-        )
-        .classList
-        .remove(
-            "hidden"
-        );
-
-
-    document
-        .getElementById(
-            "variantStockBox"
-        )
-        .classList
-        .add(
-            "hidden"
-        );
-
-
     const preview =
         document.getElementById(
-            "mainImagePreview"
+            "imagePreview"
         );
 
 
-    preview.src =
-        "";
-
+    preview.src = "";
 
     preview.style.display =
         "none";
-
-
-    document
-        .getElementById(
-            "mainImageStatus"
-        )
-        .textContent =
-        "Choose an image to upload.";
 
 }
 
@@ -3311,7 +2050,7 @@ async function deleteProduct(
 
     const confirmed =
         confirm(
-            `Delete "${product.name}"?\n\nThis action cannot be undone.`
+            `Delete "${product.name}"?\n\nProducts that already belong to an order cannot be deleted. You can hide them instead.`
         );
 
 
@@ -3355,18 +2094,6 @@ async function deleteProduct(
         showMessage(
             "Product deleted successfully."
         );
-
-
-        if(
-            Number(
-                editingProductId
-            ) ===
-            Number(id)
-        ){
-
-            resetForm();
-
-        }
 
 
         await loadProducts();
