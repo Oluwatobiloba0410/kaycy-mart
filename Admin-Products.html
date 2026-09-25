@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Products | Kaycy Mart</title>
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Products | Kaycy Mart</title><style>
 
-<style>
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 body{
     font-family:Arial,sans-serif;
     background:#f5f7fa;
-    color:#172033;
+    color:#111827;
 }
 
 button,
@@ -31,105 +27,145 @@ button{
 
 /* HEADER */
 
-.header{
+header{
     background:#111827;
     color:white;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,.12);
-}
-
-.header-inner{
-    max-width:1400px;
-    margin:auto;
-    min-height:68px;
-    padding:10px 18px;
+    padding:13px 5%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:15px;
+    gap:20px;
+    position:sticky;
+    top:0;
+    z-index:1500;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.brand-icon{
-    width:42px;
-    height:42px;
-    border-radius:10px;
-    background:#f59e0b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:23px;
-}
-
-.brand-text h1{
-    font-size:20px;
-}
-
-.brand-text p{
-    font-size:11px;
-    color:#cbd5e1;
-    margin-top:2px;
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:#f59e0b;
+    white-space:nowrap;
 }
 
 .header-actions{
     display:flex;
     gap:8px;
+    align-items:center;
 }
 
 .header-btn{
-    border:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     background:#1f2937;
     color:white;
-    padding:9px 12px;
-    border-radius:8px;
     text-decoration:none;
+    padding:9px 13px;
+    border-radius:7px;
     font-size:13px;
+    font-weight:bold;
+    transition:.2s;
 }
 
 .header-btn:hover{
-    background:#374151;
+    background:#f59e0b;
+    color:#111827;
+}
+
+/* NAV */
+
+nav{
+    background:#1f2937;
+    padding:9px 5%;
+    position:relative;
+    z-index:1200;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:22px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+nav a:hover,
+.admin-active{
+    color:#f59e0b !important;
+}
+
+/* MARKET STRIP */
+
+.market-strip{
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    padding:11px 5%;
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    flex-wrap:wrap;
+    font-size:13px;
+    color:#4b5563;
+}
+
+.market-strip span{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.market-strip strong{
+    color:#111827;
 }
 
 /* PAGE */
 
 .container{
-    max-width:1400px;
+    max-width:1250px;
     margin:auto;
-    padding:22px 16px 45px;
+    padding:28px 5% 60px;
 }
 
 .page-heading{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:15px;
+    background:white;
+    padding:22px;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
     margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
 }
 
-.page-heading h2{
+.page-heading h1{
     font-size:28px;
-    color:#111827;
+    margin-bottom:7px;
 }
 
 .page-heading p{
     color:#6b7280;
     font-size:14px;
-    margin-top:5px;
+    line-height:1.5;
 }
 
 .product-count{
-    background:#fff;
-    border:1px solid #e5e7eb;
+    flex:0 0 auto;
+    background:#f59e0b;
+    color:#111827;
     padding:9px 13px;
-    border-radius:9px;
+    border-radius:20px;
     font-size:13px;
+    font-weight:800;
 }
 
 /* FORM */
@@ -137,17 +173,19 @@ button{
 .form-card{
     background:white;
     border:1px solid #e5e7eb;
-    border-radius:14px;
+    border-radius:10px;
     padding:20px;
-    margin-bottom:25px;
-    box-shadow:0 3px 12px rgba(0,0,0,.05);
+    margin-bottom:30px;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 
 .form-title{
-    font-size:19px;
+    font-size:20px;
     font-weight:bold;
-    margin-bottom:18px;
     color:#111827;
+    margin-bottom:18px;
+    border-left:4px solid #f59e0b;
+    padding-left:10px;
 }
 
 .form-grid{
@@ -177,7 +215,7 @@ button{
 .field textarea{
     width:100%;
     border:1px solid #d1d5db;
-    border-radius:9px;
+    border-radius:7px;
     padding:11px 12px;
     outline:none;
     background:white;
@@ -196,12 +234,12 @@ button{
     box-shadow:0 0 0 3px rgba(245,158,11,.12);
 }
 
-/* IMAGE */
+/* MAIN IMAGE */
 
 .image-upload-box{
     border:2px dashed #d1d5db;
-    border-radius:10px;
-    padding:16px;
+    border-radius:8px;
+    padding:15px;
     background:#f8fafc;
 }
 
@@ -211,9 +249,9 @@ button{
 
 .image-file{
     width:100%;
-    padding:10px;
+    padding:9px;
     border:1px solid #d1d5db;
-    border-radius:8px;
+    border-radius:7px;
     background:white;
 }
 
@@ -221,6 +259,7 @@ button{
     color:#6b7280;
     font-size:12px;
     margin-top:7px;
+    line-height:1.4;
 }
 
 .image-preview{
@@ -228,7 +267,7 @@ button{
     max-width:220px;
     height:180px;
     margin-top:10px;
-    border-radius:10px;
+    border-radius:8px;
     border:1px solid #e5e7eb;
     background:#f8fafc;
     object-fit:contain;
@@ -242,14 +281,142 @@ button{
     font-weight:bold;
 }
 
+/* VARIANTS */
+
+.variant-section{
+    margin-top:20px;
+    border-top:1px solid #e5e7eb;
+    padding-top:20px;
+}
+
+.variant-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.variant-heading h3{
+    font-size:16px;
+    color:#111827;
+}
+
+.variant-note{
+    font-size:12px;
+    color:#6b7280;
+    margin-bottom:12px;
+    line-height:1.5;
+}
+
+.variant-header{
+    display:grid;
+    grid-template-columns:1fr 1.25fr .7fr 1.35fr 45px;
+    gap:8px;
+    margin-bottom:7px;
+}
+
+.variant-header span{
+    font-size:11px;
+    font-weight:bold;
+    color:#6b7280;
+}
+
+.variant-row{
+    display:grid;
+    grid-template-columns:1fr 1.25fr .7fr 1.35fr 45px;
+    gap:8px;
+    margin-bottom:10px;
+    align-items:start;
+}
+
+.variant-row input{
+    width:100%;
+    border:1px solid #d1d5db;
+    border-radius:7px;
+    padding:10px;
+    outline:none;
+}
+
+.variant-row input:focus{
+    border-color:#f59e0b;
+    box-shadow:0 0 0 3px rgba(245,158,11,.12);
+}
+
+/* VARIANT IMAGE */
+
+.variant-image-box{
+    border:1px dashed #d1d5db;
+    border-radius:7px;
+    padding:7px;
+    background:#f8fafc;
+}
+
+.variant-image-input{
+    width:100%;
+    padding:6px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    background:white;
+    font-size:11px;
+}
+
+.variant-image-preview{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    border-radius:6px;
+    border:1px solid #e5e7eb;
+    background:white;
+    margin-top:6px;
+    display:none;
+}
+
+.variant-current-image{
+    font-size:10px;
+    color:#15803d;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.remove-variant{
+    border:none;
+    border-radius:7px;
+    background:#fee2e2;
+    color:#b91c1c;
+    font-size:20px;
+    font-weight:bold;
+    min-height:42px;
+}
+
+.remove-variant:hover{
+    background:#dc2626;
+    color:white;
+}
+
+.add-variant-btn{
+    border:1px dashed #f59e0b;
+    background:#fff7ed;
+    color:#c2410c;
+    border-radius:7px;
+    padding:9px 13px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.add-variant-btn:hover{
+    background:#f59e0b;
+    color:#111827;
+}
+
 /* BUTTONS */
 
 .btn{
     border:none;
-    border-radius:8px;
+    border-radius:7px;
     padding:9px 13px;
     font-weight:bold;
-    font-size:13px;
+    font-size:12px;
     transition:.2s;
 }
 
@@ -263,22 +430,6 @@ button{
     color:#111827;
 }
 
-.btn-primary:disabled,
-.btn-gold:disabled{
-    opacity:.6;
-    cursor:not-allowed;
-}
-
-.btn-gold{
-    background:#f59e0b;
-    color:#111827;
-}
-
-.btn-gold:hover{
-    background:#d97706;
-    color:white;
-}
-
 .btn-danger{
     background:#fee2e2;
     color:#b91c1c;
@@ -289,12 +440,10 @@ button{
     color:white;
 }
 
-.btn-small{
-    padding:7px 10px;
-    font-size:12px;
+.btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
 }
-
-/* FORM ACTIONS */
 
 .form-actions{
     display:flex;
@@ -302,6 +451,10 @@ button{
     margin-top:22px;
     padding-top:18px;
     border-top:1px solid #e5e7eb;
+}
+
+.form-actions .btn{
+    min-width:130px;
 }
 
 #message{
@@ -326,142 +479,227 @@ button{
 
 .list-heading{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap:10px;
-    margin-bottom:14px;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
 }
 
 .list-heading h2{
-    font-size:21px;
+    font-size:20px;
 }
 
 .search-box{
-    width:260px;
+    width:280px;
+    padding:11px 13px;
     border:1px solid #d1d5db;
-    border-radius:9px;
-    padding:10px 12px;
+    border-radius:7px;
     outline:none;
+    background:white;
 }
 
 .search-box:focus{
     border-color:#f59e0b;
 }
 
+/* PRODUCTS */
+
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-columns:repeat(4,1fr);
     gap:14px;
+    align-items:start;
 }
 
 .product-card{
     background:white;
-    border:1px solid #e5e7eb;
-    border-radius:12px;
+    border-radius:9px;
     overflow:hidden;
-    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+    position:relative;
     transition:.2s;
+    border:1px solid #eef0f3;
 }
 
 .product-card:hover{
-    transform:translateY(-2px);
-    box-shadow:0 7px 18px rgba(0,0,0,.08);
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
 .product-card.is-hidden{
-    opacity:.78;
+    opacity:.72;
     border-color:#fca5a5;
 }
 
 .product-image-wrap{
-    height:190px;
-    background:#f8fafc;
-    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    background:#f7f8fa;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-bottom:1px solid #e5e7eb;
+    position:relative;
+    overflow:hidden;
 }
 
 .product-card img{
     width:100%;
     height:100%;
     object-fit:contain;
+    padding:7px;
+    display:block;
 }
 
 .no-image{
-    font-size:42px;
-    opacity:.6;
+    display:flex;
+    width:100%;
+    height:100%;
+    align-items:center;
+    justify-content:center;
+    font-size:48px;
 }
-
-/* STATUS */
 
 .status-badge{
     position:absolute;
-    top:9px;
-    left:9px;
-    padding:5px 8px;
-    border-radius:999px;
+    top:8px;
+    left:8px;
+    z-index:3;
     font-size:10px;
-    font-weight:bold;
-    z-index:2;
+    font-weight:800;
+    padding:5px 7px;
+    border-radius:4px;
 }
 
 .status-active{
-    background:#dcfce7;
-    color:#166534;
-    border:1px solid #bbf7d0;
+    background:#f59e0b;
+    color:#111827;
 }
 
 .status-hidden{
-    background:#fee2e2;
-    color:#991b1b;
-    border:1px solid #fecaca;
+    background:#b91c1c;
+    color:white;
 }
 
 .product-body{
-    padding:13px;
+    padding:11px;
 }
 
 .product-category{
-    font-size:10px;
-    color:#f59e0b;
-    text-transform:uppercase;
-    font-weight:bold;
-    letter-spacing:.4px;
+    font-size:11px;
+    color:#9ca3af;
+    margin-bottom:6px;
 }
 
 .product-name{
-    font-size:15px;
-    font-weight:bold;
-    color:#111827;
-    margin:5px 0;
+    font-size:14px;
     line-height:1.3;
+    margin-bottom:5px;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
 }
 
 .product-price{
-    font-size:17px;
-    font-weight:bold;
-    color:#111827;
+    color:#d97706;
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:6px;
 }
 
 .product-description{
     font-size:11px;
+    line-height:1.35;
     color:#6b7280;
-    margin-top:5px;
-    line-height:1.4;
+    margin-bottom:7px;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.stock-status{
+    font-size:10px;
+    font-weight:bold;
+    margin-bottom:9px;
+}
+
+.stock-available{
+    color:#15803d;
+}
+
+.stock-low{
+    color:#d97706;
+}
+
+.stock-out{
+    color:#b91c1c;
+}
+
+.variant-summary{
+    margin-top:7px;
+    margin-bottom:9px;
+    padding:7px;
+    border-radius:6px;
+    background:#f8fafc;
+    border:1px solid #eef0f3;
+    font-size:10px;
+    line-height:1.5;
+    color:#6b7280;
+}
+
+.variant-summary strong{
+    color:#111827;
 }
 
 .card-actions{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:7px;
-    margin-top:12px;
+    margin-top:9px;
+}
+
+.edit-btn,
+.delete-btn{
+    width:100%;
+    padding:9px;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:11px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.edit-btn{
+    background:#111827;
+    color:white;
+}
+
+.edit-btn:hover{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.delete-btn{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+    color:white;
 }
 
 .visibility-btn{
     width:100%;
+    padding:8px;
     margin-top:7px;
+    border:none;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 .btn-hide{
@@ -486,13 +724,11 @@ button{
     color:white;
 }
 
-/* EMPTY / LOADING */
-
 .empty-state{
     background:white;
     border:1px dashed #cbd5e1;
-    border-radius:12px;
-    padding:35px 15px;
+    border-radius:9px;
+    padding:50px 20px;
     text-align:center;
     color:#6b7280;
     grid-column:1/-1;
@@ -500,53 +736,103 @@ button{
 
 .loading{
     text-align:center;
-    padding:35px;
+    padding:70px 20px;
     color:#6b7280;
     grid-column:1/-1;
 }
 
-/* MOBILE */
+/* FOOTER */
 
-@media(max-width:1050px){
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:32px 20px;
+    margin-top:20px;
+}
+
+footer h2{
+    color:#f59e0b;
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#d1d5db;
+    font-size:13px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
 
     .products-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
+        grid-template-columns:repeat(3,1fr);
     }
 
 }
 
-@media(max-width:750px){
+@media(max-width:800px){
 
-    .header-inner{
-        min-height:60px;
-        padding:8px 12px;
+    header{
+        padding:12px 3%;
+        flex-direction:column;
+        gap:10px;
+        position:relative;
     }
 
-    .brand-icon{
-        width:38px;
-        height:38px;
+    .logo{
+        font-size:22px;
     }
 
-    .brand-text h1{
-        font-size:17px;
+    .header-actions{
+        width:100%;
+        justify-content:center;
     }
 
     .header-btn{
-        padding:8px 9px;
-        font-size:11px;
+        flex:1;
+        max-width:160px;
+        text-align:center;
+    }
+
+    nav{
+        padding:9px 3%;
+    }
+
+    nav ul{
+        gap:8px 13px;
+    }
+
+    nav a{
+        font-size:12px;
+    }
+
+    .market-strip{
+        justify-content:flex-start;
+        gap:18px;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        padding-left:3%;
+        padding-right:3%;
+        scrollbar-width:none;
+    }
+
+    .market-strip::-webkit-scrollbar{
+        display:none;
     }
 
     .container{
-        padding:16px 10px 35px;
+        padding:20px 3% 60px;
     }
 
     .page-heading{
-        align-items:flex-start;
+        padding:18px;
         flex-direction:column;
+        align-items:flex-start;
     }
 
-    .page-heading h2{
-        font-size:23px;
+    .page-heading h1{
+        font-size:24px;
     }
 
     .form-card{
@@ -571,12 +857,8 @@ button{
     }
 
     .products-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:9px;
-    }
-
-    .product-image-wrap{
-        height:145px;
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
     }
 
     .product-body{
@@ -588,11 +870,21 @@ button{
     }
 
     .product-price{
-        font-size:15px;
+        font-size:16px;
     }
 
-    .card-actions{
-        grid-template-columns:1fr;
+    .product-description{
+        font-size:10px;
+    }
+
+    .edit-btn,
+    .delete-btn{
+        padding:8px 5px;
+        font-size:10px;
+    }
+
+    .visibility-btn{
+        font-size:10px;
     }
 
     .form-actions{
@@ -603,351 +895,452 @@ button{
         width:100%;
     }
 
+    .variant-header{
+        display:none;
+    }
+
+    .variant-row{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        padding:10px;
+        background:#f8fafc;
+        border:1px solid #e5e7eb;
+        border-radius:9px;
+    }
+
+    .variant-row .variant-stock{
+        grid-column:1;
+    }
+
+    .variant-row .variant-image-box{
+        grid-column:1/-1;
+    }
+
+    .variant-row .remove-variant{
+        grid-column:2;
+        grid-row:3;
+    }
+
 }
 
-@media(max-width:380px){
+@media(max-width:400px){
 
     .products-grid{
-        gap:7px;
+        gap:8px;
     }
 
-    .product-image-wrap{
-        height:125px;
+    .product-body{
+        padding:8px;
+    }
+
+    .product-name{
+        font-size:12px;
+    }
+
+    .product-price{
+        font-size:15px;
+    }
+
+    .stock-status{
+        font-size:9px;
+    }
+
+    .edit-btn,
+    .delete-btn,
+    .visibility-btn{
+        font-size:9px;
     }
 
 }
-</style>
-</head>
 
-<body>
+</style></head><body><header><div class="logo">
+    🛒 Kaycy Mart
+</div>
 
-<header class="header">
+<div class="header-actions">
 
-    <div class="header-inner">
+    <a href="Admin-Dashboard.html" class="header-btn">
+        Dashboard
+    </a>
 
-        <div class="brand">
+    <a href="Products.html" class="header-btn">
+        Store
+    </a>
 
-            <div class="brand-icon">
-                🛒
-            </div>
+</div>
 
-            <div class="brand-text">
+</header><nav><ul>
 
-                <h1>
-                    Kaycy Mart
-                </h1>
+    <li>
+        <a href="Admin-Dashboard.html">
+            Dashboard
+        </a>
+    </li>
 
-                <p>
-                    Admin Product Management
-                </p>
+    <li>
+        <a href="Admin-Products.html" class="admin-active">
+            Products
+        </a>
+    </li>
 
-            </div>
+    <li>
+        <a href="Products.html">
+            Store
+        </a>
+    </li>
 
-        </div>
+</ul>
 
-        <div class="header-actions">
+</nav><div class="market-strip"><span>
+    📦 <strong>Product Management</strong>
+</span>
 
-            <a
-                href="Admin-Dashboard.html"
-                class="header-btn"
-            >
-                Dashboard
-            </a>
+<span>
+    🎨 <strong>Product Variants</strong>
+</span>
 
-            <a
-                href="Products.html"
-                class="header-btn"
-            >
-                Store
-            </a>
+<span>
+    👁️ <strong>Store Visibility</strong>
+</span>
 
-        </div>
+<span>
+    ☁️ <strong>Cloud Images</strong>
+</span>
 
-    </div>
+</div><main class="container"><div class="page-heading">
 
-</header>
+    <div>
 
+        <h1>
+            Product Management
+        </h1>
 
-<main class="container">
-
-    <div class="page-heading">
-
-        <div>
-
-            <h2>Products</h2>
-
-            <p>
-                Add, edit and manage products.
-                You can hide products instead of deleting them.
-            </p>
-
-        </div>
-
-        <div
-            class="product-count"
-            id="productCount"
-        >
-            0 products
-        </div>
+        <p>
+            Add, edit and manage your Kaycy Mart products.
+            Hide products from customers without deleting them.
+        </p>
 
     </div>
 
+    <div class="product-count" id="productCount">
+        0 products
+    </div>
 
-    <!-- PRODUCT FORM -->
+</div>
 
-    <section class="form-card">
+<section class="form-card">
 
-        <div
-            class="form-title"
-            id="formTitle"
-        >
-            Add New Product
-        </div>
+    <div class="form-title" id="formTitle">
+        Add New Product
+    </div>
 
+    <form id="productForm">
 
-        <form id="productForm">
+        <div class="form-grid">
 
-            <div class="form-grid">
+            <div class="field">
 
-                <div class="field">
+                <label>
+                    Product Name
+                </label>
 
-                    <label>
-                        Product Name
-                    </label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="e.g. Men's Sneakers"
+                    required
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Price (₦)
+                </label>
+
+                <input
+                    type="number"
+                    id="price"
+                    min="0"
+                    step="1"
+                    placeholder="25000"
+                    required
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Category
+                </label>
+
+                <select id="category" required>
+
+                    <option value="">
+                        Select category
+                    </option>
+
+                    <option value="electronics">
+                        Electronics
+                    </option>
+
+                    <option value="fashion">
+                        Fashion
+                    </option>
+
+                    <option value="home">
+                        Home
+                    </option>
+
+                    <option value="gaming">
+                        Gaming
+                    </option>
+
+                    <option value="beauty">
+                        Beauty
+                    </option>
+
+                    <option value="phones">
+                        Phones
+                    </option>
+
+                    <option value="accessories">
+                        Accessories
+                    </option>
+
+                    <option value="other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    Emoji
+                </label>
+
+                <input
+                    type="text"
+                    id="emoji"
+                    placeholder="📱"
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label>
+                    General Stock
+                </label>
+
+                <input
+                    type="number"
+                    id="stock"
+                    min="0"
+                    step="1"
+                    value="0"
+                    placeholder="20"
+                >
+
+            </div>
+
+            <div class="field full">
+
+                <label>
+                    Product Photo
+                </label>
+
+                <div class="image-upload-box">
 
                     <input
-                        type="text"
-                        id="name"
-                        placeholder="e.g. Men's Sneakers"
-                        required
+                        type="file"
+                        id="imageFile"
+                        class="image-file"
+                        accept="image/*"
                     >
 
-                </div>
-
-
-                <div class="field">
-
-                    <label>
-                        Price (₦)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="price"
-                        min="0"
-                        step="1"
-                        placeholder="25000"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>
-                        Category
-                    </label>
-
-                    <select
-                        id="category"
-                        required
-                    >
-
-                        <option value="">
-                            Select category
-                        </option>
-
-                        <option value="electronics">
-                            Electronics
-                        </option>
-
-                        <option value="fashion">
-                            Fashion
-                        </option>
-
-                        <option value="home">
-                            Home
-                        </option>
-
-                        <option value="gaming">
-                            Gaming
-                        </option>
-
-                        <option value="beauty">
-                            Beauty
-                        </option>
-
-                        <option value="phones">
-                            Phones
-                        </option>
-
-                        <option value="accessories">
-                            Accessories
-                        </option>
-
-                        <option value="other">
-                            Other
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="field">
-
-                    <label>
-                        Emoji
-                    </label>
-
-                    <input
-                        type="text"
-                        id="emoji"
-                        placeholder="📱"
-                    >
-
-                </div>
-
-
-                <!-- IMAGE UPLOAD -->
-
-                <div class="field full">
-
-                    <label>
-                        Product Photo
-                    </label>
-
-                    <div class="image-upload-box">
-
-                        <input
-                            type="file"
-                            id="imageFile"
-                            class="image-file"
-                            accept="image/*"
-                        >
-
-                        <div class="image-note">
-                            Choose a photo directly from your phone.
-                            The image will be uploaded automatically to Kaycy Mart.
-                        </div>
-
-                        <div
-                            id="currentImageNote"
-                            class="current-image-note hidden"
-                        >
-                            Current product image will be kept unless you choose a new photo.
-                        </div>
-
-                        <img
-                            id="imagePreview"
-                            class="image-preview"
-                            alt="Product image preview"
-                        >
-
+                    <div class="image-note">
+                        Choose the main/default product photo.
+                        It will be uploaded automatically.
                     </div>
 
-                </div>
+                    <div
+                        id="currentImageNote"
+                        class="current-image-note hidden"
+                    >
+                        Current product image will be kept unless
+                        you choose a new photo.
+                    </div>
 
-
-                <div class="field full">
-
-                    <label>
-                        Description
-                    </label>
-
-                    <textarea
-                        id="description"
-                        placeholder="Describe the product..."
-                    ></textarea>
+                    <img
+                        id="imagePreview"
+                        class="image-preview"
+                        alt="Product image preview"
+                    >
 
                 </div>
 
             </div>
 
+            <div class="field full">
 
-            <div class="form-actions">
+                <label>
+                    Description
+                </label>
 
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    id="submitBtn"
-                >
-                    Add Product
-                </button>
+                <textarea
+                    id="description"
+                    placeholder="Describe the product..."
+                ></textarea>
+
+            </div>
+
+        </div>
+
+        <div class="variant-section">
+
+            <div class="variant-heading">
+
+                <h3>
+                    Product Options / Variants
+                </h3>
 
                 <button
                     type="button"
-                    class="btn btn-danger hidden"
-                    id="cancelEditBtn"
-                    onclick="cancelEdit()"
+                    class="add-variant-btn"
+                    onclick="addVariantRow()"
                 >
-                    Cancel Edit
+                    + Add Variant
                 </button>
 
             </div>
 
+            <div class="variant-note">
 
-            <div id="message"></div>
+                Use variants for choices such as Color,
+                Size, Storage, etc. Each variant can have
+                its own stock and its own image.
 
-        </form>
+                <br><br>
 
-    </section>
-
-
-    <!-- INVENTORY -->
-
-    <section>
-
-        <div class="list-heading">
-
-            <div>
-
-                <h2>
-                    Product Inventory
-                </h2>
+                <strong>
+                    Example:
+                </strong>
+                Color → Black → 10 → Black product photo.
+                Color → Blue → 5 → Blue product photo.
 
             </div>
 
-            <input
-                type="search"
-                id="searchProducts"
-                class="search-box"
-                placeholder="Search products..."
-                oninput="filterProducts()"
-            >
+            <div class="variant-header">
+
+                <span>
+                    Option
+                </span>
+
+                <span>
+                    Value
+                </span>
+
+                <span>
+                    Stock
+                </span>
+
+                <span>
+                    Variant Image
+                </span>
+
+                <span></span>
+
+            </div>
+
+            <div id="variantRows"></div>
 
         </div>
 
+        <div class="form-actions">
 
-        <div
-            id="productsGrid"
-            class="products-grid"
+            <button
+                type="submit"
+                class="btn btn-primary"
+                id="submitBtn"
+            >
+                Add Product
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-danger hidden"
+                id="cancelEditBtn"
+                onclick="cancelEdit()"
+            >
+                Cancel Edit
+            </button>
+
+        </div>
+
+        <div id="message"></div>
+
+    </form>
+
+</section>
+
+<section>
+
+    <div class="list-heading">
+
+        <h2>
+            Product Inventory
+        </h2>
+
+        <input
+            type="search"
+            id="searchProducts"
+            class="search-box"
+            placeholder="Search products..."
+            oninput="filterProducts()"
         >
 
-            <div class="loading">
-                Loading products...
-            </div>
+    </div>
 
+    <div
+        id="productsGrid"
+        class="products-grid"
+    >
+
+        <div class="loading">
+            Loading products...
         </div>
 
-    </section>
+    </div>
 
-</main>
+</section>
 
+</main><footer><h2>
+    Kaycy Mart
+</h2>
 
-<script>
+<p>
+    Product Management
+</p>
 
-/* =====================================================
-   API
-===================================================== */
+<br>
+
+<p>
+    © 2026 Kaycy Mart. All Rights Reserved.
+</p>
+
+</footer><script>
 
 const API_URL =
     "https://kaycy-backend.onrender.com";
 
-
 /* =====================================================
-   ADMIN AUTHENTICATION
+   ADMIN AUTH
 ===================================================== */
 
 const adminLoggedIn =
@@ -965,9 +1358,7 @@ let admin = null;
 try{
 
     admin =
-        JSON.parse(
-            adminRaw
-        );
+        JSON.parse(adminRaw);
 
 }catch(error){
 
@@ -975,14 +1366,11 @@ try{
 
 }
 
-
 if(
     adminLoggedIn !== "true" ||
     !admin ||
     !admin.id ||
-    String(
-        admin.role || ""
-    ).toLowerCase() !== "admin"
+    String(admin.role || "").toLowerCase() !== "admin"
 ){
 
     localStorage.removeItem(
@@ -998,16 +1386,8 @@ if(
 
 }
 
-
 const adminUserId =
-    String(
-        admin.id
-    );
-
-
-/* =====================================================
-   STATE
-===================================================== */
+    String(admin.id);
 
 let products = [];
 
@@ -1015,6 +1395,7 @@ let editingProductId = null;
 
 let currentImageUrl = "";
 
+let existingVariantMetadata = {};
 
 /* =====================================================
    HELPERS
@@ -1022,33 +1403,30 @@ let currentImageUrl = "";
 
 function escapeHtml(value){
 
-    return String(
-        value ?? ""
-    )
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
+function escapeAttr(value){
+
+    return escapeHtml(value);
+
+}
 
 function formatMoney(value){
 
     return "₦" +
-        Number(
-            value || 0
-        ).toLocaleString(
-            "en-NG"
-        );
+        Number(value || 0)
+            .toLocaleString("en-NG");
 
 }
 
-
-function adminHeaders(
-    extraHeaders = {}
-){
+function adminHeaders(extraHeaders = {}){
 
     return {
 
@@ -1061,15 +1439,11 @@ function adminHeaders(
 
 }
 
-
 /* =====================================================
    MESSAGE
 ===================================================== */
 
-function showMessage(
-    message,
-    type = "success"
-){
+function showMessage(message,type="success"){
 
     const box =
         document.getElementById(
@@ -1082,7 +1456,7 @@ function showMessage(
     box.className =
         type;
 
-    setTimeout(() => {
+    setTimeout(function(){
 
         box.textContent = "";
 
@@ -1092,9 +1466,8 @@ function showMessage(
 
 }
 
-
 /* =====================================================
-   IMAGE FILE PREVIEW
+   MAIN IMAGE PREVIEW
 ===================================================== */
 
 document
@@ -1113,24 +1486,26 @@ document
 
             if(!file){
 
-                preview.src = "";
-
-                preview.style.display =
-                    currentImageUrl
-                        ? "block"
-                        : "none";
-
                 if(currentImageUrl){
 
                     preview.src =
                         currentImageUrl;
+
+                    preview.style.display =
+                        "block";
+
+                }else{
+
+                    preview.src = "";
+
+                    preview.style.display =
+                        "none";
 
                 }
 
                 return;
 
             }
-
 
             if(!file.type.startsWith("image/")){
 
@@ -1145,12 +1520,8 @@ document
 
             }
 
-
             const objectUrl =
-                URL.createObjectURL(
-                    file
-                );
-
+                URL.createObjectURL(file);
 
             preview.src =
                 objectUrl;
@@ -1161,14 +1532,11 @@ document
         }
     );
 
-
 /* =====================================================
-   UPLOAD IMAGE TO CLOUDINARY
+   UPLOAD IMAGE
 ===================================================== */
 
-async function uploadProductImage(
-    file
-){
+async function uploadProductImage(file){
 
     const formData =
         new FormData();
@@ -1178,37 +1546,27 @@ async function uploadProductImage(
         file
     );
 
-
     const response =
         await fetch(
             `${API_URL}/api/admin/upload-image`,
             {
-
                 method:"POST",
-
-                headers:
-                    adminHeaders(),
-
-                body:
-                    formData
-
+                headers:adminHeaders(),
+                body:formData
             }
         );
 
-
     const data =
         await response.json();
-
 
     if(!response.ok){
 
         throw new Error(
             data.message ||
-            "Could not upload product image."
+            "Could not upload image."
         );
 
     }
-
 
     if(!data.imageUrl){
 
@@ -1218,11 +1576,754 @@ async function uploadProductImage(
 
     }
 
-
     return data.imageUrl;
 
 }
 
+/* =====================================================
+   VARIANT IMAGE PREVIEW
+===================================================== */
+
+function setupVariantImagePreview(row){
+
+    const input =
+        row.querySelector(
+            ".variant-image-input"
+        );
+
+    const preview =
+        row.querySelector(
+            ".variant-image-preview"
+        );
+
+    const currentText =
+        row.querySelector(
+            ".variant-current-image"
+        );
+
+    input.addEventListener(
+        "change",
+        function(){
+
+            const file =
+                this.files[0];
+
+            if(!file){
+
+                const existingImage =
+                    row.dataset.valueImage || "";
+
+                if(existingImage){
+
+                    preview.src =
+                        existingImage;
+
+                    preview.style.display =
+                        "block";
+
+                    currentText.textContent =
+                        "Current image will be kept.";
+
+                    currentText.style.color =
+                        "#15803d";
+
+                }else{
+
+                    preview.src = "";
+
+                    preview.style.display =
+                        "none";
+
+                    currentText.textContent =
+                        "";
+
+                }
+
+                return;
+
+            }
+
+            if(!file.type.startsWith("image/")){
+
+                showMessage(
+                    "Please choose an image file for the variant.",
+                    "error"
+                );
+
+                this.value = "";
+
+                return;
+
+            }
+
+            const objectUrl =
+                URL.createObjectURL(file);
+
+            preview.src =
+                objectUrl;
+
+            preview.style.display =
+                "block";
+
+            currentText.textContent =
+                "New image selected.";
+
+            currentText.style.color =
+                "#c2410c";
+
+        }
+    );
+
+}
+
+/* =====================================================
+   ADD VARIANT ROW
+===================================================== */
+
+function addVariantRow(
+    optionName="",
+    value="",
+    stock=0,
+    valuePrice=null,
+    valueImage=""
+){
+
+    const container =
+        document.getElementById(
+            "variantRows"
+        );
+
+    const row =
+        document.createElement("div");
+
+    row.className =
+        "variant-row";
+
+    row.dataset.valuePrice =
+        valuePrice === null ||
+        valuePrice === undefined
+            ? ""
+            : String(valuePrice);
+
+    row.dataset.valueImage =
+        valueImage || "";
+
+    row.innerHTML = `
+
+        <input
+            type="text"
+            class="variant-name"
+            placeholder="Color / Size"
+            value="${escapeAttr(optionName)}"
+        >
+
+        <input
+            type="text"
+            class="variant-value"
+            placeholder="Black / Large"
+            value="${escapeAttr(value)}"
+        >
+
+        <input
+            type="number"
+            class="variant-stock"
+            min="0"
+            step="1"
+            value="${Number(stock) || 0}"
+            placeholder="0"
+        >
+
+        <div class="variant-image-box">
+
+            <input
+                type="file"
+                class="variant-image-input"
+                accept="image/*"
+            >
+
+            <img
+                class="variant-image-preview"
+                alt="Variant image preview"
+            >
+
+            <div class="variant-current-image"></div>
+
+        </div>
+
+        <button
+            type="button"
+            class="remove-variant"
+            title="Remove variant"
+        >
+            ×
+        </button>
+
+    `;
+
+    const preview =
+        row.querySelector(
+            ".variant-image-preview"
+        );
+
+    const currentText =
+        row.querySelector(
+            ".variant-current-image"
+        );
+
+    if(valueImage){
+
+        preview.src =
+            valueImage;
+
+        preview.style.display =
+            "block";
+
+        currentText.textContent =
+            "Current image will be kept.";
+
+        currentText.style.color =
+            "#15803d";
+
+    }
+
+    row
+        .querySelector(".remove-variant")
+        .addEventListener(
+            "click",
+            function(){
+
+                row.remove();
+
+            }
+        );
+
+    setupVariantImagePreview(row);
+
+    container.appendChild(row);
+
+}
+
+/* =====================================================
+   PARSE OPTIONS
+===================================================== */
+
+function parseProductOptions(product){
+
+    let rawOptions =
+        product.options || [];
+
+    if(typeof rawOptions === "string"){
+
+        try{
+
+            rawOptions =
+                JSON.parse(rawOptions);
+
+        }catch(error){
+
+            rawOptions = [];
+
+        }
+
+    }
+
+    if(Array.isArray(rawOptions)){
+
+        return rawOptions
+            .map(function(option){
+
+                if(
+                    !option ||
+                    !option.name
+                ){
+
+                    return null;
+
+                }
+
+                const values =
+                    Array.isArray(option.values)
+                        ? option.values
+                        : [];
+
+                return {
+
+                    name:
+                        String(option.name).trim(),
+
+                    values:
+                        values
+                            .map(function(value){
+
+                                if(
+                                    value &&
+                                    typeof value === "object"
+                                ){
+
+                                    return {
+
+                                        name:
+                                            String(
+                                                value.name || ""
+                                            ).trim(),
+
+                                        price:
+                                            value.price ?? null,
+
+                                        image:
+                                            value.image || ""
+
+                                    };
+
+                                }
+
+                                return {
+
+                                    name:
+                                        String(value || "").trim(),
+
+                                    price:null,
+
+                                    image:""
+
+                                };
+
+                            })
+                            .filter(function(value){
+
+                                return value.name;
+
+                            })
+
+                };
+
+            })
+            .filter(function(option){
+
+                return option &&
+                    option.name &&
+                    option.values.length;
+
+            });
+
+    }
+
+    return [];
+
+}
+
+/* =====================================================
+   PARSE VARIANT STOCK
+===================================================== */
+
+function parseVariantStock(product){
+
+    let stock =
+        product.variant_stock ??
+        product.variantStock ??
+        {};
+
+    if(typeof stock === "string"){
+
+        try{
+
+            stock =
+                JSON.parse(stock);
+
+        }catch(error){
+
+            stock = {};
+
+        }
+
+    }
+
+    if(
+        !stock ||
+        typeof stock !== "object" ||
+        Array.isArray(stock)
+    ){
+
+        return {};
+
+    }
+
+    return stock;
+
+}
+
+/* =====================================================
+   GET TOTAL PRODUCT STOCK
+===================================================== */
+
+function getProductStock(product){
+
+    const options =
+        parseProductOptions(product);
+
+    if(options.length){
+
+        const variantStock =
+            parseVariantStock(product);
+
+        let total = 0;
+
+        Object.keys(variantStock)
+            .forEach(function(key){
+
+                const value =
+                    variantStock[key];
+
+                if(
+                    typeof value === "number" ||
+                    typeof value === "string"
+                ){
+
+                    const amount =
+                        Number(value);
+
+                    if(
+                        Number.isFinite(amount) &&
+                        amount >= 0
+                    ){
+
+                        total += amount;
+
+                    }
+
+                    return;
+
+                }
+
+                if(
+                    value &&
+                    typeof value === "object"
+                ){
+
+                    Object.values(value)
+                        .forEach(function(item){
+
+                            const amount =
+                                Number(item);
+
+                            if(
+                                Number.isFinite(amount) &&
+                                amount >= 0
+                            ){
+
+                                total += amount;
+
+                            }
+
+                        });
+
+                }
+
+            });
+
+        if(total > 0){
+
+            return total;
+
+        }
+
+    }
+
+    return Number(product.stock || 0);
+
+}
+
+/* =====================================================
+   BUILD VARIANTS
+===================================================== */
+
+async function getVariantsFromForm(){
+
+    const rows =
+        document.querySelectorAll(
+            "#variantRows .variant-row"
+        );
+
+    const options = [];
+
+    const variantStock = {};
+
+    for(
+        const row of rows
+    ){
+
+        const optionName =
+            row
+                .querySelector(".variant-name")
+                .value
+                .trim();
+
+        const value =
+            row
+                .querySelector(".variant-value")
+                .value
+                .trim();
+
+        const stockInput =
+            row
+                .querySelector(".variant-stock")
+                .value;
+
+        const stockNumber =
+            Number(stockInput);
+
+        const stock =
+            Number.isFinite(stockNumber) &&
+            stockNumber >= 0
+                ? Math.floor(stockNumber)
+                : 0;
+
+        if(!optionName && !value){
+
+            continue;
+
+        }
+
+        if(!optionName || !value){
+
+            throw new Error(
+                "Each variant must have both an Option and a Value."
+            );
+
+        }
+
+        let option =
+            options.find(function(item){
+
+                return item.name.toLowerCase() ===
+                    optionName.toLowerCase();
+
+            });
+
+        if(!option){
+
+            option = {
+
+                name:optionName,
+
+                values:[]
+
+            };
+
+            options.push(option);
+
+        }
+
+        let valuePrice = null;
+
+        let valueImage =
+            row.dataset.valueImage || "";
+
+        const metadataKey =
+            `${option.name}::${value}`;
+
+        const existingMetadata =
+            existingVariantMetadata[
+                metadataKey
+            ];
+
+        if(existingMetadata){
+
+            valuePrice =
+                existingMetadata.price ?? null;
+
+            if(
+                !valueImage
+            ){
+
+                valueImage =
+                    existingMetadata.image || "";
+
+            }
+
+        }
+
+        /* =================================================
+           UPLOAD NEW VARIANT IMAGE
+        ================================================= */
+
+        const imageInput =
+            row.querySelector(
+                ".variant-image-input"
+            );
+
+        const imageFile =
+            imageInput &&
+            imageInput.files
+                ? imageInput.files[0]
+                : null;
+
+        if(imageFile){
+
+            showMessage(
+                `Uploading image for ${optionName}: ${value}...`
+            );
+
+            valueImage =
+                await uploadProductImage(
+                    imageFile
+                );
+
+            row.dataset.valueImage =
+                valueImage;
+
+        }
+
+        const existingValue =
+            option.values.find(function(item){
+
+                return item.name.toLowerCase() ===
+                    value.toLowerCase();
+
+            });
+
+        if(!existingValue){
+
+            option.values.push({
+
+                name:value,
+
+                price:valuePrice,
+
+                image:valueImage
+
+            });
+
+        }else{
+
+            existingValue.image =
+                valueImage;
+
+            existingValue.price =
+                valuePrice;
+
+        }
+
+        /* FLAT VARIANT STOCK */
+
+        const stockKey =
+            `${option.name}:${value}`;
+
+        variantStock[stockKey] =
+            stock;
+
+    }
+
+    return {
+
+        options:options,
+
+        variantStock:variantStock
+
+    };
+
+}
+
+/* =====================================================
+   LOAD VARIANTS INTO FORM
+===================================================== */
+
+function loadVariantsIntoForm(product){
+
+    const container =
+        document.getElementById(
+            "variantRows"
+        );
+
+    container.innerHTML =
+        "";
+
+    existingVariantMetadata =
+        {};
+
+    const options =
+        parseProductOptions(product);
+
+    const variantStock =
+        parseVariantStock(product);
+
+    options.forEach(function(option){
+
+        option.values.forEach(function(valueObject){
+
+            const valueName =
+                String(
+                    valueObject.name || ""
+                ).trim();
+
+            if(!valueName){
+
+                return;
+
+            }
+
+            const stockKey =
+                `${option.name}:${valueName}`;
+
+            let stock =
+                variantStock[stockKey];
+
+            if(
+                stock === undefined &&
+                variantStock[option.name] &&
+                typeof variantStock[option.name] === "object"
+            ){
+
+                stock =
+                    variantStock[
+                        option.name
+                    ][valueName];
+
+            }
+
+            stock =
+                Number(stock);
+
+            if(
+                !Number.isFinite(stock) ||
+                stock < 0
+            ){
+
+                stock = 0;
+
+            }
+
+            existingVariantMetadata[
+                `${option.name}::${valueName}`
+            ] = {
+
+                price:
+                    valueObject.price ?? null,
+
+                image:
+                    valueObject.image || ""
+
+            };
+
+            addVariantRow(
+
+                option.name,
+
+                valueName,
+
+                Math.floor(stock),
+
+                valueObject.price ?? null,
+
+                valueObject.image || ""
+
+            );
+
+        });
+
+    });
+
+}
 
 /* =====================================================
    FORM SUBMIT
@@ -1242,9 +2343,7 @@ document
                 );
 
             const wasEditing =
-                Boolean(
-                    editingProductId
-                );
+                Boolean(editingProductId);
 
             submitBtn.disabled =
                 true;
@@ -1254,8 +2353,9 @@ document
                     ? "Updating..."
                     : "Adding...";
 
-
             try{
+
+                /* MAIN IMAGE */
 
                 const imageFile =
                     document
@@ -1264,18 +2364,13 @@ document
                         )
                         .files[0];
 
-
                 let imageUrl =
                     currentImageUrl || "";
-
-
-                /* Upload new image if selected */
 
                 if(imageFile){
 
                     submitBtn.textContent =
-                        "Uploading Image...";
-
+                        "Uploading Main Image...";
 
                     imageUrl =
                         await uploadProductImage(
@@ -1284,6 +2379,29 @@ document
 
                 }
 
+                /* VARIANT IMAGES + DATA */
+
+                submitBtn.textContent =
+                    "Preparing Variants...";
+
+                const variantData =
+                    await getVariantsFromForm();
+
+                /* GENERAL STOCK */
+
+                const generalStock =
+                    Math.max(
+                        0,
+                        Math.floor(
+                            Number(
+                                document
+                                    .getElementById(
+                                        "stock"
+                                    )
+                                    .value
+                            ) || 0
+                        )
+                    );
 
                 const payload = {
 
@@ -1314,7 +2432,8 @@ document
                             .getElementById(
                                 "category"
                             )
-                            .value,
+                            .value
+                            .trim(),
 
                     emoji:
                         document
@@ -1333,19 +2452,26 @@ document
                             .trim(),
 
                     image:
-                        imageUrl
+                        imageUrl,
+
+                    stock:
+                        generalStock,
+
+                    options:
+                        variantData.options,
+
+                    variantStock:
+                        variantData.variantStock
 
                 };
-
 
                 if(!payload.name){
 
                     throw new Error(
-                        "Product name is required."
+                        "Please enter a product name."
                     );
 
                 }
-
 
                 if(!payload.category){
 
@@ -1355,38 +2481,34 @@ document
 
                 }
 
-
                 const endpoint =
                     wasEditing
-
                         ? `${API_URL}/api/admin/products/${editingProductId}`
-
                         : `${API_URL}/api/admin/products`;
-
 
                 const method =
                     wasEditing
                         ? "PATCH"
                         : "POST";
 
-
                 submitBtn.textContent =
                     wasEditing
                         ? "Updating Product..."
                         : "Saving Product...";
-
 
                 const response =
                     await fetch(
                         endpoint,
                         {
 
-                            method,
+                            method:method,
 
                             headers:
                                 adminHeaders({
+
                                     "Content-Type":
                                         "application/json"
+
                                 }),
 
                             body:
@@ -1397,10 +2519,8 @@ document
                         }
                     );
 
-
                 const data =
                     await response.json();
-
 
                 if(!response.ok){
 
@@ -1411,31 +2531,25 @@ document
 
                 }
 
-
                 showMessage(
                     wasEditing
                         ? "Product updated successfully."
                         : "Product added successfully."
                 );
 
-
                 resetForm();
 
                 await loadProducts();
 
-
             }catch(error){
 
-                console.error(
-                    error
-                );
+                console.error(error);
 
                 showMessage(
                     error.message ||
                     "Something went wrong.",
                     "error"
                 );
-
 
             }finally{
 
@@ -1452,9 +2566,8 @@ document
         }
     );
 
-
 /* =====================================================
-   LOAD ADMIN PRODUCTS
+   LOAD PRODUCTS
 ===================================================== */
 
 async function loadProducts(){
@@ -1464,7 +2577,6 @@ async function loadProducts(){
             "productsGrid"
         );
 
-
     grid.innerHTML = `
 
         <div class="loading">
@@ -1472,7 +2584,6 @@ async function loadProducts(){
         </div>
 
     `;
-
 
     try{
 
@@ -1485,10 +2596,8 @@ async function loadProducts(){
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if(!response.ok){
 
@@ -1499,7 +2608,6 @@ async function loadProducts(){
 
         }
 
-
         products =
             Array.isArray(data)
                 ? data
@@ -1507,18 +2615,11 @@ async function loadProducts(){
                     ? data.products
                     : [];
 
-
-        renderProducts(
-            products
-        );
-
+        renderProducts(products);
 
     }catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         grid.innerHTML = `
 
@@ -1530,8 +2631,7 @@ async function loadProducts(){
 
                 <small>
                     ${escapeHtml(
-                        error.message ||
-                        ""
+                        error.message || ""
                     )}
                 </small>
 
@@ -1552,14 +2652,11 @@ async function loadProducts(){
 
 }
 
-
 /* =====================================================
    RENDER PRODUCTS
 ===================================================== */
 
-function renderProducts(
-    list
-){
+function renderProducts(list){
 
     const grid =
         document.getElementById(
@@ -1571,14 +2668,12 @@ function renderProducts(
             "productCount"
         );
 
-
     count.textContent =
         `${list.length} product${
             list.length === 1
                 ? ""
                 : "s"
         }`;
-
 
     if(!list.length){
 
@@ -1594,204 +2689,275 @@ function renderProducts(
 
     }
 
-
     grid.innerHTML =
-        list.map(
-            product => {
+        list.map(function(product){
 
-                const isActive =
-                    Number(
-                        product.active
-                    ) === 1;
+            const isActive =
+                Number(product.active) === 1;
 
+            const stock =
+                getProductStock(product);
 
-                const statusText =
-                    isActive
-                        ? "ACTIVE"
-                        : "HIDDEN";
+            const options =
+                parseProductOptions(product);
 
+            let stockClass =
+                "stock-available";
 
-                const statusClass =
-                    isActive
-                        ? "status-active"
-                        : "status-hidden";
+            let stockText =
+                "📦 In stock";
 
+            if(stock <= 0){
 
-                const stockText =
-                    "Stock managed on customer checkout";
+                stockClass =
+                    "stock-out";
 
+                stockText =
+                    "❌ Out of stock";
 
-                return `
+            }else if(stock <= 5){
 
-                    <article
-                        class="product-card ${
-                            isActive
-                                ? ""
-                                : "is-hidden"
-                        }"
-                    >
+                stockClass =
+                    "stock-low";
 
-                        <div
-                            class="product-image-wrap"
+                stockText =
+                    "🔥 Only " +
+                    stock +
+                    " left";
+
+            }
+
+            let variantSummary = "";
+
+            if(options.length){
+
+                variantSummary =
+                    options
+                        .map(function(option){
+
+                            const names =
+                                option.values
+                                    .map(function(value){
+
+                                        return value.name;
+
+                                    })
+                                    .filter(Boolean)
+                                    .join(", ");
+
+                            return `
+
+                                <div>
+
+                                    <strong>
+                                        ${escapeHtml(
+                                            option.name
+                                        )}:
+                                    </strong>
+
+                                    ${escapeHtml(names)}
+
+                                </div>
+
+                            `;
+
+                        })
+                        .join("");
+
+            }
+
+            const imageHtml =
+                product.image
+
+                    ? `
+
+                        <img
+                            src="${escapeAttr(
+                                product.image
+                            )}"
+                            alt="${escapeAttr(
+                                product.name
+                            )}"
+                            onerror="
+                                this.style.display='none';
+                                this.nextElementSibling.style.display='flex';
+                            "
                         >
 
-                            <span
-                                class="status-badge ${statusClass}"
-                            >
-                                ${statusText}
-                            </span>
+                        <div
+                            class="no-image"
+                            style="display:none;"
+                        >
+                            ${escapeHtml(
+                                product.emoji || "🛒"
+                            )}
+                        </div>
 
+                    `
 
-                            ${
-                                product.image
+                    : `
 
-                                ?
+                        <div class="no-image">
 
-                                `
-                                <img
-                                    src="${escapeHtml(
-                                        product.image
-                                    )}"
-                                    alt="${escapeHtml(
-                                        product.name
-                                    )}"
-                                    loading="lazy"
-                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-                                >
-
-                                <div
-                                    class="no-image"
-                                    style="display:none;"
-                                >
-                                    ${escapeHtml(
-                                        product.emoji ||
-                                        "🛍️"
-                                    )}
-                                </div>
-                                `
-
-                                :
-
-                                `
-                                <div class="no-image">
-                                    ${escapeHtml(
-                                        product.emoji ||
-                                        "🛍️"
-                                    )}
-                                </div>
-                                `
-                            }
+                            ${escapeHtml(
+                                product.emoji || "🛒"
+                            )}
 
                         </div>
 
+                    `;
+
+            return `
+
+                <article
+                    class="product-card ${
+                        isActive
+                            ? ""
+                            : "is-hidden"
+                    }"
+                >
+
+                    <div class="product-image-wrap">
 
                         <div
-                            class="product-body"
+                            class="status-badge ${
+                                isActive
+                                    ? "status-active"
+                                    : "status-hidden"
+                            }"
+                        >
+                            ${
+                                isActive
+                                    ? "ACTIVE"
+                                    : "HIDDEN"
+                            }
+                        </div>
+
+                        ${imageHtml}
+
+                    </div>
+
+                    <div class="product-body">
+
+                        <div class="product-name">
+
+                            ${escapeHtml(
+                                product.name ||
+                                "Unnamed Product"
+                            )}
+
+                        </div>
+
+                        <div class="product-category">
+
+                            ${escapeHtml(
+                                product.category ||
+                                "Product"
+                            )}
+
+                        </div>
+
+                        ${
+                            product.description
+                                ? `
+
+                                    <div class="product-description">
+
+                                        ${escapeHtml(
+                                            product.description
+                                        )}
+
+                                    </div>
+
+                                `
+                                : ""
+                        }
+
+                        <div class="product-price">
+
+                            ${formatMoney(
+                                product.price
+                            )}
+
+                        </div>
+
+                        <div
+                            class="stock-status ${stockClass}"
                         >
 
-                            <div
-                                class="product-category"
-                            >
-                                ${escapeHtml(
-                                    product.category ||
-                                    "Product"
-                                )}
-                            </div>
+                            ${stockText}
 
+                        </div>
 
-                            <div
-                                class="product-name"
-                            >
-                                ${escapeHtml(
-                                    product.name
-                                )}
-                            </div>
+                        ${
+                            variantSummary
+                                ? `
 
+                                    <div class="variant-summary">
 
-                            <div
-                                class="product-price"
-                            >
-                                ${formatMoney(
-                                    product.price
-                                )}
-                            </div>
+                                        ${variantSummary}
 
+                                    </div>
 
-                            <div
-                                class="product-description"
-                            >
-                                ${escapeHtml(
-                                    product.description ||
-                                    "No description."
-                                )}
-                            </div>
+                                `
+                                : ""
+                        }
 
-
-                            <div
-                                class="product-description"
-                            >
-                                ${stockText}
-                            </div>
-
-
-                            <div
-                                class="card-actions"
-                            >
-
-                                <button
-                                    class="btn btn-primary btn-small"
-                                    onclick="editProduct(
-                                        ${Number(product.id)}
-                                    )"
-                                >
-                                    Edit
-                                </button>
-
-
-                                <button
-                                    class="btn btn-danger btn-small"
-                                    onclick="deleteProduct(
-                                        ${Number(product.id)}
-                                    )"
-                                >
-                                    Delete
-                                </button>
-
-                            </div>
-
+                        <div class="card-actions">
 
                             <button
-                                class="btn btn-small visibility-btn ${
-                                    isActive
-                                        ? "btn-hide"
-                                        : "btn-show"
-                                }"
-                                onclick="toggleProductVisibility(
-                                    ${Number(product.id)},
-                                    ${isActive}
+                                type="button"
+                                class="edit-btn"
+                                onclick="editProduct(
+                                    ${Number(product.id)}
                                 )"
                             >
+                                ✏️ Edit
+                            </button>
 
-                                ${
-                                    isActive
-                                        ? "👁️ Hide Product"
-                                        : "👁️ Show Product"
-                                }
-
+                            <button
+                                type="button"
+                                class="delete-btn"
+                                onclick="deleteProduct(
+                                    ${Number(product.id)}
+                                )"
+                            >
+                                🗑️ Delete
                             </button>
 
                         </div>
 
-                    </article>
+                        <button
+                            type="button"
+                            class="visibility-btn ${
+                                isActive
+                                    ? "btn-hide"
+                                    : "btn-show"
+                            }"
+                            onclick="toggleProductVisibility(
+                                ${Number(product.id)},
+                                ${isActive}
+                            )"
+                        >
 
-                `;
+                            ${
+                                isActive
+                                    ? "👁️ Hide Product"
+                                    : "👁️ Show Product"
+                            }
 
-            }
-        )
+                        </button>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        })
         .join("");
 
 }
-
 
 /* =====================================================
    SEARCH
@@ -1808,54 +2974,43 @@ function filterProducts(){
             .toLowerCase()
             .trim();
 
-
     if(!query){
 
-        renderProducts(
-            products
-        );
+        renderProducts(products);
 
         return;
 
     }
 
-
     const filtered =
-        products.filter(
-            product =>
+        products.filter(function(product){
+
+            return (
 
                 String(
-                    product.name ||
-                    ""
+                    product.name || ""
                 )
                 .toLowerCase()
-                .includes(
-                    query
-                )
+                .includes(query)
 
                 ||
 
                 String(
-                    product.category ||
-                    ""
+                    product.category || ""
                 )
                 .toLowerCase()
-                .includes(
-                    query
-                )
+                .includes(query)
 
-        );
+            );
 
+        });
 
-    renderProducts(
-        filtered
-    );
+    renderProducts(filtered);
 
 }
 
-
 /* =====================================================
-   HIDE / SHOW PRODUCT
+   HIDE / SHOW
 ===================================================== */
 
 async function toggleProductVisibility(
@@ -1864,14 +3019,12 @@ async function toggleProductVisibility(
 ){
 
     const product =
-        products.find(
-            item =>
-                Number(
-                    item.id
-                ) ===
-                Number(id)
-        );
+        products.find(function(item){
 
+            return Number(item.id) ===
+                Number(id);
+
+        });
 
     if(!product){
 
@@ -1879,27 +3032,18 @@ async function toggleProductVisibility(
 
     }
 
+    const confirmed =
+        confirm(
+            currentlyActive
+                ? `Hide "${product.name}" from the customer store?`
+                : `Show "${product.name}" on the customer store again?`
+        );
 
-    const message =
-        currentlyActive
-
-            ?
-
-            `Hide "${product.name}"?\n\nCustomers will no longer see this product in the store.`
-
-            :
-
-            `Show "${product.name}"?\n\nCustomers will be able to see this product again.`;
-
-
-    if(
-        !confirm(message)
-    ){
+    if(!confirmed){
 
         return;
 
     }
-
 
     try{
 
@@ -1912,25 +3056,27 @@ async function toggleProductVisibility(
 
                     headers:
                         adminHeaders({
+
                             "Content-Type":
                                 "application/json"
+
                         }),
 
                     body:
                         JSON.stringify({
+
                             active:
                                 currentlyActive
                                     ? 0
                                     : 1
+
                         })
 
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if(!response.ok){
 
@@ -1941,23 +3087,17 @@ async function toggleProductVisibility(
 
         }
 
-
         showMessage(
             currentlyActive
                 ? "Product hidden successfully."
                 : "Product is visible again."
         );
 
-
         await loadProducts();
-
 
     }catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         showMessage(
             error.message ||
@@ -1969,24 +3109,19 @@ async function toggleProductVisibility(
 
 }
 
-
 /* =====================================================
    EDIT PRODUCT
 ===================================================== */
 
-function editProduct(
-    id
-){
+function editProduct(id){
 
     const product =
-        products.find(
-            item =>
-                Number(
-                    item.id
-                ) ===
-                Number(id)
-        );
+        products.find(function(item){
 
+            return Number(item.id) ===
+                Number(id);
+
+        });
 
     if(!product){
 
@@ -1998,106 +3133,72 @@ function editProduct(
 
     }
 
-
     editingProductId =
         Number(id);
 
-
     currentImageUrl =
-        product.image ||
-        "";
+        product.image || "";
 
-
-    document
-        .getElementById(
-            "formTitle"
-        )
-        .textContent =
+    document.getElementById(
+        "formTitle"
+    ).textContent =
         "Edit Product";
 
-
-    document
-        .getElementById(
-            "submitBtn"
-        )
-        .textContent =
+    document.getElementById(
+        "submitBtn"
+    ).textContent =
         "Update Product";
 
+    document.getElementById(
+        "cancelEditBtn"
+    ).classList.remove(
+        "hidden"
+    );
 
-    document
-        .getElementById(
-            "cancelEditBtn"
-        )
-        .classList
-        .remove(
-            "hidden"
-        );
+    document.getElementById(
+        "name"
+    ).value =
+        product.name || "";
 
+    document.getElementById(
+        "price"
+    ).value =
+        product.price || 0;
 
-    document
-        .getElementById(
-            "name"
-        )
-        .value =
-        product.name ||
+    document.getElementById(
+        "category"
+    ).value =
+        product.category || "";
+
+    document.getElementById(
+        "emoji"
+    ).value =
+        product.emoji || "";
+
+    document.getElementById(
+        "stock"
+    ).value =
+        product.stock || 0;
+
+    document.getElementById(
+        "description"
+    ).value =
+        product.description || "";
+
+    document.getElementById(
+        "imageFile"
+    ).value =
         "";
-
-
-    document
-        .getElementById(
-            "price"
-        )
-        .value =
-        product.price ||
-        0;
-
-
-    document
-        .getElementById(
-            "category"
-        )
-        .value =
-        product.category ||
-        "";
-
-
-    document
-        .getElementById(
-            "emoji"
-        )
-        .value =
-        product.emoji ||
-        "";
-
-
-    document
-        .getElementById(
-            "description"
-        )
-        .value =
-        product.description ||
-        "";
-
-
-    document
-        .getElementById(
-            "imageFile"
-        )
-        .value =
-        "";
-
 
     const preview =
         document.getElementById(
             "imagePreview"
         );
 
-
     const currentNote =
         document.getElementById(
             "currentImageNote"
         );
-
 
     if(product.image){
 
@@ -2124,6 +3225,7 @@ function editProduct(
 
     }
 
+    loadVariantsIntoForm(product);
 
     window.scrollTo({
 
@@ -2135,9 +3237,8 @@ function editProduct(
 
 }
 
-
 /* =====================================================
-   CANCEL EDIT
+   CANCEL
 ===================================================== */
 
 function cancelEdit(){
@@ -2146,9 +3247,8 @@ function cancelEdit(){
 
 }
 
-
 /* =====================================================
-   RESET FORM
+   RESET
 ===================================================== */
 
 function resetForm(){
@@ -2159,13 +3259,14 @@ function resetForm(){
     currentImageUrl =
         "";
 
+    existingVariantMetadata =
+        {};
 
     document
         .getElementById(
             "productForm"
         )
         .reset();
-
 
     document
         .getElementById(
@@ -2174,7 +3275,6 @@ function resetForm(){
         .textContent =
         "Add New Product";
 
-
     document
         .getElementById(
             "submitBtn"
@@ -2182,58 +3282,57 @@ function resetForm(){
         .textContent =
         "Add Product";
 
-
     document
         .getElementById(
             "cancelEditBtn"
         )
         .classList
-        .add(
-            "hidden"
-        );
-
+        .add("hidden");
 
     document
         .getElementById(
             "currentImageNote"
         )
         .classList
-        .add(
-            "hidden"
-        );
+        .add("hidden");
 
+    document
+        .getElementById(
+            "variantRows"
+        )
+        .innerHTML =
+        "";
 
     const preview =
         document.getElementById(
             "imagePreview"
         );
 
-
     preview.src = "";
 
     preview.style.display =
         "none";
 
+    document.getElementById(
+        "stock"
+    ).value =
+        "0";
+
 }
 
-
 /* =====================================================
-   DELETE PRODUCT
+   DELETE
 ===================================================== */
 
-async function deleteProduct(
-    id
-){
+async function deleteProduct(id){
 
     const product =
-        products.find(
-            item =>
-                Number(
-                    item.id
-                ) ===
-                Number(id)
-        );
+        products.find(function(item){
 
+            return Number(item.id) ===
+                Number(id);
+
+        });
 
     if(!product){
 
@@ -2241,19 +3340,16 @@ async function deleteProduct(
 
     }
 
-
     const confirmed =
         confirm(
             `Delete "${product.name}"?\n\nProducts that already belong to an order cannot be deleted. You can hide them instead.`
         );
-
 
     if(!confirmed){
 
         return;
 
     }
-
 
     try{
 
@@ -2270,10 +3366,8 @@ async function deleteProduct(
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if(!response.ok){
 
@@ -2284,21 +3378,15 @@ async function deleteProduct(
 
         }
 
-
         showMessage(
             "Product deleted successfully."
         );
 
-
         await loadProducts();
-
 
     }catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         showMessage(
             error.message ||
@@ -2310,14 +3398,11 @@ async function deleteProduct(
 
 }
 
-
 /* =====================================================
    START
 ===================================================== */
 
 loadProducts();
 
-</script>
-
-</body>
+</script></body>
 </html>
