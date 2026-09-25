@@ -198,6 +198,31 @@ button{
 
 /* IMAGE */
 
+.image-upload-box{
+    border:2px dashed #d1d5db;
+    border-radius:10px;
+    padding:16px;
+    background:#f8fafc;
+}
+
+.image-upload-box:hover{
+    border-color:#f59e0b;
+}
+
+.image-file{
+    width:100%;
+    padding:10px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    background:white;
+}
+
+.image-note{
+    color:#6b7280;
+    font-size:12px;
+    margin-top:7px;
+}
+
 .image-preview{
     width:100%;
     max-width:220px;
@@ -210,9 +235,11 @@ button{
     display:none;
 }
 
-.image-note{
-    color:#6b7280;
+.current-image-note{
+    color:#374151;
     font-size:12px;
+    margin-top:10px;
+    font-weight:bold;
 }
 
 /* BUTTONS */
@@ -234,6 +261,12 @@ button{
 .btn-primary:hover{
     background:#f59e0b;
     color:#111827;
+}
+
+.btn-primary:disabled,
+.btn-gold:disabled{
+    opacity:.6;
+    cursor:not-allowed;
 }
 
 .btn-gold{
@@ -777,27 +810,42 @@ button{
                 </div>
 
 
+                <!-- IMAGE UPLOAD -->
+
                 <div class="field full">
 
                     <label>
-                        Product Image URL
+                        Product Photo
                     </label>
 
-                    <input
-                        type="url"
-                        id="image"
-                        placeholder="https://example.com/product-image.jpg"
-                    >
+                    <div class="image-upload-box">
 
-                    <div class="image-note">
-                        Paste the direct image URL here.
+                        <input
+                            type="file"
+                            id="imageFile"
+                            class="image-file"
+                            accept="image/*"
+                        >
+
+                        <div class="image-note">
+                            Choose a photo directly from your phone.
+                            The image will be uploaded automatically to Kaycy Mart.
+                        </div>
+
+                        <div
+                            id="currentImageNote"
+                            class="current-image-note hidden"
+                        >
+                            Current product image will be kept unless you choose a new photo.
+                        </div>
+
+                        <img
+                            id="imagePreview"
+                            class="image-preview"
+                            alt="Product image preview"
+                        >
+
                     </div>
-
-                    <img
-                        id="imagePreview"
-                        class="image-preview"
-                        alt="Product image preview"
-                    >
 
                 </div>
 
@@ -965,6 +1013,8 @@ let products = [];
 
 let editingProductId = null;
 
+let currentImageUrl = "";
+
 
 /* =====================================================
    HELPERS
@@ -1044,50 +1094,134 @@ function showMessage(
 
 
 /* =====================================================
-   IMAGE PREVIEW
+   IMAGE FILE PREVIEW
 ===================================================== */
 
 document
-    .getElementById("image")
+    .getElementById("imageFile")
     .addEventListener(
-        "input",
+        "change",
         function(){
+
+            const file =
+                this.files[0];
 
             const preview =
                 document.getElementById(
                     "imagePreview"
                 );
 
-            const url =
-                this.value.trim();
-
-            if(!url){
+            if(!file){
 
                 preview.src = "";
 
                 preview.style.display =
-                    "none";
+                    currentImageUrl
+                        ? "block"
+                        : "none";
+
+                if(currentImageUrl){
+
+                    preview.src =
+                        currentImageUrl;
+
+                }
 
                 return;
 
             }
 
+
+            if(!file.type.startsWith("image/")){
+
+                showMessage(
+                    "Please choose an image file.",
+                    "error"
+                );
+
+                this.value = "";
+
+                return;
+
+            }
+
+
+            const objectUrl =
+                URL.createObjectURL(
+                    file
+                );
+
+
             preview.src =
-                url;
+                objectUrl;
 
             preview.style.display =
                 "block";
 
-            preview.onerror =
-                function(){
-
-                    this.style.display =
-                        "none";
-
-                };
-
         }
     );
+
+
+/* =====================================================
+   UPLOAD IMAGE TO CLOUDINARY
+===================================================== */
+
+async function uploadProductImage(
+    file
+){
+
+    const formData =
+        new FormData();
+
+    formData.append(
+        "image",
+        file
+    );
+
+
+    const response =
+        await fetch(
+            `${API_URL}/api/admin/upload-image`,
+            {
+
+                method:"POST",
+
+                headers:
+                    adminHeaders(),
+
+                body:
+                    formData
+
+            }
+        );
+
+
+    const data =
+        await response.json();
+
+
+    if(!response.ok){
+
+        throw new Error(
+            data.message ||
+            "Could not upload product image."
+        );
+
+    }
+
+
+    if(!data.imageUrl){
+
+        throw new Error(
+            "Image uploaded but no image URL was returned."
+        );
+
+    }
+
+
+    return data.imageUrl;
+
+}
 
 
 /* =====================================================
@@ -1122,6 +1256,34 @@ document
 
 
             try{
+
+                const imageFile =
+                    document
+                        .getElementById(
+                            "imageFile"
+                        )
+                        .files[0];
+
+
+                let imageUrl =
+                    currentImageUrl || "";
+
+
+                /* Upload new image if selected */
+
+                if(imageFile){
+
+                    submitBtn.textContent =
+                        "Uploading Image...";
+
+
+                    imageUrl =
+                        await uploadProductImage(
+                            imageFile
+                        );
+
+                }
+
 
                 const payload = {
 
@@ -1171,12 +1333,7 @@ document
                             .trim(),
 
                     image:
-                        document
-                            .getElementById(
-                                "image"
-                            )
-                            .value
-                            .trim()
+                        imageUrl
 
                 };
 
@@ -1211,6 +1368,12 @@ document
                     wasEditing
                         ? "PATCH"
                         : "POST";
+
+
+                submitBtn.textContent =
+                    wasEditing
+                        ? "Updating Product..."
+                        : "Saving Product...";
 
 
                 const response =
@@ -1840,6 +2003,11 @@ function editProduct(
         Number(id);
 
 
+    currentImageUrl =
+        product.image ||
+        "";
+
+
     document
         .getElementById(
             "formTitle"
@@ -1913,16 +2081,21 @@ function editProduct(
 
     document
         .getElementById(
-            "image"
+            "imageFile"
         )
         .value =
-        product.image ||
         "";
 
 
     const preview =
         document.getElementById(
             "imagePreview"
+        );
+
+
+    const currentNote =
+        document.getElementById(
+            "currentImageNote"
         );
 
 
@@ -1934,12 +2107,20 @@ function editProduct(
         preview.style.display =
             "block";
 
+        currentNote.classList.remove(
+            "hidden"
+        );
+
     }else{
 
         preview.src = "";
 
         preview.style.display =
             "none";
+
+        currentNote.classList.add(
+            "hidden"
+        );
 
     }
 
@@ -1975,6 +2156,9 @@ function resetForm(){
     editingProductId =
         null;
 
+    currentImageUrl =
+        "";
+
 
     document
         .getElementById(
@@ -2002,6 +2186,16 @@ function resetForm(){
     document
         .getElementById(
             "cancelEditBtn"
+        )
+        .classList
+        .add(
+            "hidden"
+        );
+
+
+    document
+        .getElementById(
+            "currentImageNote"
         )
         .classList
         .add(
